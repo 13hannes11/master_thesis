@@ -10,3 +10,5 @@
 *.log
 *.fdb_latexmk
 *.synctex.gz
+
+.vscode
