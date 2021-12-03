@@ -11,6 +11,37 @@
   file = {/home/hannes/Zotero/storage/GI8XKTNZ/Adolfsson - Developing a Graphical Application to Control Step.pdf}
 }
 
+@article{berthelot2019mixmatch,
+  title = {{{MixMatch}}: A {{Holistic Approach}} to {{Semi}}-{{Supervised Learning}}},
+  shorttitle = {{{MixMatch}}},
+  author = {Berthelot, David and Carlini, Nicholas and Goodfellow, Ian and Papernot, Nicolas and Oliver, Avital and Raffel, Colin},
+  year = {2019},
+  month = oct,
+  journal = {arXiv:1905.02249 [cs, stat]},
+  eprint = {1905.02249},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  abstract = {Semi-supervised learning has proven to be a powerful paradigm for leveraging unlabeled data to mitigate the reliance on large labeled datasets. In this work, we unify the current dominant approaches for semi-supervised learning to produce a new algorithm, MixMatch, that works by guessing low-entropy labels for data-augmented unlabeled examples and mixing labeled and unlabeled data using MixUp. We show that MixMatch obtains state-of-the-art results by a large margin across many datasets and labeled data amounts. For example, on CIFAR-10 with 250 labels, we reduce error rate by a factor of 4 (from 38\% to 11\%) and by a factor of 2 on STL-10. We also demonstrate how MixMatch can help achieve a dramatically better accuracy-privacy trade-off for differential privacy. Finally, we perform an ablation study to tease apart which components of MixMatch are most important for its success.},
+  archiveprefix = {arXiv},
+  keywords = {⛔ No DOI found,Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/hannes/Zotero/storage/4J47FRIG/Berthelot et al. - 2019 - MixMatch A Holistic Approach to Semi-Supervised L.pdf;/home/hannes/Zotero/storage/NS6KNUXR/1905.html}
+}
+
+@article{gidaris2018unsupervised,
+  title = {Unsupervised {{Representation Learning}} by {{Predicting Image Rotations}}},
+  author = {Gidaris, Spyros and Singh, Praveer and Komodakis, Nikos},
+  year = {2018},
+  month = mar,
+  journal = {arXiv:1803.07728 [cs]},
+  eprint = {1803.07728},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  abstract = {Over the last years, deep convolutional neural networks (ConvNets) have transformed the field of computer vision thanks to their unparalleled capacity to learn high level semantic image features. However, in order to successfully learn those features, they usually require massive amounts of manually labeled data, which is both expensive and impractical to scale. Therefore, unsupervised semantic feature learning, i.e., learning without requiring manual annotation effort, is of crucial importance in order to successfully harvest the vast amount of visual data that are available today. In our work we propose to learn image features by training ConvNets to recognize the 2d rotation that is applied to the image that it gets as input. We demonstrate both qualitatively and quantitatively that this apparently simple task actually provides a very powerful supervisory signal for semantic feature learning. We exhaustively evaluate our method in various unsupervised feature learning benchmarks and we exhibit in all of them state-of-the-art performance. Specifically, our results on those benchmarks demonstrate dramatic improvements w.r.t. prior state-of-the-art approaches in unsupervised representation learning and thus significantly close the gap with supervised feature learning. For instance, in PASCAL VOC 2007 detection task our unsupervised pre-trained AlexNet model achieves the state-of-the-art (among unsupervised methods) mAP of 54.4\% that is only 2.4 points lower from the supervised case. We get similarly striking results when we transfer our unsupervised learned features on various other tasks, such as ImageNet classification, PASCAL classification, PASCAL segmentation, and CIFAR-10 classification. The code and models of our paper will be published on: https://github.com/gidariss/FeatureLearningRotNet .},
+  archiveprefix = {arXiv},
+  keywords = {⛔ No DOI found,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning},
+  file = {/home/hannes/Zotero/storage/BYU65Q9I/Gidaris et al. - 2018 - Unsupervised Representation Learning by Predicting.pdf;/home/hannes/Zotero/storage/BAWRKGM6/1803.html}
+}
+
 @article{hanna2019whole,
   title = {Whole Slide Imaging Equivalency and Efficiency Study: Experience at a Large Academic Center},
   shorttitle = {Whole Slide Imaging Equivalency and Efficiency Study},
@@ -28,6 +59,22 @@
   file = {/home/hannes/Zotero/storage/KFI5AQNG/Hanna et al. - 2019 - Whole slide imaging equivalency and efficiency stu.pdf}
 }
 
+@article{hosseini2020focus,
+  title = {Focus {{Quality Assessment}} of {{High}}-{{Throughput Whole Slide Imaging}} in {{Digital Pathology}}},
+  author = {Hosseini, Mahdi S. and {Brawley-Hayes}, Jasper A. Z. and Zhang, Yueyang and Chan, Lyndon and Plataniotis, Konstantinos and Damaskinos, Savvas},
+  year = {2020},
+  month = jan,
+  journal = {IEEE Transactions on Medical Imaging},
+  volume = {39},
+  number = {1},
+  pages = {62--74},
+  issn = {0278-0062, 1558-254X},
+  doi = {10/gm8ghb},
+  abstract = {One of the challenges facing the adoption of digital pathology workflows for clinical use is the need for automated quality control. As the scanners sometimes determine focus inaccurately, the resultant image blur deteriorates the scanned slide to the point of being unusable. Also, the scanned slide images tend to be extremely large when scanned at greater or equal 20X image resolution. Hence, for digital pathology to be clinically useful, it is necessary to use computational tools to quickly and accurately quantify the image focus quality and determine whether an image needs to be re-scanned. We propose a no-reference focus quality assessment metric specifically for digital pathology images that operate by using a sum of even-derivative filter bases to synthesize a human visual system-like kernel, which is modeled as the inverse of the lens' point spread function. This kernel is then applied to a digital pathology image to modify high-frequency image information deteriorated by the scanner's optics and quantify the focus quality at the patch level. We show in several experiments that our method correlates better with ground-truth z-level data than other methods, which is more computationally efficient. We also extend our method to generate a local slide-level focus quality heatmap, which can be used for automated slide quality control, and demonstrate the utility of our method for clinical scan quality control by comparison with subjective slide quality scores.},
+  langid = {english},
+  file = {/home/hannes/Zotero/storage/6X5KDYCX/Hosseini et al. - 2020 - Focus Quality Assessment of High-Throughput Whole .pdf}
+}
+
 @article{kohlberger2019wholeslide,
   title = {Whole-{{Slide Image Focus Quality}}: Automatic {{Assessment}} and {{Impact}} on {{AI Cancer Detection}}},
   shorttitle = {Whole-{{Slide Image Focus Quality}}},
@@ -43,7 +90,7 @@
   doi = {10/gm9n9g},
   abstract = {Digital pathology enables remote access or consults and powerful image analysis algorithms. However, the slide digitization process can create artifacts such as out-of-focus (OOF). OOF is often only detected upon careful review, potentially causing rescanning and workflow delays. Although scan-time operator screening for whole-slide OOF is feasible, manual screening for OOF affecting only parts of a slide is impractical. We developed a convolutional neural network (ConvFocus) to exhaustively localize and quantify the severity of OOF regions on digitized slides. ConvFocus was developed using our refined semi-synthetic OOF data generation process, and evaluated using real whole-slide images spanning 3 different tissue types and 3 different stain types that were digitized by two different scanners. ConvFocus's predictions were compared with pathologist-annotated focus quality grades across 514 distinct regions representing 37,700 35x35 \$\textbackslash mu\$m image patches, and 21 digitized "z-stack" whole-slide images that contain known OOF patterns. When compared to pathologist-graded focus quality, ConvFocus achieved Spearman rank coefficients of 0.81 and 0.94 on two scanners, and reproduced the expected OOF patterns from z-stack scanning. We also evaluated the impact of OOF on the accuracy of a state-of-the-art metastatic breast cancer detector and saw a consistent decrease in performance with increasing OOF. Comprehensive whole-slide OOF categorization could enable rescans prior to pathologist review, potentially reducing the impact of digitization focus issues on the clinical workflow. We show that the algorithm trained on our semi-synthetic OOF data generalizes well to real OOF regions across tissue types, stains, and scanners. Finally, quantitative OOF maps can flag regions that might otherwise be misclassified by image analysis algorithms, preventing OOF-induced errors.},
   archiveprefix = {arXiv},
-  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,foucs detection},
   file = {/home/hannes/Zotero/storage/AY98CIUF/Kohlberger et al. - 2019 - Whole-Slide Image Focus Quality Automatic Assessm.pdf;/home/hannes/Zotero/storage/QEUQUHCG/1901.html}
 }
 
@@ -54,7 +101,22 @@
   month = jun,
   issn = {1654-7616},
   langid = {english},
+  keywords = {⛔ No DOI found},
   file = {/home/hannes/Zotero/storage/TC3N3EUK/Larsson and Hedberg - 2020 - Development of machine learning models for object .pdf;/home/hannes/Zotero/storage/MRSY5MLH/record.html}
+}
+
+@article{li2014semisupervised,
+  title = {A {{Semi}}-{{Supervised Active Learning Framework}} for {{Image Classification}}},
+  author = {Li, Han Yi and Yang, Ming and Kang, Nan Nan and Yue, Lu Lu},
+  year = {2014},
+  month = may,
+  journal = {Applied Mechanics and Materials},
+  volume = {556--562},
+  pages = {4765--4769},
+  issn = {1662-7482},
+  doi = {10/gnn446},
+  abstract = {In this paper, a novel image classification method, incorporating active learning and semi-supervised learning (SSL), is proposed. In this method, two classifiers are needed where one is trained by labeled data and some unlabeled data, while the other one is trained only by labeled data. Specifically, in each round, two classifiers iterate to select useful examples in contention for user query. Then we compute the label changing rate for every unlabeled example in each classifier. Those examples in which the label changing rate is zero and the label in the two classifiers is the same are selected to add into the training data of the first classifier. Our experimental results show that our method significantly reduced the need of labeled examples, while at the same time reducing classification error compared with widely used image classification algorithms.},
+  file = {/home/hannes/Zotero/storage/PVG6T33E/Li et al. - 2014 - A Semi-Supervised Active Learning Framework for Im.pdf}
 }
 
 @article{senaras2018deepfocus,
@@ -71,6 +133,7 @@
   issn = {1932-6203},
   doi = {10/gm9n8p},
   langid = {english},
+  keywords = {foucs detection},
   file = {/home/hannes/Zotero/storage/M9VZ57ZF/Senaras et al. - 2018 - DeepFocus Detection of out-of-focus regions in wh.pdf}
 }
 
@@ -82,6 +145,25 @@
   abstract = {Dr. Lieven Stuyver (Senior Scientific Director, Global Public Health R\&D, Johnson \& Johnson) presents: "Partnering to Leverage Artificial Intelligence-Driven Digital Pathology to Strengthen Soil-Transmitted Helminthiasis and Schistosomiasis Control Programs" As part of the ISNTD Connect panel session: "Access to schistosomiasis innovation: the next frontier to reach elimination by 2030" This session is hosted by ISNTD and includes the following panelists: - Dr. Beatrice Greco (Head of R\&D and Access, Global Health Institute, Merck): "Merck schistosomiasis elimination platform: integrated approach to support elimination" - Dr. Sarah Nogaro (Senior Scientific Officer, NTDs, FIND): "A schistosomiasis rapid diagnostic test to support control programs in monitoring treatment impact and reassessment mapping" - Dr. Lieven Stuyver (Senior Scientific Director, Global Public Health R\&D, Johnson \& Johnson): "Partnering to Leverage Artificial Intelligence-Driven Digital Pathology to Strengthen Soil-Transmitted Helminthiasis and Schistosomiasis Control Programs" - Dr. Beatrice Greco (Head of R\&D and Access, Global Health Institute, Merck): "Access to upcoming schistosomiasis innovations: a path to be created" \hspace{0pt}Recorded on Tuesday 26th January 2021 as part of the online ISNTD Connect series of short meetings, launched during the 2020 COVID19 pandemic to keep researchers and professionals in the fields of global and tropical health connected.  www.isntd.org/isntd-connect}
 }
 
+@inproceedings{wang2020focuslitenn,
+  title = {{{FocusLiteNN}}: High {{Efficiency Focus Quality Assessment}} for {{Digital Pathology}}},
+  shorttitle = {{{FocusLiteNN}}},
+  booktitle = {Medical {{Image Computing}} and {{Computer Assisted Intervention}} \textendash{} {{MICCAI}} 2020},
+  author = {Wang, Zhongling and Hosseini, Mahdi S. and Miles, Adyn and Plataniotis, Konstantinos N. and Wang, Zhou},
+  editor = {Martel, Anne L. and Abolmaesumi, Purang and Stoyanov, Danail and Mateus, Diana and Zuluaga, Maria A. and Zhou, S. Kevin and Racoceanu, Daniel and Joskowicz, Leo},
+  year = {2020},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  pages = {403--413},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10/gnpd37},
+  abstract = {Out-of-focus microscopy lens in digital pathology is a critical bottleneck in high-throughput Whole Slide Image (WSI) scanning platforms, for which pixel-level automated Focus Quality Assessment (FQA) methods are highly desirable to help significantly accelerate the clinical workflows. Existing FQA methods include both knowledge-driven and data-driven approaches. While data-driven approaches such as Convolutional Neural Network (CNN) based methods have shown great promises, they are difficult to use in practice due to their high computational complexity and lack of transferability. Here, we propose a highly efficient CNN-based model that maintains fast computations similar to the knowledge-driven methods without excessive hardware requirements such as GPUs. We create a training dataset using FocusPath which encompasses diverse tissue slides across nine different stain colors, where the stain diversity greatly helps the model to learn diverse color spectrum and tissue structures. In our attempt to reduce the CNN complexity, we find with surprise that even trimming down the CNN to the minimal level, it still achieves a highly competitive performance. We introduce a novel comprehensive evaluation dataset, the largest of its kind, annotated and compiled from TCGA repository for model assessment and comparison, for which the proposed method exhibits superior precision-speed trade-off when compared with existing knowledge-driven and data-driven FQA approaches.},
+  isbn = {978-3-030-59722-1},
+  langid = {english},
+  keywords = {Deep learning,Digital pathology,Focus Quality Assessment,Out-of-focus,Whole Slide Image (WSI)},
+  file = {/home/hannes/Zotero/storage/IF3BKJWB/Wang et al. - 2020 - FocusLiteNN High Efficiency Focus Quality Assessm.pdf}
+}
+
 @book{worldhealthorganization1991basic,
   title = {Basic Laboratory Methods in Medical Parasitology},
   author = {{World Health Organization}},
@@ -89,6 +171,23 @@
   publisher = {{World Health Organization}},
   isbn = {92-4-154410-4},
   file = {/home/hannes/Zotero/storage/BLZ7T3NS/9241544104_(part1).pdf;/home/hannes/Zotero/storage/P8GE5X7S/9241544104_(part2).pdf}
+}
+
+@article{zhang2021flexmatch,
+  title = {{{FlexMatch}}: Boosting {{Semi}}-{{Supervised Learning}} with {{Curriculum Pseudo Labeling}}},
+  shorttitle = {{{FlexMatch}}},
+  author = {Zhang, Bowen and Wang, Yidong and Hou, Wenxin and Wu, Hao and Wang, Jindong and Okumura, Manabu and Shinozaki, Takahiro},
+  year = {2021},
+  month = oct,
+  journal = {arXiv:2110.08263 [cs]},
+  eprint = {2110.08263},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  abstract = {The recently proposed FixMatch achieved state-of-the-art results on most semisupervised learning (SSL) benchmarks. However, like other modern SSL algorithms, FixMatch uses a pre-defined constant threshold for all classes to select unlabeled data that contribute to the training, thus failing to consider different learning status and learning difficulties of different classes. To address this issue, we propose Curriculum Pseudo Labeling (CPL), a curriculum learning approach to leverage unlabeled data according to the model's learning status. The core of CPL is to flexibly adjust thresholds for different classes at each time step to let pass informative unlabeled data and their pseudo labels. CPL does not introduce additional parameters or computations (forward or backward propagation). We apply CPL to FixMatch and call our improved algorithm FlexMatch. FlexMatch achieves state-of-the-art performance on a variety of SSL benchmarks, with especially strong performances when the labeled data are extremely limited or when the task is challenging. For example, FlexMatch outperforms FixMatch by 14.32\% and 24.55\% on CIFAR-100 and STL-10 datasets respectively, when there are only 4 labels per class. CPL also significantly boosts the convergence speed, e.g., FlexMatch can use only 1/5 training time of FixMatch to achieve even better performance. Furthermore, we show that CPL can be easily adapted to other SSL algorithms and remarkably improve their performances. We open source our code at https://github.com/TorchSSL/TorchSSL.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {⛔ No DOI found,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning},
+  file = {/home/hannes/Zotero/storage/AUM8NM5X/Zhang et al. - 2021 - FlexMatch Boosting Semi-Supervised Learning with .pdf}
 }
 
 
