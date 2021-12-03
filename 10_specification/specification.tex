@@ -122,7 +122,7 @@ A sample can be seen in \autoref{fig:focusComparison}. This z-stacking procedure
 
 \section{Time plan}
 
-\todo[inline]{Here you find the time plan for the project. When to start and how much time has been allocated for each moment. (the fine grading can vary, but no blocks bigger that about 4 weeks should be listed). The time plan should take into consideration factors such as part time work, vacations, other obligations etc. Some moments, like writing, is usually done in parallel with other tasks. A graphical plan is encouraged. Regular meetings with your reviewer should be booked.}
+The time plan (see \autoref{fig:TimePlan:Gant} )is separated into two main parts. These are documentation and implementation. Initially literature research needs to be done and is considered to be a separate part but during the thesis new literature will need to be considered continuously. The initial literature research part coincides with parts of the documentation namely, background and methods as these parts are largely independent of the actual implementation. The implementation follows and is divided into four steps. First some of the data needs to be annotated, then based on these annotations additional data is automatically labelled. This is followed by a period of model development where at least one but potentially multiple models are developed and trained. Lastly, a full evaluation is done. During the phase of implementation material to all sections of the thesis document is added. This material is put into a coherent text in the following tasks. The implementation is expected to take from 10 to 11 weeks and the main parts of documentation 9 to 10 weeks.
 
 \begin{figure}
     \begin{center}
@@ -157,6 +157,7 @@ A sample can be seen in \autoref{fig:focusComparison}. This z-stacking procedure
             \ganttmilestone{Evaluation Scores}{18}\ganttnewline
 
             \ganttgroup{Documentation}{3}{22}\ganttnewline
+            \ganttbar{Implementation Notes}{8}{17}\ganttnewline
             \ganttbar{Write Background}{4}{6}\ganttnewline
             \ganttbar{Write Methods}{7}{8}\ganttnewline
             \ganttbar{Write Results}{18}{18}\ganttnewline
@@ -181,20 +182,20 @@ A sample can be seen in \autoref{fig:focusComparison}. This z-stacking procedure
             \ganttlink{elem9}{elem10}
 
             % into documentation
-            \ganttlink{elem10}{elem14}
-            \ganttlink{elem14}{elem15}
+            \ganttlink{elem10}{elem15}
+            \ganttlink{elem15}{elem16}
 
                 % into introduction
-            \ganttlink{elem15}{elem16}
-            \ganttlink[link mid=.65]{elem12}{elem16}
-            \ganttlink{elem13}{elem16}
-
             \ganttlink{elem16}{elem17}
+            \ganttlink[link mid=.65]{elem13}{elem17}
+            \ganttlink{elem14}{elem17}
+
             \ganttlink{elem17}{elem18}
             \ganttlink{elem18}{elem19}
             \ganttlink{elem19}{elem20}
             \ganttlink{elem20}{elem21}
             \ganttlink{elem21}{elem22}
+            \ganttlink{elem22}{elem23}
 
             \ganttvrule{}{7}
             %\ganttvrule{}{12}
