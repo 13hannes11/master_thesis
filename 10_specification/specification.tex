@@ -95,10 +95,9 @@ The z-stacking procedure has the drawback that it produces more data and time sp
 
 Existing approaches have not been used on NTDs and most detect out of focus areas such as \emph{DeepFocus} \cite{senaras2018deepfocus}, \emph{ConvFocus} \cite{kohlberger2019wholeslide} and \emph{FocusLiteNN} \cite{wang2020focuslitenn}.
 
-The existing dataset from Etteplan consists of non-annotated images which contain positional metadata. Therefore a semi-supervised approach is used. The idea is to annotated a small subset of the dataset and to automatically label additional data. This can be either done by using an existing pre-trained and then fine-tuned model to find images that are in focus or by using other methods to detect in-focus images. Images that are not in focus can then be annotated using a positional offset based on metadata of in-focus images on the same z-stack.
+The existing dataset from Etteplan consists of non-annotated images which contain positional metadata. Therefore a semi-supervised approach is used. The idea is to annotated a small subset of the dataset and to automatically label additional data. This can be either done by using an existing pre-trained and then fine-tuned model to find images that are in focus or by using other methods to detect in-focus images (see \citeauthor{yusun2005autofocusing} \cite{yusun2005autofocusing}). Images that are not in focus can then be annotated using a positional offset based on metadata of in-focus images on the same z-stack.
 
-The results of the developed model are be compared to out of focus detection models. This can be done by converting the focus distance to a binary in-focus or out of focus label. Further, the focus distance estimation performance can be evaluated as is but an appropriate metric has to be chosen.
-
+The results of the developed model are be compared to an out of focus detection model. This can be done by converting the focus distance to a binary in-focus or out of focus label. Further, the focus distance estimation performance can be evaluated as is but an appropriate metric has to be chosen.
 
 
 \section{Relevant courses}
