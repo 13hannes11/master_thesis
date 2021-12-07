@@ -55,7 +55,7 @@ Neglected Tropical Diseases (NTDs) are a set of diseases mainly present in tropi
 
 Part of the effort to detect STH infections has been to look for parasite eggs under a microscope. Specifically, stool samples are examined, where egg counts determine infection status. However, due to long training time of staff and high turnover rate, an automated solution could prove to be much more efficient. Such a solution is under development at Etteplan Sweden.
 
-Etteplan’s solution, an automated microscope, scans glass slides with samples prepared according to the Kato-Katz technique \cite{worldhealthorganization1991basic}, in a whole slide imaging fashion \cite{hanna2019whole}. A slide is partitioned into a grid, where each grid cell corresponds to the camera’s field of view in that position. The sample has the obvious spatial extension tangential to the glass plane, but also a non-neglectable spatial distribution along the optical axis, compared to the cameras depth of field. Hence, the camera takes multiple images of the grid cell, varying the focal plane, to capture as much of the information of the sample in each grid cell, a process called z-stacking. The result is multiple images of each grid cell, with different regions of the image being in focus for different positions of the focal plane. A sample can be seen in \autoref{fig:focusComparison}.
+Etteplan’s solution, an automated microscope, scans glass slides with samples prepared according to the Kato-Katz technique \cite{worldhealthorganization1991basic}, in a whole slide imaging fashion \cite{hanna2019whole}. A slide is partitioned into a grid, where each grid cell corresponds to the camera’s field of view in that position. The sample has the obvious spatial extension tangential to the glass plane, but also a non-negligible spatial distribution along the optical axis, compared to the camera's depth of field. Hence, the camera takes multiple images of the grid cell, varying the focal plane, to capture as much of the information of the sample in each grid cell, a process called z-stacking. The result is multiple images of each grid cell, with different regions of the image being in focus for different positions of the focal plane. A sample can be seen in \autoref{fig:focusComparison}.
 
 \begin{figure}
     \begin{subfigure}[t]{0.3\textwidth}
@@ -84,7 +84,7 @@ Etteplan’s solution, an automated microscope, scans glass slides with samples 
 
 \section{Description of the task}
 
-\todo[inline]{Here you describe in more detail the contents of the project: what should be done and what moments are included. Specifically it should be described the interesting part of the problem, how this should be analyzed and solved. Here there should be clarified that the project fulfills the requirements that the university has posed on a thesis project on this level.}
+\todo[inline]{Here you describe in more detail the contents of the project: what should be done and what moments are included. Specifically it should be described the interesting part of the problem, how this should be analysed and solved. Here there should be clarified that the project fulfils the requirements that the university has posed on a thesis project on this level.}
 
 The z-stacking procedure has the drawback that it produces more data and time spent scanning each grid cell than other approaches and hence, an automatic procedure for determining the quality or distance to the focal plane is beneficial to reduce the costs. Due to the nature of the sample not all parts of the image are always in focus at the same time, therefore, the prediction should be made for subregions of the image. 
 
@@ -95,9 +95,9 @@ The z-stacking procedure has the drawback that it produces more data and time sp
 
 Existing approaches have not been used on NTDs and most detect out of focus areas such as \emph{DeepFocus} \cite{senaras2018deepfocus}, \emph{ConvFocus} \cite{kohlberger2019wholeslide} and \emph{FocusLiteNN} \cite{wang2020focuslitenn}.
 
-The existing dataset from Etteplan consists of non-annotated images which contain positional metadata. Therefore a semi-supervised approach is used. The idea is to annotated a small subset of the dataset and to automatically label additional data. This can be either done by using an existing pre-trained and then fine-tuned model to find images that are in focus or by using other methods to detect in-focus images (see \citeauthor{yusun2005autofocusing} \cite{yusun2005autofocusing}). Images that are not in focus can then be annotated using a positional offset based on metadata of in-focus images on the same z-stack.
+The existing dataset from Etteplan consists of non-annotated images which contain positional metadata. Therefore, a semi-supervised approach is used. The idea is to annotate a small subset of the dataset and to automatically label additional data. This can be either done by using an existing pre-trained and then fine-tuned model to find images that are in focus or by using other methods to detect in-focus images (see \citeauthor{yusun2005autofocusing} \cite{yusun2005autofocusing}). Images that are not in focus can then be annotated using a positional offset based on metadata of in-focus images on the same z-stack.
 
-The results of the developed model are be compared to an out of focus detection model. This can be done by converting the focus distance to a binary in-focus or out of focus label. Further, the focus distance estimation performance can be evaluated as is but an appropriate metric has to be chosen.
+The results of the developed model are compared to an out of focus detection model. This can be done by converting the focus distance to a binary in-focus or out of focus label. Further, the focus distance estimation performance can be evaluated as is, but an appropriate metric has to be chosen.
 
 
 \section{Relevant courses}
@@ -118,13 +118,13 @@ The results of the developed model are be compared to an out of focus detection 
 
 \section{Delimitations}
 
-\todo[inline]{It is also important to specify what is not part of the project. This prevents that the thesis grows uncontrolled. You can add stuff that you can do if there are time left, also write down things that can be skipped if there are not time for them.}
+\todo[inline]{It is also important to specify what is not part of the project. This prevents that the thesis grows uncontrolled. You can add stuff that you can do if there is time left, also write down things that can be skipped if there are no time for them.}
 
 The developed model will be based on a known, yet to be decided architecture and not a newly developed one.
 
 \section{Time plan}
 
-The time plan (see \autoref{fig:TimePlan:Gant} )is separated into two main parts. These are documentation and implementation. Initially literature research needs to be done and is considered to be a separate part but during the thesis new literature will need to be considered continuously. The initial literature research part coincides with parts of the documentation namely, background and methods as these parts are largely independent of the actual implementation. The implementation follows and is divided into four steps. First some of the data needs to be annotated, then based on these annotations additional data is automatically labelled. This is followed by a period of model development where at least one but potentially multiple models are developed and trained. Lastly, a full evaluation is done. During the phase of implementation material to all sections of the thesis document is added. This material is put into a coherent text in the following tasks. The implementation is expected to take from 10 to 11 weeks and the main parts of documentation 9 to 10 weeks.
+The time plan (see \autoref{fig:TimePlan:Gant}) is separated into two main parts. These are documentation and implementation. Initially literature research needs to be done and is considered to be a separate part but during the thesis new literature will need to be considered continuously. The initial literature research part coincides with parts of the documentation namely, background and methods as these parts are largely independent of the actual implementation. The implementation follows and is divided into four steps. First some data needs to be annotated, then based on these annotations additional data is automatically labelled. This is followed by a period of model development where at least one but potentially multiple models are developed and trained. Lastly, a full evaluation is done. During the phase of implementation material to all sections of the thesis document is added. This material is put into a coherent text in the following tasks. The implementation is expected to take from 10 to 11 weeks and the main parts of documentation 9 to 10 weeks.
 
 \begin{figure}
     \begin{center}
@@ -169,7 +169,7 @@ The time plan (see \autoref{fig:TimePlan:Gant} )is separated into two main parts
             \ganttmilestone{First Draft}{20}\ganttnewline
             \ganttbar{Finalize Thesis}{21}{21}\ganttnewline
             \ganttmilestone{Final Draft}{21}\ganttnewline
-            \ganttbar{Proof and Corrections}{22}{22}\ganttnewline
+            \ganttbar{Proofread and Corrections}{22}{22}\ganttnewline
             \ganttmilestone{Finished Thesis}{22}\ganttnewline
 
             % into implementation
