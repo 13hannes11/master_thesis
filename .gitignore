@@ -12,3 +12,4 @@
 *.synctex.gz
 *.dvi
 .vscode
+*.toc
