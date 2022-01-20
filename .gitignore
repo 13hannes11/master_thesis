@@ -13,3 +13,4 @@
 *.dvi
 .vscode
 *.toc
+*.synctex
