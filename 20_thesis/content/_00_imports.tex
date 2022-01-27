@@ -17,4 +17,13 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage{todonotes}
+
+\usepackage{acro} % acronyms
+
 \addbibresource{references.bib}
+
+% make sure autoref only uses sections not subsections
+\addto\extrasbritish{
+    \let\subsectionautorefname\sectionautorefname 	\let\subsubsectionautorefname\sectionautorefname
+}
