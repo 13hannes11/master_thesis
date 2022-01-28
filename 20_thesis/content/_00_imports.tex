@@ -16,7 +16,7 @@
     sorting=none,
 ]{biblatex}
 \usepackage{placeins} % for FloatBarrier
-\usepackage{hyperref} % for using autoref
+\usepackage[hidelinks]{hyperref} % for using autoref
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -24,6 +24,10 @@
 \usepackage{todonotes}
 
 \usepackage{acro} % acronyms
+\acsetup{
+    make-links=true
+}
+
 
 \addbibresource{references.bib}
 
