@@ -64,12 +64,51 @@ Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days ou
 \subsection{Schistosoma}
 \label{sec:Foundations:NTDs:STHs:Schistosoma}
 
-Schistosoma are, unlike \ac{STHs}, not transmitted through soil.  \todo{Write section for schistosoma}
+Schistosoma worms have the most complex life cycle among parasite covered in this thesis. Humans excrement contains its eggs \cite{nelwan2019schistosomiasis}. When eggs come into contact with water they hatch and infect snails. Infected snails shed cercariae which enter the human body through skin and migrate throughout the body using the circulating blood. The location where adult worms settle depends on the exact species, but some examples are the intestine (large and small), and the bladder. A picture of a Schistosoma worm can be seen in \autoref{fig:Foundations:NCLs:Schistosoma:Adult}.
 
 \subsection{Diagnosis}
 \label{sec:Foundations:NTDs:Diagnosis}
 
-Schistosoma and \ac{STHs} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \todo{cite where it is mentioned with that name} and was introduced by \textcite{katz1972simple} which refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves cardboard with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent measurements, is fairly reliable, easy to perform and low cost \cite{katz1972simple} and therefore considered to be the \ac{WHO} \say{gold standard} (according to \textcite{mbongngwese2020diagnostic}).
+Schistosoma and \ac{STHs} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} which refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves cardboard with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent measurements, is fairly reliable, easy to perform and low cost \cite{katz1972simple} and therefore considered to be the \ac{WHO} \say{gold standard} (according to \textcite{mbongngwese2020diagnostic}).
+The slides prepared using the Kato-Katz are, after a resting period, examined under a light microscope to count the number of eggs per milligram. This allows to identify the intensity of infection of a patient \cite{feasey2010neglected}. 
+
+Eggs found under a microscope can be assigned to the corresponding parasite worm based on size, shape, and colour. \emph{Roundworm (Ascaris)} eggs are identified by rounded thick shell with an external mamillated layer which is often stained with brown spots and has a length of \unit{45}{\micro\meter} to \unit{75}{\micro\meter} \cite{dpdx2019ascariasis} (as shown in \autoref{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}).
+\emph{Whipworm} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Whipworm:Egg}) can be identified by their elongated oval shape with two circular protrusions at the end of longer sides \cite{dpdx2017trichuriasis,larsson2020development}. A length of approximately \unit{50}{\micro\meter} and a width of \unit{20}{\micro\meter} characterizes the eggs.
+\emph{Hookworm} eggs are thin-shelled and colourless with a blurry inner structure. The eggs' size measures \unit{65}{\micro\meter} by \unit{35}{\micro\meter} which is shown in \autoref{fig:Foundations:NCLs:Diagnosis:Hookworm:Egg} \cite{dpdx2019hookworm, larsson2020development}.
+Lastly, the dataset contains \emph{Schistosoma} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Schistosoma:Egg}). They are characterized by a spine (seen as a spike) 
+and have a size of approximately \unit{100}{\micro\meter} by \unit{50}{\micro\meter} which can vary by species \cite{dpdx2019schistosomiasis, larsson2020development}.
+
+\begin{figure}[tb]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/20_foundations/Ascaris_egg_fertilised.jpg}
+        \caption{Fertilized \textbf{roundworm} egg from \textcite{dpdx2019ascariasis}.}
+        \label{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}
+        \vspace*{2mm}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/20_foundations/Trichuris_trichiura_egg.jpg}
+        \caption{\textbf{Whipworm} egg from \textcite{dpdx2017trichuriasis}.}
+        \label{fig:Foundations:NCLs:Diagnosis:Whipworm:Egg}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/20_foundations/Hookworm_egg.jpg}
+        \caption{\textbf{Hookworm} egg from \textcite{dpdx2019hookworm}.}
+        \label{fig:Foundations:NCLs:Diagnosis:Hookworm:Egg}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/20_foundations/Schistosoma_egg.jpg}
+        \caption{\textbf{Schistosoma} mansoni egg from \textcite{dpdx2019hookworm}.}
+        \label{fig:Foundations:NCLs:Diagnosis:Schistosoma:Egg}
+    \end{subfigure}
+    \caption{An overview of parasitic worm eggs in the dataset.}
+    \label{fig:Foundations:NCLs:Diagnosis:Overview}
+\end{figure}
 
 The slides prepared using the Kato-Katz are, after a resting period, examined under a light microscope to count the number of eggs per milligram. This allows to identify the intensity of infection of a patient \cite{feasey2010neglected}. 
 
