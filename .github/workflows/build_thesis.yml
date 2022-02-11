@@ -24,6 +24,7 @@ jobs:
           path: '**/*.pdf'
       # Automatically release artifacts
       - name: Automatic release
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
