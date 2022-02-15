@@ -140,8 +140,37 @@ A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry201
 \label{sec:Foundations:NeuralNetworks}
 
 \subsection{Feedforward Neural Networks}
+\label{sec:Foundations:NeuralNetworks:FNN}
 
-\subsubsection{Perceptron}
+According to \textcite{nielsen2015neural} \acp{ann} were developed by \textcite{rosenblatt1958perceptron}. In \acp{fnn} information flows only from input towards the output. There is no backwards flow of information, hence, the name.
+A \ac{nn} is consists of multiple layers which themselves consists of individual neurons.
+
+\subsubsection{Perceptrons and Neurons}
+\label{sec:Foundations:NeuralNetworks:Perceptrons}
+
+A perceptron is a type of artificial neuron that consists of inputs ($x_1, \cdots, x_n$), weights ($w_1, \cdots, w_n$) that correspond to each input, a threshold/bias $b$ and an output \cite{nielsen2015neural}.
+\todo{add figure for perceptron}
+A perceptron computes its output by multiplying each input with its corresponding weight. The result of these multiplications in then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
+
+\begin{equation}
+    output = 
+    \begin{cases}\label{eq:Perceptron}
+    0 & if:\; \sum_{1}^{n}(w_i * x_i) + b \le 0 \\
+    1 & if:\; \sum_{1}^{n}(w_i * x_i) + b > 0
+    \end{cases}
+\end{equation}
+
+The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdots, w_n$) as vectors $x$ and $y$:
+
+\begin{equation}
+    output = 
+    \begin{cases}\label{eq:PerceptronVector}
+    0 & if:\; w * x + b \le 0 \\
+    1 & if:\; w * x + b > 0
+    \end{cases}
+\end{equation}
+
+Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $w * x + b$ the neurons apply a non-linear activation function. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation}.
 
 \subsubsection{Activation Function}
 
@@ -165,4 +194,4 @@ A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry201
 
 
 
-
+ 
