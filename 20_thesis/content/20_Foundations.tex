@@ -182,6 +182,28 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 \subsubsection{Activation Function}
 
 \subsubsection{Layer}
+\label{sec:Foundations:NeuralNetworks:Layer}
+
+Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In fully connected neural networks \todo{source} each neuron of each layer is connected to each neuron of the previous layer. Layers that have this property are commonly called fully connected layers \todo{source}. 
+
+Commonly, fully connected neural networks are shown as a graph (see \autoref{fig:Foundations:ANNs:Layer:FullyConnected}), however, mathematically, each layer is represented as a matrix of weights $W$ and a vector of biasses $b$. Each row $w_i$ of the matrix corresponds to one neuron and the scalar $b_i$ constitutes the bias for neuron $i$. When processing input $x$ the weight matrix is multiplied with the input vector, the bias vector $b$ is then added, and, lastly, an activation function $f$ is applied (see \autoref{eq:FCNNLayer}).
+
+\begin{equation}
+    \label{eq:FCNNLayer}
+    output = f(W * \vec{x} + \vec{b}) = f( \begin{pmatrix}
+        w_1 * \vec{x} + b_1\\
+        \vdots \\
+        w_n * \vec{x} + b_n
+      \end{pmatrix} )
+\end{equation}
+
+\begin{figure}
+    \centering
+    \missingfigure{Add figure showing a two hidden layer nn with labels on input output and hidden layer.}
+    \caption{Visualization of simple neural network with two hidden layers.}
+    \label{fig:Foundations:ANNs:Layer:FullyConnected}
+\end{figure}
+
 
 \subsection{Convolutional Neural Networks}
 
