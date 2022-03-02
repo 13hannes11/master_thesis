@@ -172,12 +172,12 @@ The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdot
 \begin{equation}
     output = 
     \begin{cases}\label{eq:PerceptronVector}
-    0 & if:\; w * x + b \le 0 \\
-    1 & if:\; w * x + b > 0
+    0 & if:\; w * \vec{x} + b \le 0 \\
+    1 & if:\; w * \vec{x} + b > 0
     \end{cases}
 \end{equation}
 
-Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $w * x + b$ the neurons apply a non-linear activation function. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation}.
+Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $\vec{w} * \vec{x} + b$ the neurons apply a non-linear activation function. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation, sharma2020activation}.
 
 \subsubsection{Activation Function}
 
