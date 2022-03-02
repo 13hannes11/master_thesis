@@ -261,7 +261,7 @@
   doi = {10/gm9n9g},
   abstract = {{$<$}br{$>$}\textbf{Background:} Digital pathology enables remote access or consults and powerful image analysis algorithms. However, the slide digitization process can create artifacts such as out-of-focus (OOF). OOF is often only detected on careful review, potentially causing rescanning, and workflow delays. Although scan time operator screening for whole-slide OOF is feasible, manual screening for OOF affecting only parts of a slide is impractical. \textbf{Methods:} We developed a convolutional neural network (ConvFocus) to exhaustively localize and quantify the severity of OOF regions on digitized slides. ConvFocus was developed using our refined semi-synthetic OOF data generation process and evaluated using seven slides spanning three different tissue and three different stain types, each of which were digitized using two different whole-slide scanner models ConvFocus's predictions were compared with pathologist-annotated focus quality grades across 514 distinct regions representing 37,700 35 μm × 35 μm image patches, and 21 digitized “z-stack” WSIs that contain known OOF patterns. \textbf{Results:} When compared to pathologist-graded focus quality, ConvFocus achieved Spearman rank coefficients of 0.81 and 0.94 on two scanners and reproduced the expected OOF patterns from z-stack scanning. We also evaluated the impact of OOF on the accuracy of a state-of-the-art metastatic breast cancer detector and saw a consistent decrease in performance with increasing OOF. \textbf{Conclusions:} Comprehensive whole-slide OOF categorization could enable rescans before pathologist review, potentially reducing the impact of digitization focus issues on the clinical workflow. We show that the algorithm trained on our semi-synthetic OOF data generalizes well to real OOF regions across tissue types, stains, and scanners. Finally, quantitative OOF maps can flag regions that might otherwise be misclassified by image analysis algorithms, preventing OOF-induced errors.{$<$}br{$>$}},
   langid = {english},
-  keywords = {ConvFocus,Deep Learning,Focus Quality Assessment,out of focus detection},
+  keywords = {ConvFocus,Deep Learning,Focus Quality Assessment,out of focus detection,related work},
   file = {/var/home/hannes/Zotero/storage/TPUQGMK8/Kohlberger et al. - 2019 - Whole-slide image focus quality Automatic assessm.pdf;/var/home/hannes/Zotero/storage/I46YGIVL/article.html}
 }
 
@@ -278,6 +278,22 @@
   langid = {english},
   pagetotal = {34},
   file = {/var/home/hannes/Zotero/storage/X4VAW9B4/Larsson and Hedberg - 2020 - Development of machine learning models for object .pdf}
+}
+
+@article{liang2019learning,
+  title = {Learning to Autofocus Based on {{Gradient Boosting Machine}} for Optical Microscopy},
+  author = {Liang, Yixiong and Yan, Meng and Tang, Zhihong and He, Zhujun and Liu, Jianfeng},
+  date = {2019-12-01},
+  journaltitle = {Optik},
+  shortjournal = {Optik},
+  volume = {198},
+  pages = {163002},
+  issn = {0030-4026},
+  doi = {10.1016/j.ijleo.2019.163002},
+  abstract = {Autofocus is an essential part of modern high-throughput optical microscopic imaging system, and the traditional passive autofocus algorithms such as hill climbing search are heuristics and therefore are slow and less accuracy. Instead of using the heuristics, in this paper we treat the autofocus as a regression problem and propose to learn a Gradient Boosting Machine (GBM) to predict the direction and step size simultaneously. We first leverage Fourier optical theory to explore the feasibility of predicting the step size and direction simultaneously with only one regressor. And then, inspired by Depth from Defocus (DFD), we design novel basic and combined features for faster and better autofocus. Finally, we comprehensively evaluate our methods on a dataset consisting of 2000 annotated images corresponding to 20 benchmarks of cell images. Our Defocus of Focus (DFF)-based autofocus shows improved accuracy over previous work from 97.1\% to 99.9\%, and significantly reduces the number of steps, achieving a 51.48\% relative improvement. Code and dataset will be made publicly available.},
+  langid = {english},
+  keywords = {autofocus,Autofocus,Depth from Defocus,Depth from Focus,Gradient Boosting Machine,related work},
+  file = {/var/home/hannes/Zotero/storage/4Z7JWJAP/S0030402619308794.html}
 }
 
 @article{mbongngwese2020diagnostic,
@@ -358,6 +374,23 @@
   file = {/var/home/hannes/Zotero/storage/CGEQ4856/Osibote et al. - 2010 - Automated focusing in bright-field microscopy for .pdf}
 }
 
+@article{redondo2012autofocus,
+  title = {Autofocus Evaluation for Brightfield Microscopy Pathology},
+  author = {Redondo, Rafael and Cristóbal, Gabriel and Garcia, Gloria Bueno and Deniz, Oscar and Salido, Jesus and Fernandez, Maria del Milagro and Vidal, Juan and Valdiviezo, Juan Carlos and Nava, Rodrigo and Escalante-Ramírez, Boris and Garcia-Rojo, Marcial},
+  date = {2012-03},
+  journaltitle = {Journal of Biomedical Optics},
+  shortjournal = {JBO},
+  volume = {17},
+  number = {3},
+  pages = {036008},
+  publisher = {{SPIE}},
+  issn = {1083-3668, 1560-2281},
+  doi = {10.1117/1.JBO.17.3.036008},
+  abstract = {An essential and indispensable component of automated microscopy framework is the automatic focusing system, which determines the in-focus position of a given field of view by searching the maximum value of a focusing function over a range of z-axis positions. The focus function and its computation time are crucial to the accuracy and efficiency of the system. Sixteen focusing algorithms were analyzed for histological and histopathological images. In terms of accuracy, results have shown an overall high performance by most of the methods. However, we included in the evaluation study other criteria such as computational cost and focusing curve shape which are crucial for real-time applications and were used to highlight the best practices.},
+  keywords = {autofocus,Microscopy,related work},
+  file = {/var/home/hannes/Zotero/storage/AZKQXKIR/Redondo et al_2012_Autofocus evaluation for brightfield microscopy pathology.pdf;/var/home/hannes/Zotero/storage/ISZAUL48/1.JBO.17.3.036008.html}
+}
+
 @article{rosenblatt1958perceptron,
   title = {The Perceptron: {{A}} Probabilistic Model for Information Storage and Organization in the Brain.},
   shorttitle = {The Perceptron},
@@ -389,7 +422,7 @@
   issn = {1932-6203},
   doi = {10/gm9n8p},
   langid = {english},
-  keywords = {Deep Learning,DeepFocus,out of focus detection},
+  keywords = {Deep Learning,DeepFocus,out of focus detection,related work},
   file = {/var/home/hannes/Zotero/storage/45DQQNHY/Senaras et al. - 2018 - DeepFocus Detection of out-of-focus regions in wh.pdf}
 }
 
@@ -420,7 +453,7 @@
   abstract = {Out-of-focus microscopy lens in digital pathology is a critical bottleneck in high-throughput Whole Slide Image (WSI) scanning platforms, for which pixel-level automated Focus Quality Assessment (FQA) methods are highly desirable to help significantly accelerate the clinical workflows. Existing FQA methods include both knowledge-driven and data-driven approaches. While data-driven approaches such as Convolutional Neural Network (CNN) based methods have shown great promises, they are difficult to use in practice due to their high computational complexity and lack of transferability. Here, we propose a highly efficient CNN-based model that maintains fast computations similar to the knowledge-driven methods without excessive hardware requirements such as GPUs. We create a training dataset using FocusPath which encompasses diverse tissue slides across nine different stain colors, where the stain diversity greatly helps the model to learn diverse color spectrum and tissue structures. In our attempt to reduce the CNN complexity, we find with surprise that even trimming down the CNN to the minimal level, it still achieves a highly competitive performance. We introduce a novel comprehensive evaluation dataset, the largest of its kind, annotated and compiled from TCGA repository for model assessment and comparison, for which the proposed method exhibits superior precision-speed trade-off when compared with existing knowledge-driven and data-driven FQA approaches.},
   isbn = {978-3-030-59722-1},
   langid = {english},
-  keywords = {Deep learning,Digital pathology,Focus Quality Assessment,out of focus detection,Out-of-focus,Whole Slide Image (WSI)},
+  keywords = {Deep learning,Digital pathology,Focus Quality Assessment,out of focus detection,Out-of-focus,related work,Whole Slide Image (WSI)},
   file = {/var/home/hannes/Zotero/storage/M2PBJBHU/Wang et al. - 2020 - FocusLiteNN High Efficiency Focus Quality Assessm.pdf}
 }
 
@@ -436,7 +469,7 @@
   doi = {10/gnpqnz},
   abstract = {During the process of whole slide imaging, it is necessary to focus thousands of fields of view to obtain a high-quality image. To make the focusing procedure efficient and effective, we propose a novel autofocus algorithm for whole slide imaging. It is based on convolution and recurrent neural networks to predict the out-of-focus distance and subsequently update the focus location of the camera lens in an iterative manner. More specifically, we train a convolution neural network to extract focus information in the form of a focus feature vector. In order to make the prediction more accurate, we apply a recurrent neural network to combine focus information from previous search iteration and current search iteration to form a feature aggregation vector. This vector contains more focus information than the previous one and is subsequently used to predict the out-of-focus distance. Our experiments indicate that our proposed autofocus algorithm is able to rapidly determine the optimal in-focus image. The code is available at https://github.com/hezhujun/autofocus-rnn.},
   langid = {english},
-  keywords = {autofocus,autofocus-rnn},
+  keywords = {autofocus,autofocus-rnn,related work},
   file = {/var/home/hannes/Zotero/storage/PXVKGKHJ/Xiang et al. - 2021 - Autofocus of whole slide imaging based on convolut.pdf}
 }
 
