@@ -148,8 +148,15 @@ A \ac{nn} is consists of multiple layers which themselves consists of individual
 \subsubsection{Perceptrons and Neurons}
 \label{sec:Foundations:NeuralNetworks:Perceptrons}
 
-A perceptron is a type of artificial neuron that consists of inputs ($x_1, \cdots, x_n$), weights ($w_1, \cdots, w_n$) that correspond to each input, a threshold/bias $b$ and an output \cite{nielsen2015neural}.
-\todo{add figure for perceptron}
+A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artificial neuron that consists of inputs ($x_1, \cdots, x_n$), weights ($w_1, \cdots, w_n$) that correspond to each input, a threshold/bias $b$ and an output \cite{nielsen2015neural}.
+
+\begin{figure}
+    \centering
+    \missingfigure{Add figure showing a perceptron.}
+    \caption{Visualization of a perceptron.}
+    \label{fig:Foundations:ANNs:Perceptron}
+\end{figure}
+
 A perceptron computes its output by multiplying each input with its corresponding weight. The result of these multiplications in then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
 
 \begin{equation}
