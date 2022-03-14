@@ -266,13 +266,31 @@ Architecture descriptions often describe activation functions as separate layers
 \label{sec:Foundations:RelatedWorks}
 
 \begin{itemize}
-    \item FocusLite \cite{wang2020focuslitenn}
     \item DeepFocus \cite{senaras2018deepfocus}
+    \begin{itemize}
+        \item What they do:
+        \begin{itemize}
+            \item Classification of in focus not in focus (steps of \unit{-0.5}{\micro\meter} to \unit{0.5}{\micro\meter} are in focus)
+            \item 216,000 (108,000 for each class) tiles for training
+            \item Scale image values between 0 and 1 + zero-centering (average value of an image is 0)
+            \item CNN
+            \item SDG
+            \item Batch norm after ReLU
+            \item Spearman's rank coefficient
+            \item 40x magnification where the pixel size is \unit{0.2461}{\micro\meter} x \unit{0.2461}{\micro\meter}
+        \end{itemize}
+        \item Results: 
+        \begin{itemize}
+            \item Faster and more accurate than competition
+        \end{itemize}
+    \end{itemize}
     \item ConvFocus \cite{kohlberger2019wholeslide}  
+    \item FocusLite \cite{wang2020focuslitenn} 
     \item Autofocus of whole slide imaging based on convolution and recurrent neural networks \cite{xiang2021autofocus}
-    \item Gradient Boosting \cite{liang2019learning}
     \item Traditional methods \cite{redondo2012autofocus}
     \item Squared gradient (potentially traditional method)
+    \item Gradient Boosting \cite{liang2019learning}
+
 \end{itemize}
 
 
