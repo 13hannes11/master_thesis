@@ -284,7 +284,28 @@ Architecture descriptions often describe activation functions as separate layers
             \item Faster and more accurate than competition
         \end{itemize}
     \end{itemize}
-    \item ConvFocus \cite{kohlberger2019wholeslide}  
+    \item ConvFocus \cite{kohlberger2019wholeslide}
+    \begin{itemize}
+        \item What they do:
+        \begin{itemize}
+            \item Classification (degree of out of focussness 30 classes)
+            \item pathology
+            \item 40x with pixel size \unit{0.251}{\micro\meter} x \unit{0.251}{\micro\meter} and \unit{0.227}{\micro\meter} x  \unit{0.227}{\micro\meter}
+            \item Used three human raters to classify patches as in focus or out of focus
+            \item 166,000 patches as in focus 
+            \item Images are blurred with Gaussian or Bokeh blur to varying degree. This yielded bad performance therefore artificial jpeg artifacts were added after blurring. Pixel-wise poisson noise was simulated. JPG encoding artifacts.
+            \item For testing used manually gradet real OOF images and
+            \item also collected z-stacks with (\unit{+4}{\micro\meter} to \unit{-4}{\micro\meter}) increments \unit{0.4}{\micro\meter} (relative to scanners-determined focus-depth)
+            \item Inception v3 architecture truncated 
+            \item Spearman's rank coefficient
+            \item Later test cancer detector based on level of out of focus-ness.
+        \end{itemize}
+        \item Results
+        \begin{itemize}
+            \item Shows that synthetical blurring can be a good tool to generate sufficient a amount of data
+            \item Cancer detection results dropped continuously with more out of focus images
+        \end{itemize}
+    \end{itemize}
     \item FocusLite \cite{wang2020focuslitenn} 
     \item Autofocus of whole slide imaging based on convolution and recurrent neural networks \cite{xiang2021autofocus}
     \item Traditional methods \cite{redondo2012autofocus}
