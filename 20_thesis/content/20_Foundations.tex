@@ -223,6 +223,7 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \todo[inline, caption={}]{
     \begin{itemize}
         \item SDG (for \cite{senaras2018deepfocus})
+        \item ADAM (for \cite{wang2020focuslitenn})
     \end{itemize}
 }
 
@@ -306,7 +307,29 @@ Architecture descriptions often describe activation functions as separate layers
             \item Cancer detection results dropped continuously with more out of focus images
         \end{itemize}
     \end{itemize}
-    \item FocusLite \cite{wang2020focuslitenn} 
+    \item FocusLite \cite{wang2020focuslitenn}
+    \begin{itemize}
+        \item What they do:
+        \begin{itemize}
+            \item Classification into focal planes (0..=14) 
+            \item 8,640 patches
+            40x with pixel size \unit{0.25}{\micro\meter} x \unit{0.25}{\micro\meter}  
+            \item Patch size 1024 x 1024
+            \item Model input size of CNNs 235 x 235 x 3
+            \item Take original patches with stride of 128 x 128 and average score as overall sharpness
+            \item ADAM
+            \item Person Linear Correlation Coefficient as loss function
+        \end{itemize}
+        \item Results:
+        \begin{itemize}
+            \item Compare to knowledge based approaches (using models of optics, human vision, signal processing, etc.)
+            \item Compare to data based approaches
+            \item Heatmaps of results
+            \item DenseNet-13, ResNet-10, ResNet-50, ResNet-101 perform similar
+            \item Shallow CNN models (FocusNNLite) is small while being much faster and using less memory
+            \item Better than knowledge based approaches but not as good as Large data driven Networks.
+        \end{itemize}
+    \end{itemize}
     \item Autofocus of whole slide imaging based on convolution and recurrent neural networks \cite{xiang2021autofocus}
     \item Traditional methods \cite{redondo2012autofocus}
     \item Squared gradient (potentially traditional method)
