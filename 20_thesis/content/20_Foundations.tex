@@ -231,12 +231,12 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \subsection{Convolutional Neural Networks}
 \label{sec:Foundations:NeuralNetworks:CNN}
 
-\Acp{cnn} are \aclp{fnn}, however, instead of using fully connected layers, \ac{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions and filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training. \todo{Illustrate how a layer exactly works}
+\Acp{cnn} are \aclp{fnn}, however, instead of using fully connected layers, \ac{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions and filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training.
 
 \begin{figure}
     \centering
-    \missingfigure{Add figure illustrating how convolutions work.}
-    \caption{An illustration of convolutions work.}
+    \includegraphics[width=\textwidth]{images/20_foundations/30_neural_networks/convolution.eps}
+    \caption{An example of a convolutional (Laplace) filter.}
     \label{fig:Foundations:ANNs:CNNs:Convolution}
 \end{figure}
 
