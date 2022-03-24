@@ -16,7 +16,27 @@
 }
 
 \section{Data}
-\label{sec:Data}
+
+\renewcommand{\thefootnote}{\alph{footnote}} % change footnote to letters
+\begin{table}[h!]
+    \centering
+    \caption{Comparison of datasets used to train models.}
+    \begin{tabular}{| c | r r r r |} 
+        \hline
+        model & magnification & pixel size (\micro\meter) & input size &  dataset size\\
+        \hline
+        \textbf{PoOP} & $10$ & $0.96$\phantom{$^1$} & $150^2$ & \phantom{$^1$}\\
+        \hline
+        DeepFocus & $40$ & $0.25$\phantom{$^1$} & $64^2$ & $216 000$\phantom{$^1$}\\ 
+        ConvFocus & $40$ & $0.24$\tablefootnote{The size ranges from \unit{0.227}{\micro\meter} to \unit{0.251}{\micro\meter}.} 
+        & $139^2$ & $166 000$\tablefootnote{The number includes only in-focus patches.}\\
+        FocusLiteNN & $20$ & $0.50$\phantom{$^1$} & $235^2$ & $8 640$\tablefootnote{The actual number is substantially larger due to sampling (stride $128$) of $1024 \times 1024$ tiles.}\\
+        \hline
+    \end{tabular}
+    \label{tab:Methods:Data:Comparison}
+\end{table}
+\renewcommand{\thefootnote}{\arabic{footnote}} % change footnote back to numbers
+
 
 \section{Models}
 \label{ch:Models}
