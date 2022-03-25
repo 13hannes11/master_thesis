@@ -18,23 +18,32 @@
 \section{Data}
 \label{sec:Methods:Data}
 
+At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study.} Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \todo{Add visualization to illustrate point.} The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+
+To annotate the focus plane of these focus stacks the annotation tool \emph{Focus Annotator} \cite{kuchelmeister2022focus} was developed (see \autoref{fig:Methods:Data:FocusAnnotator}). The tool allows quick annotations using keyboard shortcuts. It, moreover, features a grid view to show neighbouring tiles and give contextual information.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{images/30_methods/10_data/focus_annotator.png}
-    \caption{A screenshot of the tool \emph{Focus Annotator}.}
+    \caption{A screenshot of the tool \emph{Focus Annotator} showing a tile and its neighbours that contain a schistosoma egg.}
     \label{fig:Methods:Data:FocusAnnotator}
 \end{figure}
+
+
+Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
+
+Related studies use 20 to 40 times the amount of data to train their models (see \autoref{tab:Methods:Data:Comparison}). \emph{FocusLiteNN} understfates the amount of data due to the usage of larger patches than the model's input size. With a patch size of $1024 \times 1024$, an input size of $235 \times 235$ and a stride of 128, the effective amount of data can be assumed to be around 10 to 50 times higher.
 
 
 \renewcommand{\thefootnote}{\alph{footnote}} % change footnote to letters
 \begin{table}[h!]
     \centering
-    \caption{Comparison of datasets used to train models.}
+    \caption{Comparison of datasets used for each model.}
     \begin{tabular}{| c | r r r r |} 
         \hline
         model & magnification & pixel size (\micro\meter) & input size &  dataset size\\
         \hline
-        \textbf{PoOP} & $10$ & $0.96$\phantom{$^1$} & $150^2$ & \phantom{$^1$}\\
+        \textbf{PoOP} & $10$ & $0.96$\phantom{$^1$} & $150^2$ & $4367$\phantom{$^1$}\\
         \hline
         DeepFocus & $40$ & $0.25$\phantom{$^1$} & $64^2$ & $216 000$\phantom{$^1$}\\ 
         ConvFocus & $40$ & $0.24$\tablefootnote{The size ranges from \unit{0.227}{\micro\meter} to \unit{0.251}{\micro\meter}.} 
