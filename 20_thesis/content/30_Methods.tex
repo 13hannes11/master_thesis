@@ -15,10 +15,17 @@
     \end{itemize}
 }
 
+\section{Hardware}
+\label{sec:Methods:Hardware}
+\todo[inline]{Add hardware description.}
+
 \section{Data}
 \label{sec:Methods:Data}
 
 At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study also add information about the microscopes.} Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \todo{Add visualization to illustrate point.} The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+
+\subsection{Annotation}
+\label{sec:Methods:Data:Annotation}
 
 To annotate the focus plane of these focus stacks the annotation tool \emph{Focus Annotator} \cite{kuchelmeister2022focus} was developed (see \autoref{fig:Methods:Data:FocusAnnotator}). The tool allows quick annotations using keyboard shortcuts. It, moreover, features a grid view to show neighbouring tiles and give contextual information.
 
@@ -37,6 +44,10 @@ Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 tr
 
 The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180 or 270 degrees.
 This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available. \todo{citation needed}
+
+
+\subsection{Datasets in Related Work}
+\label{sec:Methods:Data:Related}
 
 Related studies use 20 to 40 times the amount of data to train their models (see \autoref{tab:Methods:Data:Comparison}). \emph{FocusLiteNN} understfates the amount of data due to the usage of larger patches than the model's input size. With a patch size of $1024 \times 1024$, an input size of $235 \times 235$ and a stride of 128, the effective amount of data can be assumed to be around 10 to 50 times higher.
 
@@ -61,9 +72,11 @@ Related studies use 20 to 40 times the amount of data to train their models (see
 \end{table}
 \renewcommand{\thefootnote}{\arabic{footnote}} % change footnote back to numbers
 
-
 \section{Models}
 \label{sec:Methods:Models}
+
+\subsection{Loss Function}
+\label{sec:Methods:Models:Loss}
 
 \section{Training}
 \label{sec:Methods:Training}
