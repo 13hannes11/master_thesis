@@ -152,9 +152,41 @@ A \ac{nn} is consists of multiple layers which themselves consists of individual
 
 A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artificial neuron that consists of inputs ($x_1, \cdots, x_n$), weights ($w_1, \cdots, w_n$) that correspond to each input, a threshold/bias $b$ and an output \cite{nielsen2015neural}.
 
+
+\tikzset{basic/.style={draw,fill=white,
+                       text badly centered,minimum width=2em}}
+\tikzset{input/.style={basic,circle}}
+\tikzset{weights/.style={basic,rectangle,minimum width=2em}}
+\tikzset{functions/.style={basic,circle,fill=white}}
+\newcommand{\addsymbol}{\draw[thick] (0.5em,0.5em) -- (0,0.5em) -- 
+                        (0,-0.5em) --  (-0.5em,-0.5em)
+                        (0em,0.75em) -- (0em,-0.75em)
+                        (0.75em,0em) -- (-0.75em,0em);}
 \begin{figure}
     \centering
-    \missingfigure{Add figure showing a perceptron.}
+    % https://tex.stackexchange.com/a/104376
+    \begin{tikzpicture}
+        \node[functions] (center) {};
+        \draw[thick] (0.5em,0.5em) -- (0,0.5em) -- (0,-0.5em) -- (-0.5em,-0.5em);
+        \draw (0em,0.75em) -- (0em,-0.75em);
+        \draw (0.75em,0em) -- (-0.75em,0em);
+        \node[right of=center] (right) {};
+            \path[draw,->] (center) -- (right);
+        \node[functions,left=3em of center] (left) {$\sum$};
+            \path[draw,->] (left) -- (center);
+        \node[weights,left=3em of left] (2) {$w_2$} -- (2) node[input,left of=2] (l2) {$x_2$};
+            \path[draw,->] (l2) -- (2);
+            \path[draw,->] (2) -- (left);
+        \node[below of=2] (dots) {$\vdots$} -- (dots) node[left of=dots] (ldots) {$\vdots$};
+        \node[weights,below of=dots] (n) {$w_n$} -- (n) node[input,left of=n] (ln) {$x_n$};
+            \path[draw,->] (ln) -- (n);
+            \path[draw,->] (n) -- (left);
+        \node[weights,above of=2] (1) {$w_1$} -- (1) node[input,left of=1] (l1) {$x_1$};
+            \path[draw,->] (l1) -- (1);
+            \path[draw,->] (1) -- (left);
+        \node[weights,below of=left] (0) {$b$};
+            \path[draw,->] (0) -- (left);
+    \end{tikzpicture}
     \caption{Visualization of a perceptron.}
     \label{fig:Foundations:ANNs:Perceptron}
 \end{figure}
