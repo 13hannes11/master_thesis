@@ -327,7 +327,8 @@ A layer type that can be commonly found in neural networks is the fully connecte
 Also, convolutional layers, were already introduced in \autoref{sec:Foundations:NeuralNetworks:CNN}. These layers use convolutions and, therefore, each neuron is only connected to its neighbours. What is considered to be its neighbours depends on the size of the convolution window.
 \todo{introduce stride, kernelSize and outputDimensions \cite{liu2016computer}}
 
-Closely related to convolutional layers are pooling layers. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{kernel\_size}{2}$)therefore pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. \todo{explain function of pooling layers}
+Closely related to convolutional layers are pooling layers. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$), therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. \todo{explain function of pooling layers}
+
 
 \todo[inline]{Only explain used architectures}
 
