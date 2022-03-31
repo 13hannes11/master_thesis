@@ -241,10 +241,54 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
       \end{pmatrix} )
 \end{equation}
 
+% Adapted from https://tex.stackexchange.com/a/618305
+\tikzset{>=latex} % for LaTeX arrow head
+\tikzstyle{node}=[basic,circle,minimum size=22,inner sep=0.5,outer sep=0.6]
+\tikzstyle{connect}=[->,basic,black,shorten >=1]
+\tikzset{ % node styles, numbered for easy mapping with \nstyle
+  node 1/.style={node,black,draw=black,fill=white},
+  node 2/.style={node,black,draw=black,fill=white},
+  node 3/.style={node,black,draw=black,fill=white},
+}
+\def\nstyle{int(\lay<\Nnodlen?min(2,\lay):3)} % map layer number onto 1, 2, or 3
+
 \begin{figure}
     \centering
-    \missingfigure{Add figure showing a two hidden layer nn with labels on input output and hidden layer.}
-    \caption{Visualization of simple neural network with two hidden layers.}
+    % NEURAL NETWORK
+    \begin{tikzpicture}[x=2.4cm,y=1.2cm]
+        \readlist\Nnod{4,3,3,2} % array of number of nodes per layer
+        \readlist\Nstr{n,m,k} % array of string number of nodes per layer
+        \readlist\Cstr{x,h^{(\prev)},y} % array of coefficient symbol per layer
+        \def\yshift{0.55} % shift last node for dots
+        
+        % LOOP over LAYERS
+        \foreachitem \N \in \Nnod{
+        \def\lay{\Ncnt} % alias of index of current layer
+        \pgfmathsetmacro\prev{int(\Ncnt-1)} % number of previous layer
+        \foreach \i [evaluate={\c=int(\i==\N); \y=\N/2-\i-\c*\yshift;
+                    \x=\lay; \n=\nstyle;
+                    \index=(\i<\N?int(\i):"\Nstr[\n]");}] in {1,...,\N}{ % loop over nodes
+            % NODES
+            \node[node \n] (N\lay-\i) at (\x,\y) {$\strut\Cstr[\n]_{\index}$};
+            
+            % CONNECTIONS
+            \ifnumcomp{\lay}{>}{1}{ % connect to previous layer
+            \foreach \j in {1,...,\Nnod[\prev]}{ % loop over nodes in previous layer
+                \draw[white,line width=1.2,shorten >=1] (N\prev-\j) -- (N\lay-\i);
+                \draw[connect] (N\prev-\j) -- (N\lay-\i);
+            }
+            \ifnum \lay=\Nnodlen
+                \draw[connect] (N\lay-\i) --++ (0.5,0); % arrows out
+            \fi
+            }{
+            \draw[connect] (0.5,\y) -- (N\lay-\i); % arrows in
+            }
+            
+        }
+        \path (N\lay-\N) --++ (0,1+\yshift) node[midway] {$\vdots$}; % dots
+        }      
+    \end{tikzpicture}
+    \caption{Visualization of simple neural network with two hidden layers with $m$, an input layer with $n$ and an output layer with $k$ neurons.}
     \label{fig:Foundations:ANNs:Layer:FullyConnected}
 \end{figure}
 
@@ -293,7 +337,6 @@ Closely related to convolutional layers are pooling layers. Pooling layers, howe
         \item Fully connected
         \item Convolutional Layers (make sure to not repeat \autoref{sec:Foundations:NeuralNetworks:CNN})
         \item Dropout
-        \item Pooling
         \item Batch normalization
     \end{itemize}
     \item VGG
@@ -317,6 +360,7 @@ Closely related to convolutional layers are pooling layers. Pooling layers, howe
             \item SDG
             \item Batch norm after ReLU
             \item Spearman's rank coefficient
+            \item 64x64 tiles
             \item 40x magnification where the pixel size is \unit{0.2461}{\micro\meter} x \unit{0.2461}{\micro\meter}
         \end{itemize}
         \item Results: 
