@@ -214,6 +214,11 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 
 \subsubsection{Activation Function}
 \label{sec:Foundations:NeuralNetworks:ActivationFunction}
+\todo{Sigmoid function.}
+
+A widely used activation function is \ac{relu} \todo{cite relu paper}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $f(x)  = max(x,0)$. The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
+
+Another function that is commonly used is Softmax. It is used in the last layers of classification to normalize output values. The exponential function is applied to each value. The resulting values are normalized by dividing them through the sum of all values. This results in the following equation.
 
 \todo[inline]{write section}
 
