@@ -345,15 +345,19 @@ Closely related to convolutional layers are pooling layers. Pooling layers, howe
         \item Dropout
         \item Batch normalization
     \end{itemize}
-    \item VGG
     \item ResNet \cite{he2016deep}
     \item ResNet-Wide \cite{zagoruyko2016wide}
     \item Inception
-    \item Xception
 \end{itemize}
 
 \section{Related Works}
 \label{sec:Foundations:RelatedWorks}
+
+Related literature for out of focus measures mostly uses pathology slides. Further, magnification levels of microscopes range from 20x to 40x, with the latter being most common.
+
+\textcite{kohlberger2019wholeslide} develop \emph{ConvFocus}, a truncated Inception (v3) model that classifies pathology slides based on how strongly out of focus they are. For this approach 30 different classes are used of which one class is considered to be in focus. The aim of this study is to use in-focus images and artificially generate out of focus training data.
+The authors find that exclusively using Bokeh or Gaussian-blur for synthetic \ac{oof} images yields mediocre detection results. They indicate that artificial blurring is removing artefacts caused by edges of scan lanes and JPEG compression. Therefore, the authors re-add these types of artefacts after synthetic image blurring. They, introduced additional pixel noise to simulate the noise of image sensor.
+The main findings of the authors show that their developed method can be used to generate additional data for training focus classifiers. Additionally, the authors show the effect of synthetic blur on detection accuracy of breast cancer prediction models and find that \ac{oof} images degrade performance.
 
 \begin{itemize}
     \item Traditional \cite{mateos-perez2012comparative}
