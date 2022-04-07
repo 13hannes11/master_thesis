@@ -143,7 +143,7 @@ A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry201
 \subsection{Feedforward Neural Networks}
 \label{sec:Foundations:NeuralNetworks:FNN}
 
-According to \textcite{nielsen2015neural} \acp{ann} were developed by \textcite{rosenblatt1958perceptron}. In \acp{fnn} information flows only from input towards the output. There is no backwards flow of information, hence, the name.
+According to \textcite{nielsen2015neural} artificial neural networks were developed by \textcite{rosenblatt1958perceptron}. In feedforward neural networks information flows only from input towards the output. There is no backwards flow of information, hence, the name.
 A \ac{nn} is consists of multiple layers which themselves consists of individual neurons.
 
 \subsubsection{Perceptrons and Neurons}
@@ -311,7 +311,7 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \subsection{Convolutional Neural Networks}
 \label{sec:Foundations:NeuralNetworks:CNN}
 
-\Acp{cnn} are \aclp{fnn}, however, instead of using fully connected layers, \ac{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions and filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training.
+\Acp{cnn} are feedforward neural networks, however, instead of only using fully connected layers, \ac{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions and filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training.
 
 \begin{figure}
     \centering
