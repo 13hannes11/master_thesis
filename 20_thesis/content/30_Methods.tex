@@ -84,4 +84,26 @@ Related studies use 20 to 40 times the amount of data to train their models (see
 \section{Evaluation}
 \label{sec:Methods:Evaluation}
 
-Analogues to DeepFocus not only the in-focus images but also the images adjacent to that are considered to be in-focus.
+Analogues to DeepFocus not only the in-focus images but also the images adjacent to that are considered to be in focus. \autoref{fig:Methods:Data:InFocusExampleImages} shows an example of such images that are considered to be in focus.
+
+\begin{figure}[tb]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/30_methods/50_evaluation/+0.0068_+1_stack.jpg}
+        \caption{+1}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/30_methods/50_evaluation/+0.0_stack.jpg}
+        \caption{in focus}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/30_methods/50_evaluation/-0.0068_-1_stack.jpg}
+        \caption{-1}
+    \end{subfigure}
+
+    \caption{Figure showing which images are considered to be in focus for the best image selection.}
+    \label{fig:Methods:Data:InFocusExampleImages}
+\end{figure}
