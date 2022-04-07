@@ -373,38 +373,3 @@ The main findings of the authors show that their developed method can be used to
 
 An approach with a slightly different goal is followed by \textcite{wang2020focuslitenn} to develop \emph{FocusLite}. \emph{FocusLite} detect the degree to which images are out of focus but does not discern any directional information. The authors' goal is to develop a model which maintains similar speeds to knowledge-driven approaches, yet, surpasses their precision. The models are trained on \emph{FocusPath} \cite{hosseini2019encoding} and evaluated using a newly created dataset \emph{TCGA@Focus} and \emph{FocusPath} itself.
 The authors conclude that their model surpasses all existing methods when considering the trade-off between precision and speed.  
-
-
-\begin{itemize}
-    \item Traditional \cite{mateos-perez2012comparative}
-    \item FocusLite \cite{wang2020focuslitenn}
-    \begin{itemize}
-        \item What they do:
-        \begin{itemize}
-            \item Classification into focal planes (0..=14) 
-            \item 8,640 patches
-            40x with pixel size \unit{0.25}{\micro\meter} x \unit{0.25}{\micro\meter}  
-            \item Patch size 1024 x 1024
-            \item Model input size of CNNs 235 x 235 x 3
-            \item Take original patches with stride of 128 x 128 and average score as overall sharpness
-            \item ADAM
-            \item Person Linear Correlation Coefficient as loss function
-        \end{itemize}
-        \item Results:
-        \begin{itemize}
-            \item Compare to knowledge based approaches (using models of optics, human vision, signal processing, etc.)
-            \item Compare to data based approaches
-            \item Heatmaps of results
-            \item DenseNet-13, ResNet-10, ResNet-50, ResNet-101 perform similar
-            \item Shallow CNN models (FocusNNLite) is small while being much faster and using less memory
-            \item Better than knowledge based approaches but not as good as Large data driven Networks.
-        \end{itemize}
-    \end{itemize}
-    \item Autofocus of whole slide imaging based on convolution and recurrent neural networks \cite{xiang2021autofocus}
-    \item Traditional methods \cite{redondo2012autofocus}
-    \item Squared gradient (potentially traditional method)
-    \item Gradient Boosting \cite{liang2019learning}
-
-\end{itemize}
-
-
