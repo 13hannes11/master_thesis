@@ -15,6 +15,24 @@
     \end{itemize}
 }
 
+
+\begin{table}
+    \centering
+    \caption{Comparing \acs{poop} models on the task of predicting the relative position of the focus plane.}
+    \begin{tabular}{|l|rrrr|}
+        \hline
+        method          & \acs{mae} & \acs{srcc} & \acs{plcc} & \acs{r2} \\
+        \hline
+        FullyConnected  & 0.0186 & -0.0384 & -0.0242 & -0.2058 \\
+        Conv            & 0.0166 &  0.2436 &  0.2339 &  0.0285 \\
+        ResNet-101      & 0.0064 &  0.9177 &  0.9057 &  0.8121 \\
+        ResNet-34       & 0.0056 &  0.9386 &  0.9261 &  0.8570 \\
+        ResNet-18       & 0.0075 &  0.9014 &  0.8847 &  0.7521 \\
+        \hline
+    \end{tabular}
+    \label{tab:Results:Models:Accuracy}
+\end{table}
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/40_results/scatter_predictions_targets.pdf}
@@ -34,7 +52,7 @@
     \begin{tabular}{|l|rrrrr|}
         \hline
         \multicolumn{1}{|c}{} & \multicolumn{5}{|c|}{accuracy} \\
-        name            & all & trichuris & ascaris & schistosoma & hookworm \\
+        method            & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
         \acs{mdct}      & 0.4032 & 0.3125 & 0.6000 & 0.3125 & 0.4000 \\
         \acs{vol4}      & 0.4355 & 0.5000 & 0.6000 & 0.5000 & 0.1333 \\
@@ -56,7 +74,7 @@
     \begin{tabular}{|l|rrrrr|}
         \hline
         \multicolumn{1}{|c}{} & \multicolumn{5}{|c|}{\ac{mae}} \\
-        name & all & trichuris & ascaris & schistosoma & hookworm \\
+        method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
         \acs{mdct}      & 2.3065 & 2.1250 & 1.9333 & 2.6250 & 2.5333 \\
         \acs{vol4}      & 2.2258 & 1.8750 & 1.8000 & 2.1250 & 3.1333 \\
