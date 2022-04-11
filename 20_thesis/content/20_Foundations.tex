@@ -297,6 +297,8 @@ The loss function is a function that indicates how well a neural network is perf
 \paragraph{Optimizer}
 \label{par:Foundations:NeuralNetworks:Training:Optimizer}
 
+With the computed gradient the optimizer decides how the weights of a model get updated.
+
 \todo[inline, caption={}]{
     \begin{itemize}
         \item SDG (for \cite{senaras2018deepfocus})
@@ -372,18 +374,10 @@ A basic residual block consists ... (see \autoref{fig:Foundations:ANNs:Architect
 
 \todo[inline]{ResNet-Wide \cite{zagoruyko2016wide}}
 
+\subsubsection{Inception}
+\label{sec:Foundations:NeuralNetworks:Architecture:Inception}
+\todo[inline]{Inception v3 \cite{szegedy2016rethinking}}
 
-\begin{itemize}
-    \item Building Blocks (how do they work, what they are used for, parameters etc.)
-    \begin{itemize}
-        \item Fully connected
-        \item Convolutional Layers (make sure to not repeat \autoref{sec:Foundations:NeuralNetworks:CNN})
-        \item Batch normalization
-    \end{itemize}
-    \item ResNet \cite{he2016deep}
-    \item ResNet-Wide \cite{zagoruyko2016wide}
-    \item Inception
-\end{itemize}
 
 \section{Related Works}
 \label{sec:Foundations:RelatedWorks}
@@ -397,7 +391,7 @@ A basic residual block consists ... (see \autoref{fig:Foundations:ANNs:Architect
 \textcite{mateos-perez2012comparative} perform a comparative study on 13 real-time focus methods with fluorescence-labeled tuberculosis bacteria. They take into account, robustness to noise, illumination changes, accuracy and computational cost. Further, the study looks into the benefit of preprocessing with morphological operators.
 The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanced}) or \ac{vol4} \cite{vollath1988influence} due to their high accuracy, robustness to noise and low computational cost.
 
-\todo{Go more into detail about vol4 and mdct, possibly put into separate section. Also add \ac{laplacian}}
+\todo[inline]{Go more into detail about vol4 and mdct, possibly put into separate section. Also add \ac{laplacian}}
 
 \subsection{Deep Learning-Based Approaches}
 \label{sec:Foundations:RelatedWorks:DeepLearning}
