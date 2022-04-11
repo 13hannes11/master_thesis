@@ -334,8 +334,44 @@ Closely related to convolutional layers are \emph{pooling layers}. Pooling layer
 
 \todo[inline]{Batch normalisation \cite{ioffe2015batch}}
 
+\subsubsection{ResNet}
+\label{sec:Foundations:NeuralNetworks:Architecture:ResNet}
 
-\todo[inline]{Only explain used architectures}
+ResNet was introduced by \textcite{he2016deep}
+
+A basic residual block consists ... (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
+
+\tikzset{layer/.style={basic,rectangle,minimum width=2em}}
+\tikzset{functions/.style={basic,circle,fill=white}}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[rotate=90,transform shape]
+        \node[layer] (input) {x};
+        \node[layer, below of=input] (conv1) {convolutional layer};
+        \node[layer, below of=conv1] (relu1) {\acs{relu}};
+        \node[layer, below of=relu1] (conv2) {convolutional layer};
+        \node[functions, below of=conv2] (plus) {+};
+        \node[layer, below of=plus] (relu2) {\acs{relu}};
+        \node[below of=relu2] (output) {};
+
+        \path[draw,->] (input) -- (conv1);
+        \path[draw,->] (conv1) -- (relu1);
+        \path[draw,->] (relu1) -- (conv2);
+        \path[draw,->] (conv2) -- (plus);
+        \path[draw,->] (plus) -- (relu2);
+        % add intermitten point: [out=0,in=90] ($(relu1)+(2.5,0)$) to [out=-90, in=0 ]
+        \path[draw,->] (input) to [out=0,in=90] ($(relu1)+(2.5,0)$) to [out=-90, in=0 ] (plus);
+        \path[draw,->] (relu2) to (output);
+        
+    \end{tikzpicture}
+    \caption{The architecture of a residual block.}
+    \label{fig:Foundations:ANNs:Architecture:ResNet:Block}
+\end{figure}
+
+\todo[inline]{ResNet \cite{he2016deep}}
+
+\todo[inline]{ResNet-Wide \cite{zagoruyko2016wide}}
+
 
 \begin{itemize}
     \item Building Blocks (how do they work, what they are used for, parameters etc.)
