@@ -333,15 +333,16 @@ Also, \emph{convolutional} layers, were already introduced in \autoref{sec:Found
 
 Closely related to convolutional layers are \emph{pooling layers}. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$), therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. \todo{explain function of pooling layers}
 
-
+\todo[inline]{Average Pool}
 \todo[inline]{Batch normalisation \cite{ioffe2015batch}}
 
-\subsubsection{ResNet}
+
+\subsubsection{\acs{resnet}}
 \label{sec:Foundations:NeuralNetworks:Architecture:ResNet}
 
-ResNet was introduced by \textcite{he2016deep}
+\Ac{resnet} was introduced by \textcite{he2016deep} with the goal of training networks with more layers. Commonly, \acp{resnet} are denoted as \acs{resnet}-N where N is the number of layers. \Ac{resnet} is built by chaining residual blocks. The last layers are an average pooling layer followed by a fully-connected layer.
 
-A basic residual block consists ... (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
+A residual block consists of multiple convolutional layers followed by a \ac{batch-norm} and a \ac{relu} activation function. The last layer, however, adds the original input to its output before applying \ac{relu} (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
 
 \tikzset{layer/.style={basic,rectangle,minimum width=2em}}
 \tikzset{functions/.style={basic,circle,fill=white}}
@@ -350,23 +351,27 @@ A basic residual block consists ... (see \autoref{fig:Foundations:ANNs:Architect
     \begin{tikzpicture}[rotate=90,transform shape]
         \node[layer] (input) {x};
         \node[layer, below of=input] (conv1) {convolutional layer};
-        \node[layer, below of=conv1] (relu1) {\acs{relu}};
+        \node[layer, below of=conv1] (bn1) {\acl{batch-norm}};
+        \node[layer, below of=bn1] (relu1) {\acs{relu}};
         \node[layer, below of=relu1] (conv2) {convolutional layer};
-        \node[functions, below of=conv2] (plus) {+};
+        \node[layer, below of=conv2] (bn2) {\acl{batch-norm}};
+        \node[functions, below of=bn2] (plus) {+};
         \node[layer, below of=plus] (relu2) {\acs{relu}};
         \node[below of=relu2] (output) {};
 
         \path[draw,->] (input) -- (conv1);
-        \path[draw,->] (conv1) -- (relu1);
+        \path[draw,->] (conv1) -- (bn1);
+        \path[draw,->] (bn1) -- (relu1);
         \path[draw,->] (relu1) -- (conv2);
-        \path[draw,->] (conv2) -- (plus);
+        \path[draw,->] (conv2) -- (bn2);
+        \path[draw,->] (bn2) -- (plus);
         \path[draw,->] (plus) -- (relu2);
         % add intermitten point: [out=0,in=90] ($(relu1)+(2.5,0)$) to [out=-90, in=0 ]
         \path[draw,->] (input) to [out=0,in=90] ($(relu1)+(2.5,0)$) to [out=-90, in=0 ] (plus);
         \path[draw,->] (relu2) to (output);
         
     \end{tikzpicture}
-    \caption{The architecture of a residual block.}
+    \caption{The architecture of a residual block in \acs*{resnet}.}
     \label{fig:Foundations:ANNs:Architecture:ResNet:Block}
 \end{figure}
 
