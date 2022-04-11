@@ -290,6 +290,9 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
+The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and by propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems.
+
+\todo{explain and cite MSE-Loss}
 
 \paragraph{Optimizer}
 \label{par:Foundations:NeuralNetworks:Training:Optimizer}
