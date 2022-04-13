@@ -396,7 +396,45 @@ A residual block consists of multiple convolutional layers followed by a \ac{bat
 \textcite{mateos-perez2012comparative} perform a comparative study on 13 real-time focus methods with fluorescence-labeled tuberculosis bacteria. They take into account, robustness to noise, illumination changes, accuracy and computational cost. Further, the study looks into the benefit of preprocessing with morphological operators.
 The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanced}) or \ac{vol4} \cite{vollath1988influence} due to their high accuracy, robustness to noise and low computational cost.
 
+\ac{vol4} works by taking the difference of the summed values of a multiplication with neighbouring pixels. Precicely the computation is shown in \autoref{eq:Vol4}, where $g(x, y)$ is the grey-level of the image at position $x,y$, $M$ is the width and $N$ the height of the image.
+
+\begin{equation}
+    \label{eq:Vol4}
+    F_{Vol4} = \sum_{i=1}^{M-1}\sum_{j=1}^{N} g(i,j) \cdot g(i+1, j) - \sum_{i=1}^{M-2}\sum_{j=1}^{N} g(i,j) \cdot g(i+2, j)
+\end{equation}
+
+
+\Ac{mdct} (originally named \emph{MF-DCT}) on the other hand, was proposed by \todo{Lee} (according to \textcite{redondo2012autofocus}) to use a $4 \times 4$ convolutional filter. The focus measure is then the sum of the applied convolutional operation on the whole image. The corresponding formula is shown in \autoref{eq:MDCT}.
+
+\begin{equation}
+    \label{eq:MDCT}
+    F_{MDCT}= \sum_{m=1}^{M}\sum_{n=1}^{N}
+    ( g(m,n) *
+    \begin{bmatrix}
+        1 & 1 & -1 & -1 \\
+        1 & 1 & -1 & -1 \\
+        -1 & -1 & 1 & 1 \\
+        -1 & -1 & 1 & 1
+    \end{bmatrix}
+    )^2
+\end{equation}
+
 \todo[inline]{Should this section be rather moved above related works?}
+
+
+The approach that is currently used in the microscope prototype is the mean Laplacian. The Laplacian is an edge detection convolutional filter. The result can be found in \autoref{eq:MeanLaplacian}. \todo{find actual source and usage}
+
+\begin{equation}
+    \label{eq:MeanLaplacian}
+    F_{ML}= \frac{1}{NM} \sum_{m=1}^{M}\sum_{n=1}^{N} (g(m,n) *
+    \begin{bmatrix}
+        0 & 1 & 0 \\
+        1 & -4 & 1 \\
+        0 & 1 & 0 
+    \end{bmatrix}
+    )
+\end{equation}
+
 
 \todo[inline]{Go more into detail about vol4 and mdct, possibly put into separate section. Also add \ac{laplacian}}
 
