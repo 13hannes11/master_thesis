@@ -110,3 +110,15 @@ Analogues to DeepFocus not only the in-focus images but also the images adjacent
     \caption{Figure showing which images are considered to be in focus for the best image selection.}
     \label{fig:Methods:Data:InFocusExampleImages}
 \end{figure}
+
+\section{Implementation of Traditional Focusing Methods}
+\label{sec:Methods:Traditional}
+
+Vollath was implemented using pytorch tensors. This allows GPU computation.
+
+The functions \texttt{sum} and \texttt{mul} represent \texttt{torch.sum} and \texttt{torch.mul}, respectively.
+
+\begin{verbatim*}
+sum(mul(IMG(:-1,:), IMG(1:,:))) - sum(mul(IMG(:-2,:), IMG(2:,:)))
+\end{verbatim*}
+
