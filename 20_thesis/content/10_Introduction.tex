@@ -11,10 +11,34 @@
     \end{itemize}
 }
 
-
-
-\begin{itemize}
-    \item Introduce model that can predict direction.
-    \item Purpose: Feasibility of using ML for reducing data, stitching images, improving Autofocus
-    \item Unlike other work that focuses on tissue, this work uses stool samples which have different characteristics as samples can contain debree. Furhter, eggs don't necesarily lie in the focus plane of images.
-\end{itemize}
+\begin{enumerate}
+    \item Introducing problem domain
+        \begin{enumerate}
+            \item NTDs, STHs, widespread problem
+            \item Microscopy approach
+            \item Using automatic methods with low-cost microscopes and AI
+            \item Lots of Data, Scanning time, therefore focus-prediction
+        \end{enumerate}
+    \item Introducing what this thesis works on
+        \begin{itemize}
+            \item Kato-Katz images
+            \item Focus distance prediction
+        \end{itemize}
+    \item How to tackle the problem
+        \begin{enumerate}
+            \item Non-annotated data
+            \item Develop an annotation tool
+            \item Annotate data that contains eggs
+            \item Develop training pipeline and check feasibility with small models.
+            \item Scale up to larger models to improve results.
+            \item (Not yet implemented using existing models)
+            \item Compare to traditional focus metrics.
+        \end{enumerate}
+    \item What is the purpose of this thesis?
+        \begin{itemize}
+            \item Unlike other work that focuses on tissue, this work uses stool samples which have different characteristics as samples can contain debree. Furhter, eggs don't necesarily lie in the focus plane of images.
+            \item Prove feasibility of DL for focus prediction in Kato-Katz slides
+            \item Develop a versatile model that can be used for focus prediction.
+            \item Introduce model that can predict direction.
+        \end{itemize}
+\end{enumerate}
