@@ -111,8 +111,9 @@ Analogues to DeepFocus not only the in-focus images but also the images adjacent
     \label{fig:Methods:Data:InFocusExampleImages}
 \end{figure}
 
-\section{Implementation of Traditional Focusing Methods}
-\label{sec:Methods:Traditional}
+
+\subsection{Implementation of Traditional Focusing Methods}
+\label{sec:Methods:Evaluation:Traditional}
 
 Vollath was implemented using pytorch tensors. This allows GPU computation.
 
@@ -122,8 +123,8 @@ The functions \texttt{sum} and \texttt{mul} represent \texttt{torch.sum} and \te
 sum(mul(IMG(:-1,:), IMG(1:,:))) - sum(mul(IMG(:-2,:), IMG(2:,:)))
 \end{verbatim*}
 
-\section{Computational Resource Usage}
-\label{sec:Methods:Computation}
+\subsection{Computational Resource Usage}
+\label{sec:Methods:Evaluation:Computation}
 
 The speed (performance) of the models is analysed by running each method on 620 image patches. The measurement only includes computation time. Transfer time to the GPU and loading time of images is not considered.
 
