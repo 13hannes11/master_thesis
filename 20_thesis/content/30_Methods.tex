@@ -90,15 +90,31 @@ Each model is trained for 100 epochs to ensure convergence and the best model (b
 \subsection{Metrics}
 \label{sec:Methods:Evaluation:Metrics}
 
-The trained models are evaluated using multiple metrics that are described in this section. 
+The trained models are evaluated using multiple metrics that are described in this section.
 
-\todo[inline]{explain how models are compared using SRCC, MAE, PLCC, R2}
+The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations pytorchmetrics \todo{reference} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+It is used to provide a simple link between lens values and model performance. It indicates how far off the model prediction are compared to the values of a focus stack.
+
+\todo[inline]{\Ac{srcc} relationship between two variables using monotonic function.
+}
+
+\todo[inline]{\Ac{plcc} measures if relationship between two variables is linear.}
+
+\todo[inline]{\Ac{r2} is a common statistical correlation measure in regression analysis.
+
+$$\acs{r2} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,}$$ with $\bar{t}$ being the mean of all annotations.
+}
 
 \todo[inline]{
     Explain metrics MAE, SRCC, PLCC, R2
 }
 
-The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the image with an in-focus annotation or an image above or below is predicted (see \autoref{fig:Methods:Data:InFocusExampleImages}). The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used.
+The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
+The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case the formula for MAE looks as follows:
+
+$$E_{MAE^*} = \frac{1}{|S|}\sum_{s \in S} |p(s) - t(s)| \text{,}$$, with $S$ being the set of evaluated focus stacks, $p(s)$ denoting the index of the imge predicted to be in focus and $t(s)$ denoting the index of the image that is annotated as in-focus.
+
+To distinguish between \ac{mae} metrics used in this thesis the index based metric is denoted as \ac{mae}$^*$.
 
 \begin{figure}[tb]
     \centering
