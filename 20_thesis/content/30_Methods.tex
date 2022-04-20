@@ -87,7 +87,18 @@ Each model is trained for 100 epochs to ensure convergence and the best model (b
 \section{Evaluation}
 \label{sec:Methods:Evaluation}
 
-Analogues to DeepFocus not only the in-focus images but also the images adjacent to that are considered to be in focus. \autoref{fig:Methods:Data:InFocusExampleImages} shows an example of such images that are considered to be in focus.
+\subsection{Metrics}
+\label{sec:Methods:Evaluation:Metrics}
+
+The trained models are evaluated using multiple metrics that are described in this section. 
+
+\todo[inline]{explain how models are compared using SRCC, MAE, PLCC, R2}
+
+\todo[inline]{
+    Explain metrics MAE, SRCC, PLCC, R2
+}
+
+The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the image with an in-focus annotation or an image above or below is predicted (see \autoref{fig:Methods:Data:InFocusExampleImages}). The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used.
 
 \begin{figure}[tb]
     \centering
