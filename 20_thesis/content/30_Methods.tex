@@ -39,7 +39,7 @@ To annotate the focus plane of these focus stacks the annotation tool \emph{Focu
 \end{figure}
 
 
-Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
+Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as lens parameter) to the most in focus patch. The difference in lens value between neighbouring images of a stack is approximately $0.0068$.  One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
 
 \subsection{Augmentation}
 \label{sec:Methods:Data:Augmentation}
