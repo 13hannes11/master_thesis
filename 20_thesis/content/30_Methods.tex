@@ -142,13 +142,33 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
 \subsection{Implementation of Traditional Focusing Methods}
 \label{sec:Methods:Evaluation:Traditional}
 
-Vollath was implemented using pytorch tensors. This allows GPU computation.
+Traditional focusing methods were implemented using \emph{PyTorch} \cite{paszke2019pytorch} and \emph{Kornia} \cite{riba2020kornia}. Kornia is a computer vision library that uses PyTorch as its computational backend. Therefore, computations can be easily run on the \ac{cpu} or \ac{gpu}.
 
-The functions \texttt{sum} and \texttt{mul} represent \texttt{torch.sum} and \texttt{torch.mul}, respectively.
+\todo[inline]{Fix the text in this chapter}
 
-\begin{verbatim*}
-sum(mul(IMG(:-1,:), IMG(1:,:))) - sum(mul(IMG(:-2,:), IMG(2:,:)))
-\end{verbatim*}
+\Ac{vol4} was implemented using PyTorch tensors. The functions \texttt{sum} and \texttt{mul} represent \texttt{torch.sum} and \texttt{torch.mul}, respectively.
+
+\begin{python}
+VOL4 = sum(mul(IMG(:-1,:), IMG(1:,:)))      \
+        - sum(mul(IMG(:-2,:), IMG(2:,:)))
+\end{python}
+
+
+\Ac{mdct} was implemented using Kornia as it interfaces with PyTorch tensors. The functions \texttt{filter2d}, \texttt{tensor}, \texttt{sum} represent \texttt{kornia.filters.filter2d}, \texttt{torch.tensor}, \texttt{torch.sum} respectively.
+
+\begin{python}
+kernel = tensor([[[ 1,  1, -1, -1],
+                  [ 1,  1, -1, -1],
+                  [-1, -1,  1,  1],
+                  [-1, -1,  1,  1]]])
+MDCT = sum(filter2d(IMG, kernel))
+\end{python}
+
+Kornia in combination with pytorch is also used for the implementation of \ac{laplacian}. The functions \texttt{laplacian} and \texttt{mean} represent \texttt{kornia.filters.laplacian} and \texttt{torch.mean} respectively.
+
+\begin{python}
+ML = mean(laplacian(IMG, 3))
+\end{python}
 
 \subsection{Computational Resource Usage}
 \label{sec:Methods:Evaluation:Computation}
