@@ -84,6 +84,12 @@ Related studies use 20 to 40 times the amount of data to train their models (see
 \todo{mention Hyperparameter tuning}
 Each model is trained for 100 epochs to ensure convergence and the best model (based on validation).
 
+As a loss function mean squared error is used (punishing predictions that are further off more strongly) \todo{citation needed?!}.
+
+Conv and FullyConnected were trained using separate runs of Optuna \todo{reference}. In these runs the architecture and hyperparameters were optimized.
+
+\Ac{resnet} models were trained using a shared run of the Optuna \todo{reference} optimizer. The best performing models of this run were chosen to be presented. Hyperparameter tuning was used
+
 \section{Evaluation}
 \label{sec:Methods:Evaluation}
 
