@@ -1,44 +1,14 @@
 \chapter{Introduction}
 \label{ch:Introduction}
 
-\todo[inline, caption={}]{
-    \begin{itemize}
-        \item Should have a clear focus and inform the reader about what they will be reading about.
-        \item Funnel your information from general to specific, down to your focus question/statement, i.e., the thread that will hold your text together. Provide context and coherence.
-        \item Communicate to the reader your strategy to tackle this focus in your text.
-        \item Try to integrate references to chapters when describing the work.
-        \item What is the purpose of the research?
-    \end{itemize}
-}
+Approximately one-sixth of the world population is affected by a set of diseases classified as \acfp{ntd} \cite{feasey2010neglected}. The most prevalent of those are \acfp{sth} and schistosomiasis \cite{barenbold2017estimating}. Numerous \acp{ntd} are preventable with proper access to safe water, sanitation, and appropriate housing. Moreover, mass drug administration treatments have been conducted to reduce the severity and prevalence of infections in vulnerable populations \cite{jourdan2018soiltransmitted}. The monitoring of prevalence of diseases and the elimination using mass drug administration requires highly sensitive methods that often are not available in poor countries which is why cost-effective but sensitive methods are required \cite{mbongngwese2020diagnostic}.
+Traditional methods count eggs under a microscope, this, however, this is expensive on larger scales. Moreover, it suffers from setting-dependent sensitivity and decay of eggs in the sample \cite{barenbold2017estimating}. 
 
-\begin{enumerate}
-    \item Introducing problem domain
-        \begin{enumerate}
-            \item NTDs, STHs, widespread problem
-            \item Microscopy approach
-            \item Using automatic methods with low-cost microscopes and AI
-            \item Lots of Data, Scanning time, therefore focus-prediction
-        \end{enumerate}
-    \item Introducing what this thesis works on
-        \begin{itemize}
-            \item Kato-Katz images
-            \item Focus distance prediction
-        \end{itemize}
-    \item How to tackle the problem
-        \begin{enumerate}
-            \item Non-annotated data
-            \item Develop an annotation tool
-            \item Annotate data that contains eggs
-            \item Develop training pipeline and check feasibility with small models.
-            \item Scale up to larger models to improve results.
-            \item (Not yet implemented using existing models)
-            \item Compare to traditional focus metrics.
-        \end{enumerate}
-    \item What is the purpose of this thesis?
-        \begin{itemize}
-            \item Unlike other work that focuses on tissue, this work uses stool samples which have different characteristics as samples can contain debree. Furhter, eggs don't necesarily lie in the focus plane of images.
-            \item Prove feasibility of DL for focus prediction in Kato-Katz slides
-            \item Develop a versatile model that can be used for focus prediction.
-            \item Introduce model that can predict direction.
-        \end{itemize}
-\end{enumerate}
+In a joined consortium, Etteplan Sweden \cite{etteplanoyjengineering} is developing low-cost microscopes to be used in the field on site. The aim is to develop a machine learning based approach that reaches a sensitivity and specificity of 95 percent 
+\cite{etteplan2021fighting}. Using low-cost automatic microscopes for in-field scanning aids with high-staff turnover rates, reduces training time, provides an easily scalable solution and eliminates transport related egg degeneration.
+The scanning process produces a large amount of image data as each location on a microscopy slide is scanned at multiple focus distances.
+
+This thesis proposes a machine learning based approach (see \autoref{ch:Methods}), \ac{poop}, to predict the distance to the optimal focus plane of a microscopy image patch. A data driven, approach requires annotated data. Thus, in this thesis, first, suitable data is extracted from a large database of images. An annotation tool is developed to facilitate efficient annotations of focus-data. Further, machine learning models are developed based on the annotated data. The developed models are evaluated and compared to traditional focus metrics used in microscopy, which is presented in \autoref{ch:Results}.
+
+The purpose of this research is show the feasibility of using focus prediction models on faecal smear samples instead of tissues samples as done by related approaches, introduced in \autoref{ch:Foundations}. Faecal smear samples face different challenges as they include debris not present in tissue samples.
+A further objective is to also show that not only the degree to which an image is out of focus but also the direction and distance to the focal plane can be determined. The development of versatile models, allows the use in applications that are reliant on speed but also for applications with a high requirement for accuracy. As an example \ac{poop} models could find use while scanning to improve scan times. They could be used during or post scanning to reduce collected data. Post-processing also allows the creation of in-focus mosaics images which can aid in egg detection and speed up sample inspection.
