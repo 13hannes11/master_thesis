@@ -198,16 +198,25 @@
     \end{tabular}
 \end{table}
 
-\begin{itemize}
-    \item N is number of pixels
-    \item Memory: 
+\todo[inline]{
+    N is number of pixels
+    Space usage:
+    VOL4: $O(1) =>$ Store sum 
+    
+    MDCT: $O(1) =>$ Store sum; For convolution store in tmp variable and do addition and later potentiation.
+    
+    ML: Same for mean laplacian: or convolution store in tmp variable and do addition
+    
+    ML: models: $O(N) => maximum(channels * input\_size^2) + model\_size $
+}
+
+\todo[inline, caption={}]{
+    add table with:
     \begin{itemize}
-        \item Traditional methods: depending on methods O(1) additional memory.
-        \item NN: memory consumption of O(N)
+        \item model size (measured)
+        \item memory usage during prediction (theory)
+        \item memory usage during prediction O(notation)
+        \item Potentially (speed as O notation)
     \end{itemize}
-    \item Speed:
-    \begin{itemize}
-        \item Traditional methods: O(n) with smaller constant factor
-        \item NN: O(N) with fairly large constant factor
-    \end{itemize}
-\end{itemize}
+}
+
