@@ -24,7 +24,14 @@ The utilized hardware for training models and running benchmarks was a machine r
 \section{Data}
 \label{sec:Methods:Data}
 
-At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study also add information about the microscopes.} Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \todo{Add visualization to illustrate point.} The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study also add information about the microscopes.} Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \autoref{fig:Methods:Data:PatchCreation} illustrates which tiles are kept for an example annotation. The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{images/30_methods/10_data/patch_creation.pdf}
+    \caption{Visualization of patch creation. The two patches (with a blue border) at the bottom of the page have sufficient overlap while the ones at the top (with a grey border) do not. The rectangle in the centre (with a red border) represents an actual bounding box of an egg.}
+    \label{fig:Methods:Data:PatchCreation}
+\end{figure}
 
 \subsection{Annotation}
 \label{sec:Methods:Data:Annotation}
