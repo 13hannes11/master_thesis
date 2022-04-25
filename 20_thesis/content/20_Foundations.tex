@@ -220,7 +220,7 @@ Another function that is commonly used is Softmax. It is used in the last layers
 \subsubsection{Layer}
 \label{sec:Foundations:NeuralNetworks:Layer}
 
-Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In fully connected neural networks \todo{source} each neuron of each layer is connected to each neuron of the previous layer. Layers that have this property are commonly called fully connected layers \todo{source}. 
+Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In \acp{fc} \todo{source} each neuron of each layer is connected to each neuron of the previous layer. Layers that have this property are commonly called fully connected layers \todo{source}. 
 
 Commonly, fully connected neural networks are shown as a graph (see \autoref{fig:Foundations:ANNs:Layer:FullyConnected}), however, mathematically, each layer is represented as a matrix of weights $\mat{W}$ and a vector of biasses $\vec{b}$. Each row vector $\vec{w_i}$ of the matrix corresponds to one neuron and the scalar $b_i$ constitutes the bias for neuron $i$. When processing input $\vec{x}$ the weight matrix is multiplied with the input vector, the bias vector $\vec{b}$ is then added, and, lastly, an activation function $f$ is applied (see \autoref{eq:FCNNLayer}).
 
