@@ -101,10 +101,19 @@ The trained models are evaluated using multiple metrics that are described in th
 The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations pytorchmetrics \todo{reference} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model prediction are compared to the values of a focus stack.
 
-\todo[inline]{\Ac{srcc} relationship between two variables using monotonic function.
+\todo[inline]{\Ac{plcc} measures if relationship between two variables is linear.
+
+$$\acs{plcc} = \frac{cov(X,Y)}{std(X) \cdot std(Y)} \texttt{,}$$
+
+with $cov$ being the covariance.
 }
 
-\todo[inline]{\Ac{plcc} measures if relationship between two variables is linear.}
+\todo[inline]{\Ac{srcc} relationship between two variables using monotonic function.
+
+$$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$
+
+with $R$ being rank variables.
+}
 
 \todo[inline]{\Ac{r2} is a common statistical correlation measure in regression analysis.
 
