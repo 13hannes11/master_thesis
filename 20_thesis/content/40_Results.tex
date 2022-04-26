@@ -186,6 +186,18 @@
 \section{Speed and Memory Consumption}
 \label{sec:Results:Computation}
 
+\todo[inline]{Should this section really be this detailed? Maybe shorter and just explain in general a bit about computational performance and memory.}
+
+This section gives an overview of speed and the needed memory for running the different presented methods. The exact memory requirements and time to compute can vary based on the implementation. For theoretical analysis, therefore, the minimal needed memory and ideal speed is considered. Further, it is assumed that 32 bit floating point numbers are used. Moreover, edges of the image are not considered, therefore the numbers for computations can slightly differ, depending on how this is handled. Also, $n$ is the number of pixels in an image.
+
+\textit{\ac{vol4}} (as introduced in \autoref{eq:Vol4}) consists of the multiplication of two pixels in proximity. The result of this computation needs to be stored and then summed. This results in one temporary variable needing to be used to store the multiplication and one to store the resulting sum. As this type of operation is done again with another neighbouring pixel, it could be assumed that another temporary variable is needed. However, through clever reuse of the variable that earlier stored the multiplication, it is possible to limit the usage to two variables, thus, resulting in an additional memory consumption of 8 bytes. Computationally, the method requires two multiplications and two summations per pixel to aggregate the results. Further an additional subtraction is needed. Thus, the resulting number of operations is $2n + 2n + 1 = 4n + 1$.
+
+\textit{\ac{mdct}} (as introduced in \autoref{eq:MDCT}) uses a convolutional filter. Such a filter consists of the pixel-wise multiplication of the filter and the image. The result is summed. Therefore, a temporary variable to store the product and the result of the summation needs to be used. The resulting value of a pixel is squared, and this procedure needs to be repeated for each pixel. Thus, three variables are needed for storing results, which amounts to a fixed storage usage of 12 bytes. For each pixel the convolutional filter, due to its filter size $|f|$ causes 16 multiplication operations and 16 summation operations. Further, the values need to be squared which is an additional multiplication operation. Moreover, the results per pixel need to be aggregated into therefore requiring additional $n$ summation operations. This results in $(2 |f| + 1) n + n = 34 n$ operations.
+
+Similarly to \ac{mdct}, \textit{\ac{laplacian}} (as introduced in \autoref{eq:MeanLaplacian}) uses convolutions. However, the size of the filter |f| is $5$ instead of $4 \times 4 = 16$ and no squaring of the filter result is undertaken. As the temporary filter result does not need to be stored for this operation one less variable is required, thus resulting in an additional memory usage of only 8 bytes. \Ac{laplacian} uses the mean and therefore an additional division needs to be undertaken. The resulting number of operations is $(2 |f|) n + n + 1 = 11n + 1$
+
+All the traditional methods potentially use up to $O(n)$ of memory if they are to be run in highly parallel fashion.
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/40_results/speed.pdf}
