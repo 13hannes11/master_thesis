@@ -114,17 +114,19 @@ $$\acs{plcc} = \frac{cov(X,Y)}{std(X) \cdot std(Y)} \texttt{,}$$
 with $cov$ being the covariance and $std$ being the standard deviation. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
 
 
-\todo[inline]{\Ac{srcc} relationship between two variables using monotonic function.
+The \ac{srcc} \todo{citation of introduction} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using monotonic function \todo{source}. The formula that describes \ac{srcc} looks as follows:
 
 $$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$
 
-with $R$ being rank variables.
-}
+with $R$ the rank of variables, $std$ the standard deviation and $cov$ being the covariance.
+
 
 \todo[inline]{\Ac{r2} is a common statistical correlation measure in regression analysis.
 
 $$\acs{r2} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,}$$ with $\bar{t}$ being the mean of all annotations.
 }
+
+\todo{explain of these metric which are used in related work and where}
 
 \todo[inline]{
     Explain metrics MAE, SRCC, PLCC, R2
