@@ -177,14 +177,14 @@ VOL4 = sum(mul(IMG(:-1,:), IMG(1:,:)))      \
 \end{python}
 
 
-\Ac{mdct} was implemented using Kornia as it interfaces with PyTorch tensors. The functions \texttt{filter2d}, \texttt{tensor}, \texttt{sum} represent \texttt{kornia.filters.filter2d}, \texttt{torch.tensor}, \texttt{torch.sum} respectively.
+\Ac{mdct} was implemented using Kornia as it interfaces with PyTorch tensors. The functions \texttt{filter2d}, \texttt{tensor}, \texttt{sum}, \texttt{square} represent \texttt{kornia.filters.filter2d}, \texttt{torch.tensor}, \texttt{torch.sum}, \texttt{torch.square} respectively.
 
 \begin{python}
 kernel = tensor([[[ 1,  1, -1, -1],
                   [ 1,  1, -1, -1],
                   [-1, -1,  1,  1],
                   [-1, -1,  1,  1]]])
-MDCT = sum(filter2d(IMG, kernel))
+MDCT = sum(square(filter2d(IMG, kernel)))
 \end{python}
 
 Kornia in combination with pytorch is also used for the implementation of \ac{laplacian}. The functions \texttt{laplacian} and \texttt{mean} represent \texttt{kornia.filters.laplacian} and \texttt{torch.mean} respectively.
