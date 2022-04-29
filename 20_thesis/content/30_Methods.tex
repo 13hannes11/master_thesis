@@ -108,13 +108,13 @@ The trained models are evaluated using multiple metrics that are described in th
 The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations pytorchmetrics \todo{reference} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model prediction are compared to the values of a focus stack.
 
-The \ac{plcc} \todo{add citation of paper that introduces it} is a correlation measure used as another metric to measures if relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of model. It is defined as:
+The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of model. It is defined as:
 
 $$\acs{plcc} = \frac{cov(X,Y)}{std(X) \cdot std(Y)} \texttt{,}$$
 with $cov$ being the covariance and $std$ being the standard deviation. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
 
 
-The \ac{srcc} \todo{citation of introduction} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using monotonic function \todo{source}. The formula that describes \ac{srcc} looks as follows:
+The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using monotonic function \todo{source}. The formula that describes \ac{srcc} looks as follows:
 
 $$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$
 
@@ -130,7 +130,7 @@ The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchia
 The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
 The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case the formula for MAE looks as follows:
 
-$$E_{MAE^*} = \frac{1}{|S|}\sum_{s \in S} |p(s) - t(s)| \text{,}$$, with $S$ being the set of evaluated focus stacks, $p(s)$ denoting the index of the imge predicted to be in focus and $t(s)$ denoting the index of the image that is annotated as in-focus.
+$$E_{MAE^*} = \frac{1}{|S|}\sum_{s \in S} |p(s) - t(s)| \text{,}$$ with $S$ being the set of evaluated focus stacks, $p(s)$ denoting the index of the image predicted to be in focus and $t(s)$ denoting the index of the image that is annotated as in-focus.
 
 To distinguish between \ac{mae} metrics used in this thesis the index based metric is denoted as \ac{mae}$^*$.
 
