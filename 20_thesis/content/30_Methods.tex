@@ -120,17 +120,12 @@ $$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$
 
 with $R$ the rank of variables, $std$ the standard deviation and $cov$ being the covariance.
 
-
-\todo[inline]{\Ac{r2} is a common statistical correlation measure in regression analysis.
+Lastly, the \ac{r2} is a common statistical correlation measure in regression analysis \cite[dibucchianico2008coefficient].
 
 $$\acs{r2} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,}$$ with $\bar{t}$ being the mean of all annotations.
-}
 
-\todo{explain of these metric which are used in related work and where}
+The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchianico2008coefficient} values lower than $<0.5$ show only a weak relation between data and model, while values $v$ with $0.5 < v < 0.8$ demonstrate that a model is not adequate to perfectly represent the data.
 
-\todo[inline]{
-    Explain metrics MAE, SRCC, PLCC, R2
-}
 
 The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
 The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case the formula for MAE looks as follows:
