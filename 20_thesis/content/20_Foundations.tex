@@ -381,7 +381,53 @@ A residual block consists of multiple convolutional layers followed by a \ac{bat
 
 \subsubsection{Inception}
 \label{sec:Foundations:NeuralNetworks:Architecture:Inception}
-\todo[inline]{Inception v3 \cite{szegedy2016rethinking}}
+
+The Inception v3 architecture, introduced by \textcite{szegedy2016rethinking}, works by the use of inception modules. These modules compute convolutions of different sizes in parallel and concatenate the results. Inception v3 uses three types of inception modules that slightly vary in architecture, but all follow the same concept. The original naive inception module uses one $1 \times 1$, one $3 \times 3$ and one $5 \times 5$ convolutional layer. Moreover, one $3 \times 3$ max pooling layer is also present. This architecture is shown in \autoref{fig:Foundations:ANNs:Architecture:Inception:Naive}.
+
+\tikzset{layer/.style={basic,rectangle,minimum width=2em}}
+\tikzset{functions/.style={basic,circle,fill=white}}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[transform shape]
+        \node[layer] (input) {x};
+        \node[layer, below = of input, text width=1.8cm,align=center] (conv3) {convolution ($3 \times 3$)};
+        \node[layer, below = of conv3] (relu3) {\acs{relu}};
+
+        \node[layer, left = of conv3, text width=1.8cm,align=center] (conv1) {convolution ($1 \times 1$)};
+        \node[layer, below = of conv1] (relu1) {\acs{relu}};
+
+        \node[layer, right = of conv3, text width=1.8cm,align=center] (conv5) {convolution ($5 \times 5$)};
+        \node[layer, below = of conv5] (relu5) {\acs{relu}};
+
+        \node[layer, right = of conv5, text width=1.5cm,align=center] (max3) {max pool ($3 \times 3$)};
+        \node[layer, below = of max3] (reluM3) {\acs{relu}};
+
+        \node[functions, below = of relu3] (concat) {concat};
+        \node[below = of concat] (output) {};
+
+        \path[draw,->] (input) -- (conv3);
+        \path[draw,->] (input) -- (conv1);
+        \path[draw,->] (input) -- (conv5);
+        \path[draw,->] (input) -- (max3);
+
+
+        \path[draw,->] (conv3) -- (relu3);
+        \path[draw,->] (conv1) -- (relu1);
+        \path[draw,->] (conv5) -- (relu5);
+        \path[draw,->] (max3)  -- (reluM3);
+
+
+        \path[draw,->] (relu3)  -- (concat);
+        \path[draw,->] (relu1)  -- (concat);
+        \path[draw,->] (relu5)  -- (concat);
+        \path[draw,->] (reluM3) -- (concat);
+
+        \path[draw,->] (concat) to (output);
+        
+    \end{tikzpicture}
+    \caption{The architecture of a naive inception module \cite{szegedy2015going}.}
+    \label{fig:Foundations:ANNs:Architecture:Inception:Naive}
+\end{figure}
 
 
 \section{Related Works}
