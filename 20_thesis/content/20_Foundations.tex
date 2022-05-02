@@ -290,9 +290,10 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
-The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and by propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems.
+The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and by propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between prediction and target. This is described by $$ MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,}$$ with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
 
-\todo{explain and cite MSE-Loss}
+\Ac{mse} punishes predictions which are further off from a target disproportionally strong, thereby incentivizing minimization of distance across all predictions.
+
 
 \paragraph{Optimizer}
 \label{par:Foundations:NeuralNetworks:Training:Optimizer}
