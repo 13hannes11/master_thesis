@@ -197,25 +197,27 @@ The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdot
     \end{cases}
 \end{equation}
 
-Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $\vec{w} \cdot \vec{x} + b$ the neurons apply a non-linear activation function. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation, sharma2020activation}.
+Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $\vec{w} \cdot \vec{x} + b$ the neurons apply other non-linear activation functions. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation, sharma2020activation}.
 
 \subsubsection{Activation Function}
 \label{sec:Foundations:NeuralNetworks:ActivationFunction}
-\todo{Sigmoid function.}
 
-A widely used activation function is \ac{relu} \todo{cite relu paper}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $f(x)  = max(x,0)$. The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
+One such function is the sigmoid function.  It has the advantage over a binary classifier as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by $$f(x) = \frac{1}{e^{-x}}.$$
 
-Another function that is commonly used is Softmax. It is used in the last layers of classification to normalize output values. The exponential function is applied to each value. The resulting values are normalized by dividing them through the sum of all values. This results in the following equation.
+A widely used activation function is \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
+The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
-\todo[inline]{write section}
+Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of to each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
 
-\todo[inline, caption={}]{
-    \begin{itemize}
-        \item ReLU (for \cite{senaras2018deepfocus})
-        \item SoftMax (for \cite{senaras2018deepfocus})
-    \end{itemize}
-}
-
+$$
+f(\vec{x}) = \frac{1}{\sum_{x' \in \vec{x}} e^{x'}} 
+    \begin{pmatrix}
+        e^{x_1}\\
+        \vdots \\
+        e^{x_{n}}
+    \end{pmatrix} \text{,}
+$$
+whereby $n$ is the number of dimensions of $\vec{x}$ and $x_i$ is the value of vector $\vec{x}$ at position $i$.   
 
 \subsubsection{Layer}
 \label{sec:Foundations:NeuralNetworks:Layer}
