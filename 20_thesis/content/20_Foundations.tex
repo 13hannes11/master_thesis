@@ -448,7 +448,7 @@ The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanc
 \end{equation}
 
 
-\Ac{mdct} (originally named \emph{MF-DCT}) on the other hand, was proposed by \textcite{lee2008enhanceda} (according to \textcite{redondo2012autofocus}) and uses a $4 \times 4$ convolutional filter. The focus measure is then the squared sum of the applied convolutional operation on the whole image. The corresponding formula is shown in \autoref{eq:MDCT}.
+\Ac{mdct} (originally named \emph{MF-DCT}) on the other hand, was proposed by \textcite{lee2008enhanced} (according to \textcite{redondo2012autofocus}) and uses a $4 \times 4$ convolutional filter. The focus measure is then the squared sum of the applied convolutional operation on the whole image. The corresponding formula is shown in \autoref{eq:MDCT}.
 
 \begin{equation}
     \label{eq:MDCT}
@@ -462,9 +462,6 @@ The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanc
     \end{bmatrix}
     )^2
 \end{equation}
-
-\todo[inline]{Should this section be rather moved above related works?}
-
 
 The approach that is currently used in the microscope prototype is the mean Laplacian \todo{find actual source and usage if possible}. The Laplacian is an edge detection convolutional filter. The result can be found in \autoref{eq:MeanLaplacian}. \textcite{redondo2012autofocus} look at a similar function, however, they instead use the sum of the squared Laplacian.
 
