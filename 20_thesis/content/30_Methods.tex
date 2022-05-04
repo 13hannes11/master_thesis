@@ -51,8 +51,7 @@ Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 tr
 \subsection{Augmentation}
 \label{sec:Methods:Data:Augmentation}
 
-The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180 or 270 degrees.
-This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available. \todo{citation needed}
+The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180 or 270 degrees. All augmentations do not require interpolation, therefore, the sharpness of the image is not changed. This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available \cite{shorten2019survey}.
 
 
 \subsection{Datasets in Related Work}
