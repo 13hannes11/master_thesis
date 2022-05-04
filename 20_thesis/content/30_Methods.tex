@@ -153,11 +153,9 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
 \subsection{Implementation of Traditional Focusing Methods}
 \label{sec:Methods:Evaluation:Traditional}
 
-Traditional focusing methods were implemented using \emph{PyTorch} \cite{paszke2019pytorch} and \emph{Kornia} \cite{riba2020kornia}. Kornia is a computer vision library that uses PyTorch as its computational backend. Therefore, computations can be easily run on the \ac{cpu} or \ac{gpu}.
+Traditional focusing methods (introduced in \autoref{sec:Foundations:RelatedWorks:Traditional}) were implemented using \emph{PyTorch} \cite{paszke2019pytorch} and \emph{Kornia} \cite{riba2020kornia}. Kornia is a computer vision library that uses PyTorch as its computational backend. Therefore, computations can be easily run on the \ac{cpu} or \ac{gpu}. In this section the PyTorch functions \texttt{torch.sum}, \texttt{torch.mul}, \texttt{torch.tensor}, \texttt{torch.square}, and \texttt{torch.mean} are shortened by omitting the namespaces of the functions. The same is done for \texttt{kornia.filters.filter2d} and \texttt{kornia.filters.laplacian}. In the code shown below \texttt{IMG} is a tensor representing the greyscale version of the input image.
 
-\todo[inline]{Fix the text in this chapter}
-
-\Ac{vol4} was implemented using PyTorch tensors. The functions \texttt{sum} and \texttt{mul} represent \texttt{torch.sum} and \texttt{torch.mul}, respectively.
+\Ac{vol4} was implemented using PyTorch tensors, their index operations and the tensor operations \texttt{sum} and \texttt{mul}. The slice indexing removes the need to run the summation loop in Python and therefore allows PyTorch's efficient computation backends to be used.
 
 \begin{python}
 VOL4 = sum(mul(IMG(:-1,:), IMG(1:,:)))      \
@@ -165,7 +163,7 @@ VOL4 = sum(mul(IMG(:-1,:), IMG(1:,:)))      \
 \end{python}
 
 
-\Ac{mdct} was implemented using Kornia as it interfaces with PyTorch tensors. The functions \texttt{filter2d}, \texttt{tensor}, \texttt{sum}, \texttt{square} represent \texttt{kornia.filters.filter2d}, \texttt{torch.tensor}, \texttt{torch.sum}, \texttt{torch.square} respectively.
+\Ac{mdct} was implemented using Kornia's \texttt{filter2d} function in combination with \texttt{tensor}, \texttt{sum} and \texttt{square} from PyTorch. The shortened code looks as follows:
 
 \begin{python}
 kernel = tensor([[[ 1,  1, -1, -1],
@@ -175,7 +173,7 @@ kernel = tensor([[[ 1,  1, -1, -1],
 MDCT = sum(square(filter2d(IMG, kernel)))
 \end{python}
 
-Kornia in combination with pytorch is also used for the implementation of \ac{laplacian}. The functions \texttt{laplacian} and \texttt{mean} represent \texttt{kornia.filters.laplacian} and \texttt{torch.mean} respectively.
+Kornia in combination with PyTorch is also used for the implementation of \ac{laplacian} (as shown below). The \texttt{laplacian} is already implemented in Kornia therefore it can be used in combination with PyTorch's \texttt{mean} function. This results in the following code.
 
 \begin{python}
 ML = mean(laplacian(IMG, 3))
