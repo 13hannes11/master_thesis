@@ -341,8 +341,7 @@ Of note is also, that architecture descriptions often describe activation functi
 
 A layer type that can be commonly found in neural networks is the fully connected layer. In this layer each input is connected to each neuron. This is the layer-type used in fully connected \ac{nn} as introduced in \autoref{sec:Foundations:NeuralNetworks:FNN}.
 
-Also, \emph{convolutional} layers, were already introduced in \autoref{sec:Foundations:NeuralNetworks:CNN}. These layers use convolutions and, therefore, each neuron is only connected to its neighbours. What is considered to be its neighbours depends on the size of the convolution window.
-\todo{introduce stride, kernelSize and outputDimensions \cite{liu2016computer}}
+Also, \emph{convolutional} layers, were already introduced in \autoref{sec:Foundations:NeuralNetworks:CNN}. These layers use convolutions and, therefore, each neuron is only connected to its neighbours. What is considered to be its neighbours depends on the size of the convolution window. This size is the kernel size. The example shown in \autoref{fig:Foundations:ANNs:CNNs:Convolution} has a kernel size of 3 (sometimes also described as $3 \times 3$). The output channels of a layer define the number of different kernels which are used inside a layer. Each kernel is run on the entire input.
 
 Closely related to convolutional layers are \emph{pooling layers}. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$), therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. \todo{explain function of pooling layers}
 
