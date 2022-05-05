@@ -345,14 +345,15 @@ Also, \emph{convolutional} layers, were already introduced in \autoref{sec:Found
 
 Closely related to convolutional layers are \emph{pooling layers}. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$), therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. \todo{explain function of pooling layers}
 
-\todo[inline]{Average Pool}
+\emph{Global average pooling} follows the same concept of pooling layers, however, the goal with it is to generate a fixed size output that is independent of the input size. This allows to replace fully connected layers in neural networks \cite{lin2014network}. The fixed output size makes models input size agnostic and can be used to also introduce fully connected layers without sacrificing this flexibility in fully connected networks \cite{he2016deep}. 
+
 \todo[inline]{Batch normalisation \cite{ioffe2015batch}}
 
 
 \subsubsection{\acs{resnet}}
 \label{sec:Foundations:NeuralNetworks:Architecture:ResNet}
 
-\Ac{resnet} was introduced by \textcite{he2016deep} with the goal of training networks with more layers. Commonly, \acp{resnet} are denoted as \acs{resnet}-N where N is the number of layers. \Ac{resnet} is built by chaining residual blocks. The last layers are an average pooling layer followed by a fully-connected layer.
+\Ac{resnet} was introduced by \textcite{he2016deep} with the goal of training networks with more layers. Commonly, \acp{resnet} are denoted as \acs{resnet}-N where N is the number of layers. \Ac{resnet} is built by chaining residual blocks. The last layers are a global average pooling layer followed by a fully-connected layer.
 
 A residual block consists of multiple convolutional layers followed by a \ac{batch-norm} and a \ac{relu} activation function. The last layer, however, adds the original input to its output before applying \ac{relu} (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
 
