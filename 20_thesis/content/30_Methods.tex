@@ -27,7 +27,13 @@ At the time of writing there is no available dataset for Kato-Katz prepared slid
     \label{fig:Methods:Data:PatchCreation}
 \end{figure}
 
-\todo[inline]{add something about focus values, what they mean and magnitude}
+\todo[inline]{add something about focus values, what they mean and magnitude (range is [0, 1023] normalized to [0, 1]), 
+focus range of microscopy: \unit{4.5}{\milli\meter} to \unit{5.78}{\milli\meter} => \unit{1.28}{\milli\meter}
+
+=> in range [0, 1023] one unit = \unit{0.00125}{\milli\meter} = \unit{1.25}{\micro\meter}
+=> in range [0, 1], 1 = \unit{1280}{\micro\meter}
+
+}
 
 \subsection{Annotation}
 \label{sec:Methods:Data:Annotation}
@@ -42,7 +48,7 @@ To annotate the focus plane of these focus stacks the annotation tool \emph{Focu
 \end{figure}
 
 
-Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as lens parameter) to the most in focus patch. The difference in lens value between neighbouring images of a stack is approximately $0.0068$.  One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
+Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as lens parameter) to the most in focus patch. The difference in lens value between neighbouring images of a stack is approximately $0.0068$ \todo{fix this as it needs to match with values above}.  One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
 
 \subsection{Augmentation}
 \label{sec:Methods:Data:Augmentation}
