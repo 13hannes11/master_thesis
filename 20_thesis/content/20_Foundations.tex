@@ -1,17 +1,17 @@
 \chapter{Foundations}
 \label{ch:Foundations}
 
-This chapter introduces relevant background information about \acfp{ntd}, which method, namely Kato-Katz \cite{katz1972simple}, is used to detect eggs for diagnosis. Further, it elaborates on \acf{wsi}, an important topic for digital pathology. Moreover, \acfp{nn} are introduced. It is shown how they work. Further developments and architecture is presented. Lastly, related studies are introduced.
+This chapter introduces relevant background information about \acfp{ntd}, which method, namely Kato-Katz \cite{katz1972simple}, is used to detect eggs for diagnosis. Further, it elaborates on \acf{wsi}, an important topic for digital pathology. Moreover, \acfp{nn} are introduced and it is shown how they work. Further developments and architecture is presented. Lastly, related studies are introduced.
 
 \section{Neglected Tropical Diseases}
 \label{sec:Foundations:NTDs}
 
-\Acp{ntd} \cite{feasey2010neglected} are a biologically diverse group of diseases which mainly occur in tropical regions. The geographic location, however, is not linked to temperatures or climate but mainly as a result of a large part of the world's poorest population living in these regions. \Acp{ntd} affect approximately a sixth of the world population, yet, they have received less attention than other diseases. \textcite{feasey2010neglected} state that there are \acp{ntd} which have a high prevalence and excellent potential for successful control. Among these are Ascaris, hookworm, whipworm, and Schistosoma. These parasites are the ones present in the dataset used in this thesis. Ascaris, whipworm and hookworm are \acp{sth} which is a subclass of \acp{ntd}\todo{Source for subclass}.
+\Acfp{ntd} \cite{feasey2010neglected} are a biologically diverse group of diseases which mainly occur in tropical regions. The geographic location, however, is not linked to temperatures or climate but mainly as a result of a large part of the world's poorest population living in these regions. \Acp{ntd} affect approximately a sixth of the world population, yet, they have received less attention than other diseases. \textcite{feasey2010neglected} state that there are \acp{ntd} which have a high prevalence and excellent potential for successful control. Among these are Ascaris, hookworm, whipworm, and Schistosoma. These parasites are the ones present in the dataset used in this thesis. Ascaris, whipworm and hookworm are \acfp{sth} which is a subclass of \acp{ntd}\todo{Source for subclass}.
 
 \subsection{Soil-Transmitted Helminth} % Soil-Transmitted Helminths
 \label{sec:Foundations:NTDs:STHs} 
 
-Helminthic parasites which are mainly transmitted through soil are known as \aclp{sth} \cite{feasey2010neglected,jourdan2018soiltransmitted}. This section gives a more detailed introduction into \acp{sth} present in the dataset used in this thesis.
+Helminthic parasites which are mainly transmitted through soil are known as \acfp{sth} \cite{feasey2010neglected,jourdan2018soiltransmitted}. This section gives a more detailed introduction into \acp{sth} present in the dataset used in this thesis.
 
 
 \subsubsection{Roundworm (Ascaris)}
@@ -27,7 +27,7 @@ Like roundworms whipworms are also transmitted through the faecal-oral cycle, wh
 \subsubsection{Hookworm (Necator Americanus and Ancylostoma Duodenale)}
 \label{sec:Foundations:NTDs:STHs:Hookworm}
 
-Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days outside the human body. Roundworm larva then infect humans by penetrating the skin through the feet \cite{jourdan2018soiltransmitted}. They then travel through the lungs into the voice box (larynx) where they are swallowed. Finally, hookworms, like roundworms and whipworms settle in the small intestine and produce eggs which leave the human body through faeces. An image of a hookworm larva can be seen in \autoref{fig:Foundations:NCLs:STHs:Hookworm:Adult}.
+Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days outside the human body. Roundworm larva then infect humans by penetrating the skin of the feet \cite{jourdan2018soiltransmitted}. They then travel through the lungs into the voice box (larynx) where they are swallowed. Finally, hookworms, like roundworms and whipworms settle in the small intestine and produce eggs which leave the human body through faeces. An image of a hookworm larva can be seen in \autoref{fig:Foundations:NCLs:STHs:Hookworm:Adult}.
 
 \begin{figure}
     \begin{subfigure}[t]{0.45\textwidth}
@@ -66,16 +66,16 @@ Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days ou
 \subsection{Schistosoma}
 \label{sec:Foundations:NTDs:STHs:Schistosoma}
 
-Schistosoma worms have the most complex life cycle among parasite covered in this thesis. Humans excrement contains its eggs \cite{nelwan2019schistosomiasis}. When eggs come into contact with water they hatch and infect snails. Infected snails shed cercariae which enter the human body through skin and migrate throughout the body using the circulating blood. The location where adult worms settle depends on the exact species, but some examples are the intestine (large and small), and the bladder. A picture of a Schistosoma worm can be seen in \autoref{fig:Foundations:NCLs:Schistosoma:Adult}.
+Schistosoma worms have the most complex life cycle among parasite covered in this thesis. The excrement of an infected human contains schistosomes' eggs \cite{nelwan2019schistosomiasis}. When eggs come into contact with water they hatch and infect snails. Infected snails shed cercariae which enter the human body through skin and migrate throughout the body using the circulating blood. The location where adult worms settle depends on the exact species, but some examples are the intestine (large and small), and the bladder. A picture of a Schistosoma worm can be seen in \autoref{fig:Foundations:NCLs:Schistosoma:Adult}.
 
 \subsection{Diagnosis}
 \label{sec:Foundations:NTDs:Diagnosis}
 
-Schistosoma and \acp{sth} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} which refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves cardboard with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent measurements, is fairly reliable, easy to perform and low cost \cite{katz1972simple} and therefore considered to be the \ac{who} \say{gold standard} (according to \textcite{mbongngwese2020diagnostic}).
+Schistosoma and \acp{sth} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} who refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves a cardboard sheet with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent samples, is fairly reliable, easy to perform and low cost \cite{katz1972simple} and therefore is, according to \textcite{mbongngwese2020diagnostic}, by the \ac{who} considered to be the \say{gold standard}.
 The slides prepared using the Kato-Katz method are, after a resting period, examined under a light microscope to count the number of eggs per milligram. This allows to identify the intensity of infection of a patient \cite{feasey2010neglected}. 
 
-Eggs found under a microscope can be assigned to the corresponding parasite worm based on size, shape, and colour. \emph{Roundworm (Ascaris)} eggs are identified by rounded thick shell with an external mamillated layer which is often stained with brown spots and has a length of \unit{45}{\micro\meter} to \unit{75}{\micro\meter} \cite{dpdx2019ascariasis} (as shown in \autoref{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}).
-\emph{Whipworm} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Whipworm:Egg}) can be identified by their elongated oval shape with two circular protrusions at the end of longer sides \cite{dpdx2017trichuriasis,larsson2020development}. A length of approximately \unit{50}{\micro\meter} and a width of \unit{20}{\micro\meter} characterizes the eggs.
+Eggs found under a microscope can be assigned to the corresponding parasite worm based on size, shape, and colour. \emph{Roundworm (Ascaris)} eggs are identified by a rounded thick shell with an external mamillated layer which is often stained with brown spots and has a length of \unit{45}{\micro\meter} to \unit{75}{\micro\meter} \cite{dpdx2019ascariasis} (as shown in \autoref{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}).
+\emph{Whipworm} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Whipworm:Egg}) can be identified by their elongated oval shape with two circular protrusions at the end of the longer sides \cite{dpdx2017trichuriasis,larsson2020development}. A length of approximately \unit{50}{\micro\meter} and a width of \unit{20}{\micro\meter} characterizes the eggs.
 \emph{Hookworm} eggs are thin-shelled and colourless with a blurry inner structure. The eggs' size measures \unit{65}{\micro\meter} by \unit{35}{\micro\meter} which is shown in \autoref{fig:Foundations:NCLs:Diagnosis:Hookworm:Egg} \cite{dpdx2019hookworm, larsson2020development}.
 Lastly, the dataset contains \emph{Schistosoma} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Schistosoma:Egg}). They are characterized by a spine (seen as a spike) 
 and have a size of approximately \unit{100}{\micro\meter} by \unit{50}{\micro\meter} which can vary by species \cite{dpdx2019schistosomiasis, larsson2020development}.
@@ -120,20 +120,20 @@ and have a size of approximately \unit{100}{\micro\meter} by \unit{50}{\micro\me
 
 \Acf{wsi} \cite{ghaznavi2013digital, hanna2019whole, el-gabry2014wholeslide} is a process in which slides are wholistically scanned to create a digital copy. This allows diagnostic processes to be more flexible as the collection of slides is independent of its analysis. Further, digitally archived slides do not suffer any degradation. 
 
-A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry2014wholeslide} which is required for slides with larger variation in topology or which have a three-dimensional structure e.g., thick smears. A z-stack consists of multiple images taken at different focus planes. This allows a researcher to emulate the focusing behaviour of a conventional light microscope. \todo{Should example of a focus stack be added?}
+A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry2014wholeslide} which is required for slides with larger variation in topology or which have a three-dimensional structure e.g., thick smears. A z-stack consists of multiple images taken at different focus planes. This allows a researcher to emulate the focusing behaviour of a conventional light microscope and can compensate for imperfect focusing. \todo{Should example of a focus stack be added?}
 
 
 \section{Artificial Neural Networks}
 \label{sec:Foundations:NeuralNetworks}
 
-\Acl{nn}, are commonly used in machine learning applications. This section introduces how they work starting with its building blocks. Further, different types of layers are introduced, and their composition is shown. Finally, two model architecture examples given an overview over networks used in practice.
+\Acl{nn}, are commonly used in machine learning applications. This section introduces how they work starting with its building blocks. Further, different types of layers are introduced, and their composition is shown. Finally, two model architecture examples give an overview over networks used in practice.
 
 
 \subsection{Feedforward Neural Networks}
 \label{sec:Foundations:NeuralNetworks:FNN}
 
 According to \textcite{nielsen2015neural} artificial neural networks were developed by \textcite{rosenblatt1958perceptron}. In feedforward neural networks information flows only from input towards the output. There is no backwards flow of information, hence, the name.
-A \ac{nn} is consists of multiple layers which themselves consists of individual neurons.
+A \acf{nn} consists of multiple layers which themselves consist of individual neurons.
 
 \subsubsection{Perceptrons and Neurons}
 \label{sec:Foundations:NeuralNetworks:Perceptrons}
@@ -179,7 +179,7 @@ A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artifi
     \label{fig:Foundations:ANNs:Perceptron}
 \end{figure}
 
-A perceptron computes its output by multiplying each input with its corresponding weight. The result of these multiplications in then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
+A perceptron computes its output by multiplying each input with its corresponding weight. The result of the multiplications is then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
 
 \begin{equation}
     output = 
@@ -206,10 +206,10 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 
 One such function is the sigmoid function.  It has the advantage over a binary classifier as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by $$f(x) = \frac{1}{e^{-x}}.$$
 
-A widely used activation function is \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
+Another widely used activation function is \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
 The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
-Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of to each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
+Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
 
 $$
 f(\vec{x}) = \frac{1}{\sum_{x' \in \vec{x}} e^{x'}} 
@@ -291,6 +291,9 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \subsubsection{Training Neural Networks}
 \label{sec:Foundations:NeuralNetworks:Training}
 
+To train a neural network training samples are shown to a network \cite{nielsen2015neural}. The network uses the samples to make a prediction. Based on a loss function the values are codmpared to the target prediction and an optimizer updates the models weights. This process is repeated until a model stops improving.
+
+
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
@@ -312,7 +315,7 @@ Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train}
 $$ \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}).$$ This allows more frequent weight updates and, therefore, results in faster training time.
 
 
-Instead of using the gradient directly, another optimizer \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduces the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ therefore, denoting a parameter of previous time step with the $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
+Instead of using the gradient directly, another optimizer \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ therefore, denoting a parameter of previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
 The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
 $$w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.}$$
@@ -355,7 +358,7 @@ Closely related to convolutional layers are \emph{pooling layers}. Pooling layer
 
 \Ac{resnet} was introduced by \textcite{he2016deep} with the goal of training networks with more layers. Commonly, \acp{resnet} are denoted as \acs{resnet}-N where N is the number of layers. \Ac{resnet} is built by chaining residual blocks. The last layers are a global average pooling layer followed by a fully-connected layer.
 
-A residual block consists of multiple convolutional layers followed by a \ac{batch-norm} and a \ac{relu} activation function. The last layer, however, adds the original input to its output before applying \ac{relu} (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
+A residual block consists of multiple convolutional layers followed by a \ac{batch-norm} layer and a \ac{relu} activation function. The last layer, however, adds the original input to its output before applying \ac{relu} (see \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}).
 
 \tikzset{layer/.style={basic,rectangle,minimum width=2em}}
 \tikzset{functions/.style={basic,circle,fill=white}}
@@ -450,9 +453,9 @@ This section presents related work to this thesis. First, traditional focus metr
 
 
 \textcite{mateos-perez2012comparative} perform a comparative study on 13 real-time focus methods with fluorescence-labeled tuberculosis bacteria. They take into account, robustness to noise, illumination changes, accuracy and computational cost. Further, the study looks into the benefit of preprocessing with morphological operators.
-The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanced}) or \ac{vol4} \cite{vollath1988influence} due to their high accuracy, robustness to noise and low computational cost.
+The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanced}) and \ac{vol4} \cite{vollath1988influence} due to their high accuracy, robustness to noise and low computational cost.
 
-\ac{vol4} works by taking the difference of the summed values of a multiplication with neighbouring pixels. Precicely the computation is shown in \autoref{eq:Vol4}, where $g(x, y)$ is the grey-level of the image at position $x,y$, $M$ is the width and $N$ the height of the image.
+\ac{vol4} works by taking the difference of the summed values of a multiplication with neighbouring pixels. The computation is shown in \autoref{eq:Vol4}, where $g(x, y)$ is the grey-level of the image at position $x,y$, $M$ is the width and $N$ the height of the image.
 
 \begin{equation}
     \label{eq:Vol4}
@@ -491,9 +494,9 @@ The approach that is currently used in the microscope prototype is the mean Lapl
 \subsection{Deep Learning-Based Approaches}
 \label{sec:Foundations:RelatedWorks:DeepLearning}
 
-Related literature for out of focus detection that uses deep learning mostly uses pathology slides. Further, magnification levels of microscopes range from 20x to 40x, with the latter being most common. Moreover, commonly, the problem is phrased as a classification problem of either, \ac{oof} classes or simple binary classes.
+Related literature for out-of-focus detection that uses deep learning mostly uses pathology slides. Further, magnification levels of microscopes range from 20x to 40x, with the latter being most common. Moreover, commonly, the problem is phrased as a classification problem of either, \ac{oof} classes or simple binary classes.
 
-\emph{DeepFocus} is a model developed in \textcite{senaras2018deepfocus} to classify an image tile as either in- or out-of-focus. It is the first deep learning model for focus-detection for the use in digital pathology. The training data used is generated by annotating the focus plane of focus stacks. Images that are annotated as in-focus and adjacent images in the stack are considered to be in focus. The model is a \ac{cnn} with five convolutional layers, three max pooling and two fully connected layers. The resulting classification model is compared to out-of-focus detection by \textcite{moleslopez2013automated} which use a more traditional machine learning approach with decision trees.
+\emph{DeepFocus} is a model developed in \textcite{senaras2018deepfocus} to classify an image tile as either in- or out-of-focus. It is the first deep learning model for focus-detection for the use in digital pathology. The training data used is generated by annotating the focus plane of focus stacks. Images that are annotated as in-focus and adjacent images in the stack are considered to be in focus. The model is a \ac{cnn} with five convolutional layers, three max pooling and two fully connected layers. The resulting classification model is compared to out-of-focus detection by \textcite{moleslopez2013automated} who use a more traditional machine learning approach with decision trees.
 Additionally, the authors compare the computational performance of their approach with \textcite{moleslopez2013automated}. \emph{DeepFocus} performs slightly faster than \textcite{moleslopez2013automated} and offers a higher resolution. This approach allows GPU computations which can be used to further speed-up out of focus-detections.
 The authors conclude that their approach provides good, spacial resolution and accuracy for identifying \ac{oof} regions in pathology slides. Moreover, they state that the use of GPUs allows faster processing times on ordinary hardware.
 
