@@ -100,6 +100,16 @@ All presented \ac{resnet} models use pretrained models.
 \todo{resnet presented model parameters}
 \todo[inline]{mention transfer learning}
 
+
+\section{Training}
+\label{sec:Methods:Training}
+
+Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training \ac{mse} is used as loss function.
+
+\Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna \todo{reference Optuna}. In these runs the architecture and hyperparameters are optimized.
+
+\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna  optimizer. Then, the best performant models from different \acs{resnet} sizes are chosen.
+
 \section{Evaluation}
 \label{sec:Methods:Evaluation}
 
