@@ -92,21 +92,21 @@ The models are also compared to traditional focus methods. The results of this c
 \begin{table}
     \centering
     \caption{Comparing \acs{poop} to other methods in terms of \ac{mae} of image indexes compared to the best in-focus image from a focus stack.}
-    \begin{tabular}{|l|rrrrr|}
+    \begin{tabular}{lrrrrr}
         \hline
-        \multicolumn{1}{|c}{} & \multicolumn{5}{|c|}{\ac{mae}$^*$} \\
+        \multicolumn{1}{c}{} & \multicolumn{5}{c}{\ac{mae}$^*$} \\
+        \cline{2-6}
         method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}      & 2.3065 & 2.1250 & 1.9333 & 2.6250 & 2.5333 \\
-        \acs{vol4}      & 2.2258 & 1.8750 & 1.8000 & 2.1250 & 3.1333 \\
-        \acs{laplacian} & 1.5968 & 1.8125 & 1.3333 & 1.5625 & 1.6667 \\
+        \acs{mdct}      & 2.31 & 2.13 & 1.93 & 2.63 & 2.53 \\
+        \acs{vol4}      & 2.23 & 1.88 & 1.80 & 2.13 & 3.13 \\
+        \acs{laplacian} & 1.60 & 1.81 & 1.33 & 1.56 & 1.67 \\
         \hline
-        \acs{poop}-\acs{fc}  & 3.2742 & 3.3125 & 3.4667 & 3.0000 & 3.3333 \\
-        \acs{poop}-\acs{cnn}            & 1.0645 & 1.3750 & 1.4000 & 0.7500 & 0.7333 \\
-        \acs{poop}-\acs{resnet}-101      & 0.9194 & 1.0625 & 1.0667 & 0.9375 & 0.6000 \\
-        \acs{poop}-\acs{resnet}-34       & 0.6452 & 0.6250 & 0.8000 & 0.5625 & 0.6000 \\
-        \acs{poop}-\acs{resnet}-18       & 0.9516 & 1.3125 & 0.8667 & 1.0625 & 0.5333 \\
-        \hline
+        \acs{poop}-\acs{fc}              & 3.27 & 3.31 & 3.47 & 3.00 & 3.33 \\
+        \acs{poop}-\acs{cnn}             & 1.06 & 1.38 & 1.40 & 0.75 & 0.73 \\
+        \acs{poop}-\acs{resnet}-101      & 0.92 & 1.06 & 1.07 & 0.94 & 0.60 \\
+        \acs{poop}-\acs{resnet}-34       & 0.65 & 0.63 & 0.80 & 0.56 & 0.60 \\
+        \acs{poop}-\acs{resnet}-18       & 0.95 & 1.31 & 0.87 & 1.06 & 0.53 \\
     \end{tabular}
     \label{tab:Results:Comparison:RelatedWorks:IndexMAE}
 \end{table}
