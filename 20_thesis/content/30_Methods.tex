@@ -97,8 +97,7 @@ The \acp{resnet} models use predefined \acp{resnet} models from PyTorch. However
 
 All presented \ac{resnet} models use pretrained models.
 
-\todo{resnet presented model parameters}
-\todo[inline]{mention transfer learning}
+Initializing model parameters for training based on a model that has been trained on a different task and dataset is known as \emph{transfer learning}. Some problems are difficult to train on and such an initialization can improve or allow training. Further, on problems with a lack of data knowledge from other task can be transferred thereby speeding up training and helping with generalization. Transfer learning not only works between similar domains, but it also provides some of these benefits when transferring from photography images to medical images \cite{mustafa2021supervised}.
 
 
 \section{Training}
