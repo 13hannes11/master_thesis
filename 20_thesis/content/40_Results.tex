@@ -70,21 +70,21 @@ The models are also compared to traditional focus methods. The results of this c
 \begin{table}
     \centering
     \caption{Comparing \acs{poop} to other methods in terms of accuracy of finding the best in-focus image ($\pm 1$) from a focus stack.}
-    \begin{tabular}{|l|rrrrr|}
+    \begin{tabular}{lrrrrr}
         \hline
-        \multicolumn{1}{|c}{} & \multicolumn{5}{|c|}{accuracy} \\
-        method            & all & trichuris & ascaris & schistosoma & hookworm \\
+        \multicolumn{1}{c}{} & \multicolumn{5}{c}{accuracy} \\
+        \cline{2-6}
+        method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}      & 0.4032 & 0.3125 & 0.6000 & 0.3125 & 0.4000 \\
-        \acs{vol4}      & 0.4355 & 0.5000 & 0.6000 & 0.5000 & 0.1333 \\
-        \acs{laplacian} & 0.5968 & 0.5000 & 0.7333 & 0.6250 & 0.5333 \\
+        \acs{mdct}                      & 0.40 & 0.31 & 0.60 & 0.31 & 0.40 \\
+        \acs{vol4}                      & 0.44 & 0.50 & 0.60 & 0.50 & 0.13 \\
+        \acs{laplacian}                 & 0.60 & 0.50 & 0.73 & 0.63 & 0.53 \\
         \hline
-        \acs{poop}-\acs{fc} & 0.1935 & 0.2500 & 0.2000 & 0.1250 & 0.2000 \\
-        \acs{poop}-\acs{cnn}            & 0.7419 & 0.6875 & 0.5333 & 0.8750 & 0.8667 \\
-        \acs{poop}-\acs{resnet}-101      & 0.8226 & 0.6875 & 0.8000 & 0.8750 & 0.9333 \\
-        \acs{poop}-\acs{resnet}-34       & 0.9032 & 0.9375 & 0.8667 & 0.9375 & 0.8667 \\
-        \acs{poop}-\acs{resnet}-18       & 0.8226 & 0.6875 & 0.7333 & 0.8750 & 1.0000 \\ 
-        \hline
+        \acs{poop}-\acs{fc}             & 0.19 & 0.25 & 0.20 & 0.12 & 0.20 \\
+        \acs{poop}-\acs{cnn}            & 0.74 & 0.69 & 0.53 & 0.88 & 0.87 \\
+        \acs{poop}-\acs{resnet}-101     & 0.82 & 0.69 & 0.80 & 0.88 & 0.93 \\
+        \acs{poop}-\acs{resnet}-34      & 0.90 & 0.94 & 0.87 & 0.94 & 0.87 \\
+        \acs{poop}-\acs{resnet}-18      & 0.82 & 0.69 & 0.73 & 0.88 & 1.00 \\ 
     \end{tabular}
     \label{tab:Results:Comparison:RelatedWorks:Accuracy}
 \end{table}
