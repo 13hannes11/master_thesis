@@ -122,44 +122,6 @@ The models are also compared to traditional focus methods. The results of this c
 \section{Heatmap and Stitched Image Generation}
 \label{sec:Results:HeatStiched}
 
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 4}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_4.jpg}
-        \label{fig:Results:Stack:SideBySide:Index0}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 5}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_5.jpg}
-        \label{fig:Results:Stack:SideBySide:Index1}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 6}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_6.jpg}
-        \label{fig:Results:Stack:SideBySide:Index2}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stitched image}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_stiched.png}
-        \label{fig:Results:Stack:SideBySide:Stiched}
-    \end{subfigure}
-    \caption{Comparison of images from the focus stack to a generated combined image based on the focus prediction of the model (\acs{poop}-\acs{resnet}-34).}
-    \label{fig:Results:Stack:SideBySide}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{images/40_results/focus_stack_contour_plot.pdf}
-    \caption{Contour plot showing which image of the focus stack is most in focus according to the model (\acs{poop}-\acs{resnet}-34).}
-    \label{fig:Results:Stack:ContourPlot}
-\end{figure}
-
 \begin{figure}
     \centering
     \begin{subfigure}[b]{\textwidth}
@@ -193,6 +155,43 @@ The models are also compared to traditional focus methods. The results of this c
     \end{subfigure}
     \caption{Figure comparing the heatmap of images of a focus stack to a generated image based on the focus prediction model (\acs{poop}-\acs{resnet}-34).}
     \label{fig:Results:Stack:HeatMap}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/40_results/focus_stack_contour_plot.pdf}
+    \caption{Contour plot showing which image of the focus stack is most in focus according to the model (\acs{poop}-\acs{resnet}-34).}
+    \label{fig:Results:Stack:ContourPlot}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \caption{stack index: 4}
+        \includegraphics[width=\textwidth]{images/40_results/focus_stack_4.jpg}
+        \label{fig:Results:Stack:SideBySide:Index0}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \caption{stack index: 5}
+        \includegraphics[width=\textwidth]{images/40_results/focus_stack_5.jpg}
+        \label{fig:Results:Stack:SideBySide:Index1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \caption{stack index: 6}
+        \includegraphics[width=\textwidth]{images/40_results/focus_stack_6.jpg}
+        \label{fig:Results:Stack:SideBySide:Index2}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \caption{stitched image}
+        \includegraphics[width=\textwidth]{images/40_results/focus_stack_stiched.png}
+        \label{fig:Results:Stack:SideBySide:Stiched}
+    \end{subfigure}
+    \caption{Comparison of images from the focus stack to a generated combined image based on the focus prediction of the model (\acs{poop}-\acs{resnet}-34).}
+    \label{fig:Results:Stack:SideBySide}
 \end{figure}
 
 \section{Speed and Memory Consumption}
