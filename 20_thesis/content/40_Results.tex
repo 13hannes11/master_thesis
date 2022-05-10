@@ -18,6 +18,7 @@
 \section{Focus Distance Measure}
 \label{sec:Results:FocusDistance}
 
+When the task is to estimate the distance or offset to the best focus value \acs{poop}-\acs{resnet}-34 performs best, followed by \acs{poop}-\acs{resnet}-101 and \acs{poop}-\acs{resnet}-18 (refer to \autoref{tab:Results:Models:Accuracy}). \Acs{poop}-\acs{resnet}-34 reaches a \ac{mae} of $0.0056$ which is an average error of less than one image in a focus stack (approximately $0.007$). Further the \ac{srcc} and \ac{plcc} are above $0.9$ thereby showing a strong correlation. The \ac{r2} score of $0.86$ supports this as well.
 
 \begin{table}
     \centering
@@ -36,12 +37,18 @@
     \label{tab:Results:Models:Accuracy}
 \end{table}
 
+\autoref{fig:Results:ScatterPredictedTarget} shows the predictions of in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34). The plot shows a line which represents the perfect match between targets and predictions. The data points in the plot clearly follow this line. Predictions in the negative range also mostly correspond to negative targets. Further, some outliers can be seen in the plot which can be found in the plot.
+
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/40_results/scatter_predictions_targets.pdf}
     \caption{The predictions plotted compared to targets with the ideal drawn as a line (using \acs{poop}-\acs{resnet}-34).}
     \label{fig:Results:ScatterPredictedTarget}
 \end{figure}
+
+To give a clearer overview of the predictions also a histogram has been plotted. The histogram in \autoref{fig:Results:HistogramPredictedTarget} shows a fairly similar distribution between ground truth and targets. Of note, however, is that there are no predictions for bins starting at lower than $-0.04$. Further there focus values slightly below zero are not predicted as often and focus values around $-0.03$ and around $0.02$ seem to be predicted disproportionally often especially compared to the ground truth.
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/40_results/histogram_predictions_targets.pdf}
