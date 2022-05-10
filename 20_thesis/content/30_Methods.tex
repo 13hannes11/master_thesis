@@ -18,7 +18,10 @@
 \section{Data}
 \label{sec:Methods:Data}
 
-At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study also add information about the microscopes.} Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \autoref{fig:Methods:Data:PatchCreation} illustrates which tiles are kept for an example annotation. The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. \todo{Add some information about the contents and origin of the study also add information about the microscopes.} 
+The dataset contains information about the focus settings of the lens. It has a discrete value range of $[0, 1023]$ and the range of focus is approximately \unit{1.28}{\milli\meter}. In the database, however, the stored focus value is a normalized version of this is the range of $[0,1]$. This normalized value is the value used in the thesis and thus focus values can be converted to mm by multiplying with \unit{1.28}{\milli\meter}. During the imaging process the difference between individual images varies but is approximately in the range of $5 - 10$ steps. This means that the difference between individual images in a focus stack is approximately \unit{6.25}{\micro\meter} to \unit{12.5}{\micro\meter} or a focus value of approximately $0.007$.
+
+Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box to at least 25 percent are kept. \autoref{fig:Methods:Data:PatchCreation} illustrates which tiles are kept for an example annotation. The tile size was chosen due to smaller tile sizes being more difficult to annotate.
 
 \begin{figure}
     \centering
@@ -27,13 +30,7 @@ At the time of writing there is no available dataset for Kato-Katz prepared slid
     \label{fig:Methods:Data:PatchCreation}
 \end{figure}
 
-\todo[inline]{add something about focus values, what they mean and magnitude (range is [0, 1023] normalized to [0, 1]), 
-focus range of microscopy: \unit{4.5}{\milli\meter} to \unit{5.78}{\milli\meter} => \unit{1.28}{\milli\meter}
 
-=> in range [0, 1023] one unit = \unit{0.00125}{\milli\meter} = \unit{1.25}{\micro\meter}
-=> in range [0, 1], 1 = \unit{1280}{\micro\meter}
-
-}
 
 \subsection{Annotation}
 \label{sec:Methods:Data:Annotation}
@@ -48,7 +45,7 @@ To annotate the focus plane of these focus stacks the annotation tool \emph{Focu
 \end{figure}
 
 
-Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as lens parameter) to the most in focus patch. The difference in lens value between neighbouring images of a stack is approximately $0.0068$ \todo{fix this as it needs to match with values above}.  One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
+Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as lens parameter) to the most in focus patch. One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $75\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
 
 \subsection{Augmentation}
 \label{sec:Methods:Data:Augmentation}
