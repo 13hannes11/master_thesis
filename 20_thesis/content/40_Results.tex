@@ -29,7 +29,7 @@ The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below 
         method          & \acs{mae} & \acs{srcc} & \acs{plcc} & \acs{r2} \\
         \hline
         \acs{poop}-\acs{fc}             & 0.0170 & 0.1154 & 0.0357 & 0.0008 \\
-        \acs{poop}-\acs{cnn}            & 0.0151 & 0.4987 & 0.4607 & 0.1360 \\
+        \acs{poop}-\acs{cnn}            & 0.0085 & 0.8605 & 0.8424 & 0.6911 \\
         \acs{poop}-\acs{resnet}-101     & 0.0064 & 0.9177 & 0.9057 & 0.8121 \\
         \acs{poop}-\acs{resnet}-34      & \underline{0.0056} & \underline{0.9386} & \underline{0.9261} & \underline{0.8570} \\
         \acs{poop}-\acs{resnet}-18      & 0.0075 & 0.9014 & 0.8847 & 0.7521 \\
@@ -81,7 +81,7 @@ The models are also compared to traditional focus methods. The results of this c
         \acs{laplacian}                 & 0.60 & 0.50 & 0.73 & 0.62 & 0.53 \\
         \hline
         \acs{poop}-\acs{fc}             & 0.21 & 0.25 & 0.27 & 0.12 & 0.20 \\
-        \acs{poop}-\acs{cnn}            & 0.52 & 0.38 & 0.53 & 0.50 & 0.67 \\
+        \acs{poop}-\acs{cnn}            & 0.71 & 0.50 & 0.80 & 0.75 & 0.80 \\
         \acs{poop}-\acs{resnet}-101     & 0.82 & 0.69 & 0.80 & 0.88 & 0.93 \\
         \acs{poop}-\acs{resnet}-34      & \underline{0.90} & \underline{0.94} & \underline{0.87} & \underline{0.94} & 0.87 \\
         \acs{poop}-\acs{resnet}-18      & 0.82 & 0.69 & 0.73 & 0.88 & \underline{1.00} \\ 
@@ -103,7 +103,7 @@ The models are also compared to traditional focus methods. The results of this c
         \acs{laplacian} & 1.60 & 1.81 & 1.33 & 1.56 & 1.67 \\
         \hline
         \acs{poop}-\acs{fc}              & 3.53 & 3.00 & 3.20 & 4.06 & 3.87 \\
-        \acs{poop}-\acs{cnn}             & 1.98 & 2.38 & 2.07 & 2.19 & 1.27 \\
+        \acs{poop}-\acs{cnn}             & 1.19 & 1.38 & 1.00 & 1.19 & 1.20 \\
         \acs{poop}-\acs{resnet}-101      & 0.92 & 1.06 & 1.07 & 0.94 & 0.60 \\
         \acs{poop}-\acs{resnet}-34       & \underline{0.65} & \underline{0.63} & \underline{0.80} & \underline{0.56} & 0.60 \\
         \acs{poop}-\acs{resnet}-18       & 0.95 & 1.31 & 0.87 & 1.06 & \underline{0.53} \\
@@ -222,7 +222,7 @@ This section is detailing the hardware needed to run each model. Traditional met
         \acs{laplacian}                 & 0.19 &  0.45 & 0.20 &  0.46 & 0.01 & 0.05 \\
         \hline
         \acs{poop}-\acs{fc}             & 0.32 &  6.75 & 0.33 &  6.78 & 0.04 & 0.28 \\
-        \acs{poop}-\acs{cnn}            & 0.27 &  1.59 & 0.27 &  1.62 & 0.02 & 0.22 \\
+        \acs{poop}-\acs{cnn}            & 0.42 &  1.02 & 0.44 &  1.04 & 0.08 & 0.09 \\
         \acs{poop}-\acs{resnet}-101     & 9.35 & 82.75 & 9.46 & 84.28 & 0.88 & 8.83 \\
         \acs{poop}-\acs{resnet}-34      & 3.42 & 37.76 & 3.52 & 37.27 & 0.44 & 5.10 \\
         \acs{poop}-\acs{resnet}-18      & 1.95 & 19.66 & 1.99 & 19.67 & 0.22 & 2.67 \\
@@ -260,7 +260,7 @@ This section is detailing the hardware needed to run each model. Traditional met
         name & model size (MiB) \\
         \hline
         \acs{poop}-\acs{fc}         & 135.1 \\
-        \acs{poop}-\acs{cnn}        &   0.8 \\
+        \acs{poop}-\acs{cnn}        &   0.4 \\
         \acs{poop}-\acs{resnet}-101 & 164.1 \\
         \acs{poop}-\acs{resnet}-34  &  81.4 \\
         \acs{poop}-\acs{resnet}-18  &  42.8 \\
