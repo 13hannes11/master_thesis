@@ -19,7 +19,7 @@
 \label{sec:Results:FocusDistance}
 
 When the task is to estimate the distance or offset to the best focus value \acs{poop}-\acs{resnet}-34 performs best, followed by \acs{poop}-\acs{resnet}-101 and \acs{poop}-\acs{resnet}-18 (refer to \autoref{tab:Results:Models:Accuracy}). \Acs{poop}-\acs{resnet}-34 reaches a \ac{mae} of $0.0056$ which is an average error of less than one image in a focus stack (approximately $0.007$). Further the \ac{srcc} and \ac{plcc} are above $0.9$ thereby showing a strong correlation. The \ac{r2} score of $0.86$ supports this as well.
-The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below $0.04$ except \ac{srcc} with a value of $0.12$. This model shows no direct correlation with the focus input data. The \acs{poop}-\acs{cnn}'s \ac{mae} is only slightly better, but it shows some correlation for \ac{srcc} and \ac{plcc}, however the \ac{r2} score is fairly low with only $0.14$. 
+The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below $0.04$ except \ac{srcc} with a value of $0.12$. This model shows no direct correlation with the focus input data. The \acs{poop}-\acs{cnn}'s \ac{mae} is only slightly worse than \acs{poop}-\acs{resnet} models. It shows still some good correlation for \ac{srcc} and \ac{plcc}, however the \ac{r2} score is just below $0.70$. 
 
 \begin{table}
     \centering
