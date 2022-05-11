@@ -27,16 +27,16 @@ When the task is to estimate the distance or offset to the best focus value \acs
         \hline
         method          & \acs{mae} & \acs{srcc} & \acs{plcc} & \acs{r2} \\
         \hline
-        \acs{poop}-\acs{fc}        & 0.0186 & -0.0384 & -0.0242 & -0.2058 \\
-        \acs{poop}-\acs{cnn}        & 0.0166 &  0.2436 &  0.2339 &  0.0285 \\
-        \acs{poop}-\acs{resnet}-101      & 0.0064 &  0.9177 &  0.9057 &  0.8121 \\
-        \acs{poop}-\acs{resnet}-34       & 0.0056 &  0.9386 &  0.9261 &  0.8570 \\
-        \acs{poop}-\acs{resnet}-18       & 0.0075 &  0.9014 &  0.8847 &  0.7521 \\
+        \acs{poop}-\acs{fc}             & 0.0170 & 0.1154 & 0.0357 & 0.0008 \\
+        \acs{poop}-\acs{cnn}            & 0.0151 & 0.4987 & 0.4607 & 0.1360 \\
+        \acs{poop}-\acs{resnet}-101     & 0.0064 & 0.9177 & 0.9057 & 0.8121 \\
+        \acs{poop}-\acs{resnet}-34      & 0.0056 & 0.9386 & 0.9261 & 0.8570 \\
+        \acs{poop}-\acs{resnet}-18      & 0.0075 & 0.9014 & 0.8847 & 0.7521 \\
     \end{tabular}
     \label{tab:Results:Models:Accuracy}
 \end{table}
 
-\autoref{fig:Results:ScatterPredictedTarget} shows the predictions of in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34). The plot shows a line which represents the perfect match between targets and predictions. The data points in the plot clearly follow this line. Predictions in the negative range also mostly correspond to negative targets. Further, some outliers can be seen in the plot which can be found in the plot.
+\autoref{fig:Results:ScatterPredictedTarget} shows the predictions of in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34. The plot shows a line which represents the perfect match between targets and predictions. The data points in the plot clearly follow this line. Predictions in the negative range also mostly correspond to negative targets. Further, some outliers can be seen in the plot which can be found in the plot.
 
 
 \begin{figure}
@@ -75,12 +75,12 @@ The models are also compared to traditional focus methods. The results of this c
         \cline{2-6}
         method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}                      & 0.40 & 0.31 & 0.60 & 0.31 & 0.40 \\
-        \acs{vol4}                      & 0.44 & 0.50 & 0.60 & 0.50 & 0.13 \\
-        \acs{laplacian}                 & 0.60 & 0.50 & 0.73 & 0.63 & 0.53 \\
+        \acs{mdct}                      & 0.84 & 0.62 & 0.87 & 0.88 & 1.00 \\
+        \acs{vol4}                      & 0.31 & 0.38 & 0.47 & 0.31 & 0.07 \\
+        \acs{laplacian}                 & 0.60 & 0.50 & 0.73 & 0.62 & 0.53 \\
         \hline
-        \acs{poop}-\acs{fc}             & 0.19 & 0.25 & 0.20 & 0.12 & 0.20 \\
-        \acs{poop}-\acs{cnn}            & 0.74 & 0.69 & 0.53 & 0.88 & 0.87 \\
+        \acs{poop}-\acs{fc}             & 0.21 & 0.25 & 0.27 & 0.12 & 0.20 \\
+        \acs{poop}-\acs{cnn}            & 0.52 & 0.38 & 0.53 & 0.50 & 0.67 \\
         \acs{poop}-\acs{resnet}-101     & 0.82 & 0.69 & 0.80 & 0.88 & 0.93 \\
         \acs{poop}-\acs{resnet}-34      & 0.90 & 0.94 & 0.87 & 0.94 & 0.87 \\
         \acs{poop}-\acs{resnet}-18      & 0.82 & 0.69 & 0.73 & 0.88 & 1.00 \\ 
@@ -97,12 +97,12 @@ The models are also compared to traditional focus methods. The results of this c
         \cline{2-6}
         method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}      & 2.31 & 2.13 & 1.93 & 2.63 & 2.53 \\
-        \acs{vol4}      & 2.23 & 1.88 & 1.80 & 2.13 & 3.13 \\
+        \acs{mdct}      & 0.87 & 1.56 & 0.80 & 0.69 & 0.40 \\
+        \acs{vol4}      & 2.45 & 1.88 & 2.07 & 2.50 & 3.40 \\
         \acs{laplacian} & 1.60 & 1.81 & 1.33 & 1.56 & 1.67 \\
         \hline
-        \acs{poop}-\acs{fc}              & 3.27 & 3.31 & 3.47 & 3.00 & 3.33 \\
-        \acs{poop}-\acs{cnn}             & 1.06 & 1.38 & 1.40 & 0.75 & 0.73 \\
+        \acs{poop}-\acs{fc}              & 3.53 & 3.00 & 3.20 & 4.06 & 3.87 \\
+        \acs{poop}-\acs{cnn}             & 1.98 & 2.38 & 2.07 & 2.19 & 1.27 \\
         \acs{poop}-\acs{resnet}-101      & 0.92 & 1.06 & 1.07 & 0.94 & 0.60 \\
         \acs{poop}-\acs{resnet}-34       & 0.65 & 0.63 & 0.80 & 0.56 & 0.60 \\
         \acs{poop}-\acs{resnet}-18       & 0.95 & 1.31 & 0.87 & 1.06 & 0.53 \\
@@ -216,15 +216,15 @@ This section is detailing the hardware needed to run each model. Traditional met
         \cline{2-3}\cline{4-5}\cline{6-7}
         name & \acs{gpu} & \acs{cpu} & \acs{gpu} & \acs{cpu} & \acs{gpu} & \acs{cpu} \\
         \hline
-        \acs{mdct}                      & 0.17 &  0.40 & 0.18 &  0.41 & 0.02 & 0.06 \\
-        \acs{vol4}                      & 0.11 &  0.18 & 0.11 &  0.18 & 0.01 & 0.01 \\
-        \acs{laplacian}                 & 0.19 &  0.43 & 0.19 &  0.44 & 0.01 & 0.03 \\
+        \acs{mdct}                      & 0.20 &  0.49 & 0.23 &  0.50 & 0.06 & 0.08 \\
+        \acs{vol4}                      & 0.11 &  0.13 & 0.11 &  0.13 & 0.01 & 0.01 \\
+        \acs{laplacian}                 & 0.19 &  0.45 & 0.20 &  0.46 & 0.01 & 0.05 \\
         \hline
-        \acs{poop}-\acs{fc}             & 0.31 &  1.67 & 0.31 &  1.68 & 0.02 & 0.06 \\
-        \acs{poop}-\acs{cnn}            & 0.26 &  1.46 & 0.27 &  1.49 & 0.02 & 0.10 \\
-        \acs{poop}-\acs{resnet}-101     & 8.98 & 75.54 & 8.86 & 77.06 & 0.48 & 9.43 \\
-        \acs{poop}-\acs{resnet}-34      & 3.09 & 34.02 & 3.19 & 33.61 & 0.29 & 5.44 \\
-        \acs{poop}-\acs{resnet}-18      & 1.73 & 19.91 & 1.78 & 19.27 & 0.23 & 2.94 \\
+        \acs{poop}-\acs{fc}             & 0.32 &  6.75 & 0.33 &  6.78 & 0.04 & 0.28 \\
+        \acs{poop}-\acs{cnn}            & 0.27 &  1.59 & 0.27 &  1.62 & 0.02 & 0.22 \\
+        \acs{poop}-\acs{resnet}-101     & 9.35 & 82.75 & 9.46 & 84.28 & 0.88 & 8.83 \\
+        \acs{poop}-\acs{resnet}-34      & 3.42 & 37.76 & 3.52 & 37.27 & 0.44 & 5.10 \\
+        \acs{poop}-\acs{resnet}-18      & 1.95 & 19.66 & 1.99 & 19.67 & 0.22 & 2.67 \\
     \end{tabular}
 \end{table}
 
@@ -258,11 +258,11 @@ This section is detailing the hardware needed to run each model. Traditional met
         \hline
         name & model size (MiB) \\
         \hline
-        \acs{poop}-\acs{fc}         &  33.2 \\
+        \acs{poop}-\acs{fc}         & 135.1 \\
         \acs{poop}-\acs{cnn}        &   0.8 \\
-        \acs{poop}-\acs{resnet}-101 & 162.9 \\
-        \acs{poop}-\acs{resnet}-34  &  82.8 \\
-        \acs{poop}-\acs{resnet}-18  &  43.4 \\
+        \acs{poop}-\acs{resnet}-101 & 164.1 \\
+        \acs{poop}-\acs{resnet}-34  &  81.4 \\
+        \acs{poop}-\acs{resnet}-18  &  42.8 \\
     \end{tabular}
 \end{table}
 
