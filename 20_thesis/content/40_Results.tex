@@ -15,10 +15,11 @@
     \end{itemize}
 }
 
-\section{Focus Distance Measure}
+\section{Focus Distance Prediction}
 \label{sec:Results:FocusDistance}
 
 When the task is to estimate the distance or offset to the best focus value \acs{poop}-\acs{resnet}-34 performs best, followed by \acs{poop}-\acs{resnet}-101 and \acs{poop}-\acs{resnet}-18 (refer to \autoref{tab:Results:Models:Accuracy}). \Acs{poop}-\acs{resnet}-34 reaches a \ac{mae} of $0.0056$ which is an average error of less than one image in a focus stack (approximately $0.007$). Further the \ac{srcc} and \ac{plcc} are above $0.9$ thereby showing a strong correlation. The \ac{r2} score of $0.86$ supports this as well.
+The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below $0.04$ except \ac{srcc} with a value of $0.12$. This model shows no direct correlation with the focus input data. The \acs{poop}-\acs{cnn}'s \ac{mae} is only slightly better, but it shows some correlation for \ac{srcc} and \ac{plcc}, however the \ac{r2} score is fairly low with only $0.14$. 
 
 \begin{table}
     \centering
@@ -36,7 +37,7 @@ When the task is to estimate the distance or offset to the best focus value \acs
     \label{tab:Results:Models:Accuracy}
 \end{table}
 
-\autoref{fig:Results:ScatterPredictedTarget} shows the predictions of in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34. The plot shows a line which represents the perfect match between targets and predictions. The data points in the plot clearly follow this line. Predictions in the negative range also mostly correspond to negative targets. Further, some outliers can be seen in the plot which can be found in the plot.
+\autoref{fig:Results:ScatterPredictedTarget} shows the predictions of in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34. The plot shows a line which represents the ideal match between targets and predictions. The data points in the plot clearly follow this line, they however have an approximate spread of 0.01 across most predictions. When a target range close to zero is reached the observed vertical spread is larger. Negative predictions also mostly correspond to negative targets. Further, one outlier can be seen with a target value of smaller than $-0.08$ and one with a target value of smaller than $-0.05$. Additional outliers are seen across the whole plot which increase the spread quite substantially.
 
 
 \begin{figure}
@@ -46,7 +47,7 @@ When the task is to estimate the distance or offset to the best focus value \acs
     \label{fig:Results:ScatterPredictedTarget}
 \end{figure}
 
-To give a clearer overview of the predictions also a histogram has been plotted. The histogram in \autoref{fig:Results:HistogramPredictedTarget} shows a fairly similar distribution between ground truth and targets. Of note, however, is that there are no predictions for bins starting at lower than $-0.04$. Further there focus values slightly below zero are not predicted as often and focus values around $-0.03$ and around $0.02$ seem to be predicted disproportionally often especially compared to the ground truth.
+To give a clearer overview of the predictions also a histogram has been plotted. The histogram in \autoref{fig:Results:HistogramPredictedTarget} shows a fairly similar distribution between ground truth and targets. Of note, however, is that there are no predictions for bins starting at lower than $-0.04$. Further focus values slightly below zero are not predicted as often and focus values around $-0.03$ and around $0.02$ seem to be predicted disproportionally often especially compared to the ground truth. This is consistent with the higher spread observed close to zero in \autoref{fig:Results:ScatterPredictedTarget}.
 
 \begin{figure}
     \centering
