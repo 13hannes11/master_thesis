@@ -30,7 +30,7 @@ When the task is to estimate the distance or offset to the best focus value \acs
         \acs{poop}-\acs{fc}             & 0.0170 & 0.1154 & 0.0357 & 0.0008 \\
         \acs{poop}-\acs{cnn}            & 0.0151 & 0.4987 & 0.4607 & 0.1360 \\
         \acs{poop}-\acs{resnet}-101     & 0.0064 & 0.9177 & 0.9057 & 0.8121 \\
-        \acs{poop}-\acs{resnet}-34      & 0.0056 & 0.9386 & 0.9261 & 0.8570 \\
+        \acs{poop}-\acs{resnet}-34      & \underline{0.0056} & \underline{0.9386} & \underline{0.9261} & \underline{0.8570} \\
         \acs{poop}-\acs{resnet}-18      & 0.0075 & 0.9014 & 0.8847 & 0.7521 \\
     \end{tabular}
     \label{tab:Results:Models:Accuracy}
@@ -75,15 +75,15 @@ The models are also compared to traditional focus methods. The results of this c
         \cline{2-6}
         method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}                      & 0.84 & 0.62 & 0.87 & 0.88 & 1.00 \\
+        \acs{mdct}                      & \underline{0.84} & \underline{0.62} & \underline{0.87} & \underline{0.88} & \underline{1.00} \\
         \acs{vol4}                      & 0.31 & 0.38 & 0.47 & 0.31 & 0.07 \\
         \acs{laplacian}                 & 0.60 & 0.50 & 0.73 & 0.62 & 0.53 \\
         \hline
         \acs{poop}-\acs{fc}             & 0.21 & 0.25 & 0.27 & 0.12 & 0.20 \\
         \acs{poop}-\acs{cnn}            & 0.52 & 0.38 & 0.53 & 0.50 & 0.67 \\
         \acs{poop}-\acs{resnet}-101     & 0.82 & 0.69 & 0.80 & 0.88 & 0.93 \\
-        \acs{poop}-\acs{resnet}-34      & 0.90 & 0.94 & 0.87 & 0.94 & 0.87 \\
-        \acs{poop}-\acs{resnet}-18      & 0.82 & 0.69 & 0.73 & 0.88 & 1.00 \\ 
+        \acs{poop}-\acs{resnet}-34      & \underline{0.90} & \underline{0.94} & \underline{0.87} & \underline{0.94} & 0.87 \\
+        \acs{poop}-\acs{resnet}-18      & 0.82 & 0.69 & 0.73 & 0.88 & \underline{1.00} \\ 
     \end{tabular}
     \label{tab:Results:Comparison:RelatedWorks:Accuracy}
 \end{table}
@@ -97,15 +97,15 @@ The models are also compared to traditional focus methods. The results of this c
         \cline{2-6}
         method & all & trichuris & ascaris & schistosoma & hookworm \\
         \hline
-        \acs{mdct}      & 0.87 & 1.56 & 0.80 & 0.69 & 0.40 \\
+        \acs{mdct}      & \underline{0.87} & \underline{1.56} & \underline{0.80} & \underline{0.69} & \underline{0.40} \\
         \acs{vol4}      & 2.45 & 1.88 & 2.07 & 2.50 & 3.40 \\
         \acs{laplacian} & 1.60 & 1.81 & 1.33 & 1.56 & 1.67 \\
         \hline
         \acs{poop}-\acs{fc}              & 3.53 & 3.00 & 3.20 & 4.06 & 3.87 \\
         \acs{poop}-\acs{cnn}             & 1.98 & 2.38 & 2.07 & 2.19 & 1.27 \\
         \acs{poop}-\acs{resnet}-101      & 0.92 & 1.06 & 1.07 & 0.94 & 0.60 \\
-        \acs{poop}-\acs{resnet}-34       & 0.65 & 0.63 & 0.80 & 0.56 & 0.60 \\
-        \acs{poop}-\acs{resnet}-18       & 0.95 & 1.31 & 0.87 & 1.06 & 0.53 \\
+        \acs{poop}-\acs{resnet}-34       & \underline{0.65} & \underline{0.63} & \underline{0.80} & \underline{0.56} & 0.60 \\
+        \acs{poop}-\acs{resnet}-18       & 0.95 & 1.31 & 0.87 & 1.06 & \underline{0.53} \\
     \end{tabular}
     \label{tab:Results:Comparison:RelatedWorks:IndexMAE}
 \end{table}
