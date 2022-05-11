@@ -210,6 +210,14 @@ A similar result can be seen bin\autoref{tab:Results:Comparison:RelatedWorks:Ind
 
 This section is detailing the hardware needed to run each model. Traditional methods need the least amount of memory and overall are the fastest. \Acl{nn} models, need the most additional memory and the memory and computation time increases with model size. 
 
+\begin{itemize}
+    \item speed measurements: \autoref{tab:Results:Computation:Speed} and \autoref{fig:Results:Computation:Speed}
+    \item CNN similar performance to traditional metrics on CPU takes 2.5 longer as on GPU and for both abour double the time of MDCT
+    \item Best model ResNet34 takes 17 times as long on GPU and 77 times as long on CPU compared to MDCT
+    \item ResNet34 speedup compared to its own CPU version 11 times 
+    \item ResNet34 runtime increases fairly linear when comparing to its size 
+\end{itemize}
+
 
 \begin{figure}
     \centering
