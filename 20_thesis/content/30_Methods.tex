@@ -88,7 +88,7 @@ The \acs{poop}-\acs{fc} models contain five layers, whereby each layer first use
 
 The \acs{poop}-\acs{cnn} models contain two convolutional layers, each followed by a max-pooling layer. This is followed by three linear layers. The first linear layers size is governed by previous layers. The final  \acs{poop}-\acs{cnn} model uses a max-pooling kernel size of 2. The first convolutional layer has a kernel size of $3$ and uses $9$ channels, the second has a convolution size of $7$ and uses $6$ channels. The tunable linear layers were set to a size of $32$ and $72$. The learning rate was set to $0.001$.
 
-The \acp{resnet} models use predefined \acp{resnet} models from PyTorch. However, the fully connected layer is changed to provide only a single regression output. Another, hyperparameter is the use of a pretrained model trained on ImageNet \todo{cite dataset} to initialize the weights of a model. All presented \ac{resnet} models use transfer learning, however, their learning rate varies. The resulting hyperparameters are shown in \autoref{tab:Methods:Models:Comparison}.
+The \ac{resnet} models use predefined \ac{resnet} models from PyTorch. However, the fully connected layer is changed to provide only a single regression output. Another, hyperparameter is the use of a pretrained model trained on ImageNet \cite{deng2009imagenet} to initialize the weights of a model. All presented \ac{resnet} models use transfer learning, however, their learning rate varies. The resulting hyperparameters are shown in \autoref{tab:Methods:Models:Comparison}.
 
 \begin{table}[ht]
     \centering
@@ -110,11 +110,9 @@ Initializing model parameters for training based on a model that has been traine
 \section{Training}
 \label{sec:Methods:Training}
 
-Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training \ac{mse} is used as loss function.
-
-\Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna \todo{reference Optuna}. In these runs the architecture and hyperparameters are optimized.
-
-\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna  optimizer. Then, the best performant models from different \acs{resnet} sizes are chosen.
+Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training \ac{mse} is used as loss function. To optimize hyperparameters the optimization framework Optuna \cite{optuna} is used.
+\Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna. In these runs the architecture and hyperparameters are optimized.
+\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna optimizer. Then, the best performant models from different \acs{resnet} sizes are chosen.
 
 \todo[inline]{Potentially write about value range that the optimizer gets}
 
@@ -126,7 +124,7 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 
 The trained models are evaluated using multiple metrics that are described in this section.
 
-The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations pytorchmetrics \todo{reference} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model prediction are compared to the values of a focus stack.
 
 The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of model. It is defined as:
