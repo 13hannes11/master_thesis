@@ -11,12 +11,31 @@
     \end{itemize}
 }
 
-
 \begin{itemize}
-    \item Discussion: Why is conv and fully connected not learning but is for FocusLiteNN
+    \item Major Findings:
     \begin{itemize}
+        \item ResNet learns the task surprisingly well and can be used to reduce data.
+        \item Models performing well on distance estimation also perform really well on picking the best image of a focus stack
+        \item Allows the usage of models for other tasks than just predicting distance from focal plane
+        \item MDCT works really well for picking the best focus of multiple images. Potentially great for autofocussing.
+        \item Small CNN can perform relatively decent on the task
+    \end{itemize}
+    \item Relate and evaluate data
+    \begin{itemize}
+        \item Data not perfect - outliers in target vs. prediction plot (some likely due to data issues, maybe hard to find focus or eggs not really visible and some seem to have misreadings of focus values as the data point are so far off.)
+        \item Best images on focus stack can be used to stich images together to have eggs with different focus planes in the same image in focus.
+        \item Vol4 fast but not very good for this use case
+    \end{itemize}
+    \item Interpret data
+    \begin{itemize}
+        \item Small CNN like for FocusLiteNN that works quite well
+        \item Additional performance comes at a high cost of computation
+    \end{itemize}
+    \item Discussion: Why is fully connected not working well
+    \begin{itemize}
+        \item wrong architecture missing spacial information
         \item Too small to learn meaningful (positive negative relations)
-        \item More data?
+        \item More data needed?
         \item Type of images (eggs and not background means other things than just sharpness need to be learned)
     \end{itemize}
 \end{itemize}
