@@ -10,3 +10,38 @@
         \item No more new results and seldom any references (at most for alternative, unmentioned approaches)
     \end{itemize}
 }
+
+\begin{itemize}
+    \item Summary/Conclusion:
+    \begin{itemize}
+        \item Thesis developed a focus annotation tool to efficiently generate annotations
+        \item Investigated feasibility of predicting distance to focal plane
+
+        \item Developed CNN models that work well on the task and outperform all traditional methods
+        \item However, hardware requirements are much higher for best performing models, the methods are much slower and require more memory
+        \item Smaller cnn models seem to work fairly well (relate to focusliteNN) on the task but don't beat best traditional metric
+        \item Fully connected models have trouble with the task
+        \item Larger CNN models fare quite good at the task
+    \end{itemize}
+
+    \item Limitations
+    \begin{itemize}
+        \item Limited data
+        \item Only one person annotated data
+        \item Only one image is marked as in focus even when multiple could be
+        \item No background usage, might cause models to miss important details, make stitched images to be perceived as not in focus
+        \item Not running seperate optimizer runs for ResNet might make individual comparison between resnet models inaccurate
+        \item Speed comparison not ideal as neither the nn nor the traditional methods were particularly optimised for speed
+    \end{itemize}
+
+    \item Future Work:
+    \begin{itemize}
+        \item How would more modern models fare on the task? (ResNext, VisionTransformer, etc.)
+        \item Investigate why small CNNs without activation function seem to perform better on this task
+        \item Investigate if feasible to use smaller models like focusliteNN for distance prediction
+        \item Investigate input size agnostic models on whole images (ResNet)
+        \item Investigate training models that generate heatmap for whole image based on automatically labelled data with patch based models
+        \item Introduce background annotations and investigate effect on performance
+        \item Can performance improve with more data?
+    \end{itemize}
+\end{itemize}
