@@ -70,7 +70,7 @@ The models are also compared to traditional focus methods. The results of this c
 
 \autoref{tab:Results:Comparison:RelatedWorks:Accuracy} shows the accuracy of models when predicting the correct image ($\pm 1$) of a focus stack. A higher accuracy is a better. Of note is the high accuracy when using \ac{mdct}. In overall accuracy \ac{mdct} beats all other traditional methods with a large margin. Further it reaches a higher result than all neural network based models except the best performing \acs{poop}-\acs{resnet}-32. Also, of note should be that of \acs{poop}-\acs{cnn} which reaches an accuracy of $0.71$ and thereby beats most traditional methods (\ac{vol4} and \ac{laplacian}). The worst performing model is \acs{poop}-\acs{fc} followed by \ac{vol4}.
 
-A similar result can be seen in \autoref{tab:Results:Comparison:RelatedWorks:IndexMAE} which, shows \ac{mae}$^*$ of the index. With this metric a lower error shows a better result. The best performing model is \acs{poop}-\acs{resnet}-34 followed by \acs{mdct}. \Acs{mdct} has the lowest error when predicting hookworms, but all other categories are lead by \acs{poop}-\acs{resnet}-34. \Acs{poop}-\acs{resnet}-18 commonly is off by one image with an error of $0.95$. The same data as also visualized in \autoref{fig:Results:Comparison:RelatedWorks:IndexMAE} as a violin plot. The violin plot shows that maximum error for \ac{mdct} is fairly low. Errors of \ac{mdct} where the index is predicted in the negative direction do not exceed an off by minus one. The positive direction however is off to a larger extend. The overall maximum and minimum error of \acs{poop}-\acs{resnet}-34 are in a similar range, however, it is more symmetric. Another characteristic that the plot reveals is that the mean of most metrics is close to zero.
+A similar result can be seen bin\autoref{tab:Results:Comparison:RelatedWorks:IndexMAE} which, shows \ac{mae}$^*$ of the index. With this metric a lower error shows a better result. The best performing model is \acs{poop}-\acs{resnet}-34 followed by \acs{mdct}. \Acs{mdct} has the lowest error when predicting hookworms, but all other categories are lead by \acs{poop}-\acs{resnet}-34. \Acs{poop}-\acs{resnet}-18 commonly is off by one image with an error of $0.95$. The same data as also visualized in \autoref{fig:Results:Comparison:RelatedWorks:IndexMAE} as a violin plot. The violin plot shows that maximum error for \ac{mdct} is fairly low. Errors of \ac{mdct} where the index is predicted in the negative direction do not exceed an off by minus one. The positive direction however is off to a larger extend. The overall maximum and minimum error of \acs{poop}-\acs{resnet}-34 are in a similar range, however, it is more symmetric. Another characteristic that the plot reveals is that the mean of most metrics is close to zero.
 
 
 \begin{table}
@@ -128,84 +128,104 @@ A similar result can be seen in \autoref{tab:Results:Comparison:RelatedWorks:Ind
 \section{Heatmap and Stitched Image Generation}
 \label{sec:Results:HeatStiched}
 
-\begin{itemize}
-    \item Model can be used for other things than predicting focus distance
-    \item Heatmap shows distance from focus plane.
-    \item Heatmap data can be used to generate contour plot that shows when which parts of an image are in focus.
-    \item Stitch image together
-\end{itemize}
+This section contains visualizations of focus stacks and individual images that are all taken from the same focus stack. One image of this focus stack is shown in \autoref{fig:Results:Stack:ImageSliceVisualisation}. Later, \autoref{fig:Results:Stack:SideBySide} shows slices of different images of the same focus stack. \autoref{fig:Results:Stack:ImageSliceVisualisation} describes where from the slices are taken. The image shown has the stack index 4.
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.75\textwidth}
+    \includegraphics[width=0.6\textwidth]{images/40_results/image_slice_visualisation.pdf}
+    \caption{Visualization of focus stack of image slide and the image slice taken from the image.}
+    \label{fig:Results:Stack:ImageSliceVisualisation}
+\end{figure}
+
+
+To get an overview of different focus levels different image slices of a focus stack are shown in \autoref{fig:Results:Stack:SideBySide}. The slice of the image contains one egg. The egg is most in focus in the slice with stack index 4 (\autoref{fig:Results:Stack:SideBySide:Index0}). On the other hand \autoref{fig:Results:Stack:SideBySide:Index2} shows the background most clear. This illustrates the different focus planes of background and focus image. A mosaic image that was produced using \acs{poop}-\acs{resnet}-34 is shown in \autoref{fig:Results:Stack:SideBySide:Stiched}. The mosaic or stiched image mostly leaves the background unfocused, however, some features like a stone (right and upwards of the egg) are shown in focus. Further the egg seems to stem mostly from the image with index 5 (\autoref{fig:Results:Stack:SideBySide:Index1}). Of note is also, that the picture is produced based on the whole focus stack, not only the images shown.
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/40_results/focus_stack_4.jpg}
+        \caption{stack index: 4}
+        \label{fig:Results:Stack:SideBySide:Index0}
+        \vspace{1em}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/40_results/focus_stack_5.jpg}
+        \caption{stack index: 5}
+        \label{fig:Results:Stack:SideBySide:Index1}
+        \vspace{1em}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/40_results/focus_stack_6.jpg}
+        \caption{stack index: 6}
+        \label{fig:Results:Stack:SideBySide:Index2}
+        \vspace{1em}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/40_results/focus_stack_stiched.png}
+        \caption{stitched image}
+        \label{fig:Results:Stack:SideBySide:Stiched}
+    \end{subfigure}
+    \caption{Comparison of a cropped part of images from the focus stack to a generated combined image based on the focus prediction of the model (\acs{poop}-\acs{resnet}-34).}
+    \label{fig:Results:Stack:SideBySide}
+\end{figure}
+
+The properties of distance prediction allow the generation of a heatmap on a whole image taken by a microscope. \autoref{fig:Results:Stack:HeatMap} shows a heatmap generated using \acs{poop}-\acs{resnet}-34 on different images of a focus stack. The heatmaps for the images with the index $3$, $4$ and $5$ are shown in \autoref{fig:Results:Stack:HeatMap:Stack3}, \autoref{fig:Results:Stack:HeatMap:Stack4} and \autoref{fig:Results:Stack:HeatMap:Stack5} respectively. Areas predicted to be in focus are shown in white, areas shown in red are predicted to be off the focus plane in the negative direction and areas in blue in the positive direction. The image with index 3 is dominated by mostly red areas however, some areas are also coloured light blue and therefore seem to be fairly close to the focal plane. When comparing this to the image with index 4, it is noticeable that the blue coloured areas are darker, thereby showing that they are further away from the ideal focus plane. The red areas are lighter and therefore are closer to being in-focus. The image with index 5 contains almost no red. It mostly is coloured blue. The highlighted spots are consistent across images and also the predicted distances changes in accordance with the index. The last image (\autoref{fig:Results:Stack:HeatMap:Stiched}) shows the heatmap of the stitched image of the whole focus stack. The colouring is least apparent and the visible patterns match that of the other images.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/40_results/heatmap_legend.pdf}
     \end{subfigure}
-    \begin{subfigure}[b]{0.5\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \caption{stack index 3}
         \includegraphics[width=\textwidth]{images/40_results/heatmap_layer_3.pdf}
+        \caption{stack index: 3}
         \label{fig:Results:Stack:HeatMap:Stack3}
+        \vspace{1em}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.5\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \caption{stack index 4}
         \includegraphics[width=\textwidth]{images/40_results/heatmap_layer_4.pdf}
+        \caption{stack index: 4}
         \label{fig:Results:Stack:HeatMap:Stack4}
+        \vspace{1em}
     \end{subfigure}
     \par
-    \begin{subfigure}[b]{0.5\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \caption{stack index 5}
         \includegraphics[width=\textwidth]{images/40_results/heatmap_layer_5.pdf}
+        \caption{stack index 5}
         \label{fig:Results:Stack:HeatMap:Stack5}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.5\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \caption{stitched image}
         \includegraphics[width=\textwidth]{images/40_results/heatmap_stiched.pdf}
+        \caption{stitched image}
         \label{fig:Results:Stack:HeatMap:Stiched}
     \end{subfigure}
     \caption{Figure comparing the heatmap of images of a focus stack to a generated image based on the focus prediction model (\acs{poop}-\acs{resnet}-34).}
     \label{fig:Results:Stack:HeatMap}
 \end{figure}
 
+Lastly, \autoref{fig:Results:Stack:ContourPlot} shows a contour plot of the image indexes that the model (\acs{poop}-\acs{resnet}-34) predicts to be most in focus. The majority of the image is predicted to be in focus with and index of 4. There are some patches with a predicted index of 5. A similar are is occupied by parts which are predicted to be in focus at index 3. Lastly, at the edges and in the corners some small areas are predicted to be best in focus in the image with index 2. 
+
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{images/40_results/focus_stack_contour_plot.pdf}
+    \includegraphics[width=0.75\textwidth]{images/40_results/focus_stack_contour_plot.pdf}
     \caption{Contour plot showing which image of the focus stack is most in focus according to the model (\acs{poop}-\acs{resnet}-34).}
     \label{fig:Results:Stack:ContourPlot}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 4}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_4.jpg}
-        \label{fig:Results:Stack:SideBySide:Index0}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 5}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_5.jpg}
-        \label{fig:Results:Stack:SideBySide:Index1}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stack index: 6}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_6.jpg}
-        \label{fig:Results:Stack:SideBySide:Index2}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \caption{stitched image}
-        \includegraphics[width=\textwidth]{images/40_results/focus_stack_stiched.png}
-        \label{fig:Results:Stack:SideBySide:Stiched}
-    \end{subfigure}
-    \caption{Comparison of images from the focus stack to a generated combined image based on the focus prediction of the model (\acs{poop}-\acs{resnet}-34).}
-    \label{fig:Results:Stack:SideBySide}
-\end{figure}
+\FloatBarrier
 
 \section{Speed and Memory Consumption}
 \label{sec:Results:Computation}
