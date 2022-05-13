@@ -249,16 +249,10 @@ Lastly, \autoref{fig:Results:Stack:ContourPlot} shows a contour plot of the imag
 \section{Speed and Memory Consumption}
 \label{sec:Results:Computation}
 
-This section is detailing the hardware needed to run each model. Traditional methods need the least amount of memory and overall are the fastest. \Acl{nn} models, need the most additional memory and the memory and computation time increases with model size. 
+This section is detailing the hardware needed to run each model. Traditional methods need the least amount of memory and overall are the fastest. \Acl{nn} models, need the most additional memory and the memory and computation time increases with model size. The measured speed is shown in  \autoref{fig:Results:Computation:Speed} and \autoref{fig:Results:Computation:Speed}.
+The fastest model across all is \ac{vol4} with a runtime per patch of \unit{0.13}{\milli\second} on the \ac{cpu} and \unit{0.11}{\milli\second} on the \ac{gpu}. The fastest method when only considering machine learning models is \ac{poop}-\ac{fc} on the \ac{gpu} and \ac{poop}-\ac{cnn} on the \ac{cpu}. All traditional models are faster than machine learning models. Of note is that \ac{poop}-\ac{cnn} is approximately half as fast when compared to the performance of traditional methods, especially \ac{laplacian} and \ac{mdct}. This is the case on the \ac{cpu} and \ac{gpu}. 
 
-\begin{itemize}
-    \item speed measurements: \autoref{tab:Results:Computation:Speed} and \autoref{fig:Results:Computation:Speed}
-    \item CNN similar performance to traditional metrics on CPU takes 2.5 longer as on GPU and for both abour double the time of MDCT
-    \item Best model ResNet34 takes 17 times as long on GPU and 77 times as long on CPU compared to MDCT
-    \item ResNet34 speedup compared to its own CPU version 11 times 
-    \item ResNet34 runtime increases fairly linear when comparing to its size 
-\end{itemize}
-
+\ac{poop}-\ac{resnet} models do not compare in speed to any of the traditional metrics. They are approximately $10$ to $50$ times slower on the \ac{gpu} (when comparing to \ac{laplacian} and \ac{mdct}) and approximately $40$ to $170$ times slower on the \ac{cpu}. Larger \ac{resnet} models increase their runtime fairly linearly with size, especially on the \ac{gpu}. Further, the difference between \ac{cpu} and \ac{gpu} is largest for \ac{poop}-\ac{fc} with a factor of $20$, followed by \ac{resnet} models with a factor of around $10$. The smallest difference between \ac{gpu} and \ac{cpu} is obtained by \ac{vol4}. Overall, traditional methods see the lowest speed difference.
 
 \begin{figure}
     \centering
