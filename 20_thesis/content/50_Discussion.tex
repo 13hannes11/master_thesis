@@ -1,46 +1,16 @@
 \chapter{Discussion}
 \label{ch:Discussion}
 
-\todo[inline, caption={}]{
-    \begin{itemize}
-        \item Report your accomplishments by highlighting major findings.
-        \item Relate and evaluate your data in the light of previous research.
-        \item Interpret your data by making suggestions as to why your results are the way they are
-    \end{itemize}
-}
+The key results in \autoref{ch:Results} show that using a neural network based model is feasible. \Ac{resnet} based models perform well on this task and manage to outperform traditional metrics in related tasks such as selecting the best in focus image from a focus stack. Further, the developed \ac{poop}-\ac{cnn} model performs on a similar performance level as other traditional metrics. Surprising, was that \ac{mdct} outperforms \ac{vol4} by such large extent. Due to \textcite{mateos-perez2012comparative} study, the expectation was to see similar performance levels between \ac{mdct} and \ac{vol4}.
 
-\todo[inline]{Restructure bullet points to follow clear line of argumentation}
+The distance prediction of developed models might have been hampered slightly by outliers which are present in both scatter plots (see \autoref{fig:Results:ScatterPredictedTarget}). This outlier presence suggests that these wrongful predictions are not only a result of difficult to predict images but also that some images might have wrong target information which could be caused by erroneous sensor readings when collecting the data. A further cause of error could be that the data was annotated by only a single person. Some images also contained eggs which were difficult to spot therefore these might have additionally caused wrong annotations and predictions.
 
-\begin{itemize}
-    \item Major Findings:
-    \begin{itemize}
-        \item ResNet learns the task surprisingly well and can be used to reduce data.
-        \item Models performing well on distance estimation also perform really well on picking the best image of a focus stack
-        \item Allows the usage of models for other tasks than just predicting distance from focal plane
-        \item MDCT works really well for picking the best focus of multiple images. Potentially great for autofocussing.
-        \item Small CNN can perform relatively decent on the task
-    \end{itemize}
-    \item Relate and evaluate data
-    \begin{itemize}
-        \item Data not perfect - outliers in target vs. prediction plot (some likely due to data issues, maybe hard to find focus or eggs not really visible and some seem to have misreadings of focus values as the data point are so far off.)
-        \item Best images on focus stack can be used to stich images together to have eggs with different focus planes in the same image in focus.
-        \item Vol4 fast but not very good for this use case
-    \end{itemize}
-    \item Interpret data
-    \begin{itemize}
-        \item Small CNN like for FocusLiteNN that works quite well
-        \item Additional performance comes at a high cost of computation
-    \end{itemize}
-    \item Discussion: Why is fully connected not working well
-    \begin{itemize}
-        \item wrong architecture missing spacial information
-        \item Too small to learn meaningful (positive negative relations)
-        \item More data needed?
-        \item Type of images (eggs and not background means other things than just sharpness need to be learned)
-    \end{itemize}
-\end{itemize}
+Also, on the task of distance prediction the small \ac{poop}-{cnn} model does not capture the task as well as larger \ac{poop}-\ac{resnet} models. This might be caused due to the shallow model not being sufficiently complex for the data. Further, the \ac{poop}-\ac{fc} model did not do well on learning the task, it also was the worse method when selecting the best image from a focus-stack. A likely explanation is the missing spatial information that is explicitly present in convolution based models. With sufficient data a \{fc] might be able to learn important spacial relationships, but the limited amount of data did not allow that.
 
+Similar to the results from \textcite{wang2020focuslitenn} the best performing \ac{resnet} models were not the largest ones. This might be due to lack of sufficient data to make use of the additional size larger \ac{resnet} models have. Also like \citeauthor{wang2020focuslitenn} the results in this thesis show that a small \ac{cnn} is able to tackle the problem with good compromise between accuracy and speed. However, \citeauthor{wang2020focuslitenn} \textit{FocusLiteNN} have a smaller performance gap, when compared to \ac{resnet}, than observed in this thesis. A likely explanation is the different focus of this thesis as \citeauthor{wang2020focuslitenn} focus on producing a fast and small model as opposed to being a feasibility study. Another factor could be the difference in the problem as in this thesis the distance and direction to the focus plane are estimated instead of only the degree of to which an image is out of focus.
 
+The strong performance of \ac{mdct} and the week performance of \ac{vol4} came as a surprise. A possible explanation could be the limited neighbourhood of pixels that \ac{vol4} considers. \Ac{mdct} is slower due to considering more neighbouring pixels, but this might enable it to use more information. The \Ac{laplacian} focus metric currently used in the microscopes is outperformed by \ac{mdct} and \ac{poop}-\ac{cnn} and, thereofer, a switch to \ac{mdct} or to \ac{poop}-\ac{cnn} should be considered.
 
+As shown in \autoref{sec:Results:HeatStiched} the \ac{poop} models can be used to generate distance plots over a whole image or even a whole slide. This potentially could give information on the height and density of a probe in the sample. Further, generated stitched images can be used to reduce the need to store as much data. Stitched images show that important parts of an image to identify an egg are in focus, the background, however, is not reliably in focus. This could cause problems when the model produces wrong predictions and an egg in a stitched image cannot be detected. Moreover, the generation of such images, is currently slow as many small patches need to be predicted. Therefore, the output of a patch-based model could be used to automatically annotate data. Such data then can be used to train models that give a focus-distance height map as model output.
 
-\todo[inline]{Possible applications of the model (this might be better to have in conclusion chapter though?)}
+In terms of speed traditional methods outperform \ac{poop} models substantially. Therefore, \ac{poop}-\ac{resnet} models cannot be used in the same domain as traditional models. \Ac{poop}-\ac{resnet} can due to their speed limitations only be used for post-processing and not directly during scanning. \Ac{poop}-\ac{cnn} can compete with traditional methods therefore it is worth considering for similar applications. Further, of note is that the improved performance of \Ac{poop}-\ac{resnet} comes at a high computational performance. Moreover, not all models seem to equally benefit from running on a \ac{gpu}. This is likely due to the \ac{gpu}'s parallelism not being fully utilized by smaller models.
