@@ -1,7 +1,7 @@
 \chapter{Conclusion and Future Work}
 \label{ch:Conclusion}
 
-This section briefly summarizes the whole thesis, gives a conclusion. This is followed by limitations and future work.
+This section briefly summarizes the whole thesis, gives a conclusion, followed by limitations and possible future work.
 
 \todo[inline, caption={}]{
     \begin{itemize}
@@ -27,27 +27,17 @@ Overall, the results of this thesis show the feasibility of using machine learni
 
 This section first discusses limitations and how they inform future work.
 
-\begin{itemize}
-    \item Limitations
-    \begin{itemize}
-        \item Limited data
-        \item Only one person annotated data
-        \item Only one image is marked as in focus even when multiple could be
-        \item No background usage, might cause models to miss important details, make stitched images to be perceived as not in focus
-        \item Not running seperate optimizer runs for ResNet might make individual comparison between resnet models inaccurate
-        \item Speed comparison not ideal as neither the nn nor the traditional methods were particularly optimised for speed
-    \end{itemize}
-\end{itemize}
+The data used in this thesis stems only from one study, this can reduce generalizability of results. Further, focus annotations were made only by the author of this thesis, therefore, errors, especially with more ambigious cases can affect results. Only having one image marked as in focus when possibly multiple images can be perceived as in-focus also could have such effects.
+Another potential limitation is the use of only image patches which have eggs in them. This approach might, therefore, not be applicable  for applications that require also focusing on background.
+To mitigate data related issues future work should use multiple studies, if possible have multiple annotators to cross-check annotations and should consider allowing multiple in-focus images. Further, the effect of including background patches in the data should be investigated.
 
-\begin{itemize}
-    \item Future Work:
-    \begin{itemize}
-        \item How would more modern models fare on the task? (ResNext, VisionTransformer, etc.)
-        \item Investigate how performance can be improved (especially small models).
-        \item Investigate input size agnostic models on whole images (ResNet)
-        \item Investigate training models that generate heatmap for whole image based on automatically labelled data with patch based models
-        \item Introduce background annotations and investigate effect on performance
-        \item Investigate what features allow models to predict direction
-        \item Can performance improve with more data?
-    \end{itemize}
-\end{itemize}
+\Ac{resnet} models were not trained in separate optimizer runs, this could especially impact the final results and the comparability between individual models. Future, work, especially that is concerned with extracting the best performance from models should investigate the performance differences further.
+
+Also, speed comparisons might not be accurate, as little effort in optimizing models and traditional approaches was undertaken.
+
+Additional future work could investigate how other and more modern models (e.g., vision transformers \cite{dosovitskiy2021image}, ResNeXt \cite{xie2017aggregated}) perform on focus distance estimation. Further optimizations in terms of speed and also investigations on improving small model performance could help improve the range of applications focus detection models can be used at.
+Moreover, training with larger amounts of data could also further improve results and should therefore be investigated.
+
+Penultimately, models which are largely size independent and predict a grid of focus points on a whole image instead of using only small patches should be investigated.
+
+Lastly, for the task of generating stitched focus-stack images generative models like generative adversarial networks \cite{goodfellow2014generative} are a potential avenue of investigation.
