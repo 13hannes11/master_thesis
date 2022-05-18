@@ -18,19 +18,9 @@ This section briefly summarizes the whole thesis, gives a conclusion. This is fo
 \section{Conclusion}
 \label{sec:Conclusion:Conclusion}
 
-\begin{itemize}
-    \item Summary/Conclusion:
-    \begin{itemize}
-        \item Thesis developed a focus annotation tool to efficiently generate annotations
-        \item Investigated feasibility of predicting distance to focal plane
+In summary the goal of this thesis was to evaluate the feasibility of detecting the focus distance of microscopy slides. The dataset used are Kato-Katz prepared image slides which contain \aclp{sth} and Schistosoma eggs. As they were missing focus annotations an efficient annotation tool for annotating image patches was developed. Further, \ac{poop} models are introduced which were trained on the annotated data. These models are not only evaluated on focus distance detection but also compared to traditional metrics for selecting the most in-focus image in a focus stack. Models that perform well on focus distance detection also perform well on the other task. Also, this study shows that efficient fast models are able to learn the given task as well, however, trading accuracy for computational efficiency.
+Overall, the results of this thesis show the feasibility of using machine learning models for focus distance estimation.
 
-        \item Developed CNN models that work well on the task and outperform all traditional methods
-        \item However, hardware requirements are much higher for best performing models, the methods are much slower and require more memory
-        \item Smaller cnn models seem to work fairly well (relate to focusliteNN) on the task but don't beat best traditional metric
-        \item Fully connected models have trouble with the task
-        \item Larger CNN models fare quite good at the task
-    \end{itemize}
-\end{itemize}
 
 \section{Limitations and Future Work}
 \label{sec:Conclusion:FutureWork}
