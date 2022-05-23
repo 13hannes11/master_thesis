@@ -465,18 +465,18 @@ The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanc
 \end{equation}
 
 
-\Ac{mdct} (originally named \emph{MF-DCT}) on the other hand, was proposed by \textcite{lee2008enhanced} (according to \textcite{redondo2012autofocus}) and uses a $4 \times 4$ convolutional filter. The focus measure is then the squared sum of the applied convolutional operation on the whole image. The corresponding formula is shown in \autoref{eq:MDCT}.
+\Ac{mdct} (originally named \emph{MF-DCT}) on the other hand, was proposed by \textcite{lee2008enhanced} and uses a $4 \times 4$ convolutional filter. The focus measure is then the squared sum of the applied convolutional operation on the whole image. The corresponding formula is shown in \autoref{eq:MDCT}.
 
 \begin{equation}
     \label{eq:MDCT}
     F_{MDCT}= \sum_{m=1}^{M}\sum_{n=1}^{N}
     ( g(m,n) *
-    \begin{bmatrix}
+    \left[ {\begin{array}{rrrr}
         1 & 1 & -1 & -1 \\
         1 & 1 & -1 & -1 \\
         -1 & -1 & 1 & 1 \\
         -1 & -1 & 1 & 1
-    \end{bmatrix}
+    \end{array} } \right]
     )^2
 \end{equation}
 
@@ -485,11 +485,11 @@ The approach that is currently used in the microscope prototype is the mean Lapl
 \begin{equation}
     \label{eq:MeanLaplacian}
     F_{ML}= \frac{1}{NM} \sum_{m=1}^{M}\sum_{n=1}^{N} (g(m,n) *
-    \begin{bmatrix}
+    \left[ {\begin{array}{rrr}
         0 & 1 & 0 \\
         1 & -4 & 1 \\
         0 & 1 & 0 
-    \end{bmatrix}
+    \end{array} } \right]
     )
 \end{equation}
 
