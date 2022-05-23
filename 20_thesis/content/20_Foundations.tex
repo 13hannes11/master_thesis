@@ -11,7 +11,7 @@ This chapter introduces relevant background information about \acfp{ntd}, which 
 \subsection{Soil-Transmitted Helminth} % Soil-Transmitted Helminths
 \label{sec:Foundations:NTDs:STHs} 
 
-Helminthic parasites which are mainly transmitted through soil are known as \acfp{sth} \cite{feasey2010neglected,jourdan2018soiltransmitted}. This section gives a more detailed introduction into \acp{sth} present in the dataset used in this thesis.
+Helminthic parasites that are mainly transmitted through soil are known as \acfp{sth} \cite{feasey2010neglected,jourdan2018soiltransmitted}. This section gives a more detailed introduction into \acp{sth} present in the dataset used in this thesis.
 
 
 \subsubsection{Roundworm (Ascaris)}
@@ -71,7 +71,7 @@ Schistosoma worms have the most complex life cycle among parasite covered in thi
 \subsection{Diagnosis}
 \label{sec:Foundations:NTDs:Diagnosis}
 
-Schistosoma and \acp{sth} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} who refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves a cardboard sheet with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent samples, is fairly reliable, easy to perform and low cost \cite{katz1972simple} and therefore is, according to \textcite{mbongngwese2020diagnostic}, by the \ac{who} considered to be the \say{gold standard}.
+Schistosoma and \acp{sth} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} who refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves a cardboard sheet with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent samples, is fairly reliable, easy to perform and low cost \cite{katz1972simple}. Therefore, according to \textcite{mbongngwese2020diagnostic}, it is by the \ac{who} considered to be the \say{gold standard}.
 The slides prepared using the Kato-Katz method are, after a resting period, examined under a light microscope to count the number of eggs per milligram. This allows to identify the intensity of infection of a patient \cite{feasey2010neglected}. 
 
 Eggs found under a microscope can be assigned to the corresponding parasite worm based on size, shape, and colour. \emph{Roundworm (Ascaris)} eggs are identified by a rounded thick shell with an external mamillated layer which is often stained with brown spots and has a length of \unit{45}{\micro\meter} to \unit{75}{\micro\meter} \cite{dpdx2019ascariasis} (as shown in \autoref{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}).
@@ -126,7 +126,9 @@ A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry201
 \section{Artificial Neural Networks}
 \label{sec:Foundations:NeuralNetworks}
 
-\Acl{nn}, are commonly used in machine learning applications. This section introduces how they work starting with its building blocks. Further, different types of layers are introduced, and their composition is shown. Finally, two model architecture examples give an overview over networks used in practice.
+\Acfp{nn}, are commonly used in machine learning applications. This section introduces how they work starting with their building blocks. Further, different types of layers are introduced, and their composition is shown. Finally, two model architecture examples give an overview over networks used in practice.
+
+\todo[inline]{define what a model is.}
 
 
 \subsection{Feedforward Neural Networks}
@@ -179,7 +181,7 @@ A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artifi
     \label{fig:Foundations:ANNs:Perceptron}
 \end{figure}
 
-A perceptron computes its output by multiplying each input with its corresponding weight. The result of the multiplications is then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
+A perceptron computes its output by multiplying each input with its corresponding weight. The results of the multiplications are then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
 
 \begin{equation}
     output = 
@@ -204,9 +206,9 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 \subsubsection{Activation Function}
 \label{sec:Foundations:NeuralNetworks:ActivationFunction}
 
-One such function is the sigmoid function.  It has the advantage over a binary classifier as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by $$f(x) = \frac{1}{e^{-x}}.$$
+One such function is the sigmoid function. It has an advantage over a binary classifier as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by $$f(x) = \frac{1}{e^{-x}}.$$
 
-Another widely used activation function is \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
+Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
 The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
 Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
@@ -291,13 +293,13 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
 \subsubsection{Training Neural Networks}
 \label{sec:Foundations:NeuralNetworks:Training}
 
-To train a neural network training samples are shown to a network \cite{nielsen2015neural}. The network uses the samples to make a prediction. Based on a loss function the values are codmpared to the target prediction and an optimizer updates the models weights. This process is repeated until a model stops improving.
+To train a neural network training samples are shown to a network \cite{nielsen2015neural}. The network uses the samples to make a prediction. Based on a loss function the values are compared to the target prediction and an optimizer updates the models weights. This process is repeated until the model stops improving.
 
 
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
-The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and by propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between prediction and target. This is described by $$ MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,}$$ with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
+The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between prediction and target. This is described by $$ MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,}$$ with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
 
 \Ac{mse} punishes predictions which are further off from a target disproportionally strong, thereby incentivizing minimization of distance across all predictions.
 
@@ -315,7 +317,7 @@ Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train}
 $$ \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}).$$ This allows more frequent weight updates and, therefore, results in faster training time.
 
 
-Instead of using the gradient directly, another optimizer \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ therefore, denoting a parameter of previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
+Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
 The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
 $$w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.}$$
@@ -326,7 +328,7 @@ The small constant $\epsilon$ is used to prevent division by zero. \textcite{kin
 \subsection{Convolutional Neural Networks}
 \label{sec:Foundations:NeuralNetworks:CNN}
 
-\Acp{cnn} are feedforward neural networks, however, instead of only using fully connected layers, \ac{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions and filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training.
+\Acp{cnn} are feedforward neural networks; however, instead of only using fully connected layers, \acp{cnn} use filters or convolutions \cite{teuwen2020convolutional}. Convolutions or filters consist of a filter matrix which can be understood as a sliding window. The values of the convolution matrix are multiplied with their corresponding pixel values and summed (see \autoref{fig:Foundations:ANNs:CNNs:Convolution}). Convolutions stem from traditional image processing \cite{shih2010image} and are used because they take the spacial structure of images directly into account \cite{nielsen2015neural}. Instead of having predefined filter matrices convolutional neural networks learn their values during training.
 
 \begin{figure}
     \centering
@@ -340,7 +342,7 @@ The small constant $\epsilon$ is used to prevent division by zero. \textcite{kin
 \label{sec:Foundations:NeuralNetworks:Architecture}
 
 Large neural networks use similar patterns and, therefore, architectural building blocks exist. The building blocks relevant to this thesis are introduced in this section.
-Of note is also, that architecture descriptions often describe activation functions as separate layers as can be seen in \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}.
+Of note is also that architecture descriptions often describe activation functions as separate layers as can be seen in \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}.
 
 A layer type that can be commonly found in neural networks is the fully connected layer. In this layer each input is connected to each neuron. This is the layer-type used in fully connected \ac{nn} as introduced in \autoref{sec:Foundations:NeuralNetworks:FNN}.
 
