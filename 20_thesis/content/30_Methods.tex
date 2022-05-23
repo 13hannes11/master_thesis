@@ -44,7 +44,7 @@ The images are transformed using PyTorch's transformations \cite{paszke2019pytor
 \subsection{Datasets in Related Work}
 \label{sec:Methods:Data:Related}
 
-Related studies use 20 to 40 times the amount of data to train their models (see \autoref{tab:Methods:Data:Comparison}). \emph{FocusLiteNN} understfates the amount of data due to the usage of larger patches than the model's input size. With a patch size of $1024 \times 1024$, an input size of $235 \times 235$ and a stride of 128, the effective amount of data can be assumed to be around 10 to 50 times higher.
+Related studies use 20 to 40 times the amount of data to train their models (see \autoref{tab:Methods:Data:Comparison}). \emph{FocusLiteNN} understates the amount of data due to the usage of larger patches than the model's input size. With a patch size of $1024 \times 1024$, an input size of $235 \times 235$ and a stride of 128, the effective amount of data can be assumed to be around 10 to 50 times higher.
 
 
 \renewcommand{\thefootnote}{\alph{footnote}} % change footnote to letters
@@ -72,9 +72,9 @@ During this thesis a variety of models were trained. First training of simpler m
 
 Each model uses the \ac{adam} optimizer, whereby the \emph{learning rate} was an optimizable hyperparameter. The weight decay was fixed to $0.0005$ for all models and all models use \ac{relu} activation functions. Also, all models used a batch size of $64$.
 
-The \acs{poop}-\acs{fc} models contain five layers, whereby each layer first uses batch-normalization and then applies the activation function. The size of hidden-layers are tunable parameters. The final \acs{poop}-\acs{fc} model used a learning rate of $0.0369$ and a hidden layer sizes of $512$, $512$ and $1024$.
+The \acs{poop}-\acs{fc} models contain five layers, whereby each layer first uses batch-normalization and then applies the activation function. The sizes of hidden-layers are tunable parameters. The final \acs{poop}-\acs{fc} model used a learning rate of $0.0369$ and a hidden layer sizes of $512$, $512$ and $1024$.
 
-The \acs{poop}-\acs{cnn} models contain two convolutional layers, each followed by a batch-normalization, followed by the activation function and a max-pooling layer. This is followed by three linear layers. The first linear layers size is governed by previous layers. The final \acs{poop}-\acs{cnn} model uses a max-pooling kernel size of 2. The first convolutional layer has a kernel size of $5$ and uses $6$ channels, the second has a convolution size of $7$ and uses $6$ channels. The tunable linear layers were set to a size of $16$ and $32$. The learning rate was set to $0.0029$. During training and hyperparameter optimization it was discovered that a model without any activation functions performs best.
+The \acs{poop}-\acs{cnn} models contain two convolutional layers, each followed by a batch-normalization, followed by the activation function and a max-pooling layer. This is followed by three linear layers. The first linear layers size is governed by previous layers. The final \acs{poop}-\acs{cnn} model uses a max-pooling kernel size of 2. The first convolutional layer has a kernel size of $5$ and uses $6$ channels, the second has a convolution size of $7$ and uses $6$ channels. The tunable linear layers were set to the sizes of $16$ and $32$. The learning rate was set to $0.0029$. During training and hyperparameter optimization it was discovered that a model without any activation functions performs best.
 
 The \ac{resnet} models use predefined \ac{resnet} models from PyTorch. However, the fully connected layer is changed to provide only a single regression output. Another, hyperparameter is the use of a pretrained model trained on ImageNet \cite{deng2009imagenet} to initialize the weights of a model. All presented \ac{resnet} models use transfer learning, however, their learning rate varies. The resulting hyperparameters are shown in \autoref{tab:Methods:Models:Comparison}.
 
@@ -100,7 +100,7 @@ Initializing model parameters for training based on a model that has been traine
 
 Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training \ac{mse} is used as loss function. To optimize hyperparameters the optimization framework Optuna \cite{optuna} is used.
 \Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna. In these runs the architecture and hyperparameters are optimized.
-\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna optimizer. Then, the best performant models from different \acs{resnet} sizes are chosen.
+\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna optimizer. Then, the best performing models from different \acs{resnet} sizes are chosen.
 
 \todo[inline]{Potentially write about value range that the optimizer gets}
 
@@ -112,20 +112,18 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 
 The trained models are evaluated using multiple metrics that are described in this section.
 
-The model's trained in this thesis are regression models. The evaluation and comparison, therefore, the used metrics relate regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
-It is used to provide a simple link between lens values and model performance. It indicates how far off the model prediction are compared to the values of a focus stack.
+The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is $$E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,}$$ where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+It is used to provide a simple link between lens values and model performance. It indicates how far off the model predictions are compared to the values of a focus stack.
 
-The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of model. It is defined as:
+The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
 
 $$\acs{plcc} = \frac{cov(X,Y)}{std(X) \cdot std(Y)} \texttt{,}$$
 with $cov$ being the covariance and $std$ being the standard deviation. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
 
 
-The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using monotonic function \todo{source}. The formula that describes \ac{srcc} looks as follows:
+The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows:
 
-$$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$
-
-with $R$ the rank of variables, $std$ the standard deviation and $cov$ being the covariance.
+$$\acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,}$$ with $R$ the rank of variables, $std$ the standard deviation and $cov$ being the covariance.
 
 Lastly, the \ac{r2} is a common statistical correlation measure in regression analysis \cite{dibucchianico2008coefficient}.
 
@@ -172,32 +170,33 @@ Traditional focusing methods (introduced in \autoref{sec:Foundations:RelatedWork
 
 \Ac{vol4} was implemented using PyTorch tensors, their index operations and the tensor operations \texttt{sum} and \texttt{mul}. The slice indexing removes the need to run the summation loop in Python and therefore allows PyTorch's efficient computation backends to be used.
 
-\begin{python}
-VOL4 = sum(mul(IMG(:-1,:), IMG(1:,:)))      \
-        - sum(mul(IMG(:-2,:), IMG(2:,:)))
-\end{python}
+\begin{lstlisting}
+VOL4 = sum(mul(IMG[:-1,:], IMG[1:,:]))      \
+        - sum(mul(IMG[:-2,:], IMG[2:,:]))
+\end{lstlisting}
 
 
 \Ac{mdct} was implemented using Kornia's \texttt{filter2d} function in combination with \texttt{tensor}, \texttt{sum} and \texttt{square} from PyTorch. The shortened code looks as follows:
 
-\begin{python}
+
+\begin{lstlisting}
 kernel = tensor([[[ 1,  1, -1, -1],
                   [ 1,  1, -1, -1],
                   [-1, -1,  1,  1],
                   [-1, -1,  1,  1]]])
 MDCT = sum(square(filter2d(IMG, kernel)))
-\end{python}
+\end{lstlisting}
 
-Kornia in combination with PyTorch is also used for the implementation of \ac{laplacian} (as shown below). The \texttt{laplacian} is already implemented in Kornia therefore it can be used in combination with PyTorch's \texttt{mean} function. This results in the following code.
+Kornia in combination with PyTorch is also used for the implementation of \ac{laplacian} (as shown below). The \texttt{laplacian} is already implemented in Kornia; therefore it can be used in combination with PyTorch's \texttt{mean} function. This results in the following code.
 
-\begin{python}
+\begin{lstlisting}
 ML = mean(laplacian(IMG, 3))
-\end{python}
+\end{lstlisting}
 
 \subsection{Computational Resource Usage}
 \label{sec:Methods:Evaluation:Computation}
 
-The speed (performance) of the models is analysed by running each method on 620 image patches. The measurement only includes computation time. Transfer time to the GPU and loading time of images is not considered. Also, the memory requirements of the machine learning models is analysed, however, this analysis is done by measuring the difference in memory usage of the program before and after loading a model. Therefore, during actual use the memory usage might be higher.
+The speed (performance) of the models is analysed by running each method on 620 image patches. The measurement only includes computation time. Transfer time to the GPU and loading time of images are not considered. Also, the memory requirements of the machine learning models are analysed, however, this analysis is done by measuring the difference in memory usage of the program before and after loading a model. Therefore, during actual use the memory usage might be higher.
 
 \section{Hardware and Software}
 \label{sec:Methods:Hardware}
