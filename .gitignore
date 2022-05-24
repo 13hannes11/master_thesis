@@ -17,3 +17,4 @@
 *.lot
 *.acr
 *.ist
+*.synctex(busy)
