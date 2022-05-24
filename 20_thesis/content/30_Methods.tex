@@ -112,7 +112,7 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 
 The trained models are evaluated using multiple metrics that are described in this section.
 
-The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae} \todo{add reference}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is \begin{equation} E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \todo{Add reference.} \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values. Its formula is \begin{equation} E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model predictions are compared to the values of a focus stack.
 
 The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
@@ -176,7 +176,7 @@ VOL4 = sum(mul(IMG[:-1,:], IMG[1:,:]))      \
 \end{lstlisting}
 
 
-\Ac{mdct} was implemented using Kornia's \texttt{filter2d} function in combination with \texttt{tensor}, \texttt{sum} and \texttt{square} from PyTorch. The shortened code looks as follows:
+\Ac{mdct} was implemented using Kornia's \texttt{filter2d} function in combination with \texttt{tensor}, \texttt{sum}, and \texttt{square} from PyTorch. The shortened code looks as follows:
 
 
 \begin{lstlisting}
@@ -187,7 +187,7 @@ kernel = tensor([[[ 1,  1, -1, -1],
 MDCT = sum(square(filter2d(IMG, kernel)))
 \end{lstlisting}
 
-Kornia in combination with PyTorch is also used for the implementation of \ac{laplacian} (as shown below). The \texttt{laplacian} is already implemented in Kornia; therefore it can be used in combination with PyTorch's \texttt{mean} function. This results in the following code.
+Kornia in combination with PyTorch is also used for the implementation of \ac{laplacian} (as shown below). The \texttt{Laplacian} is already implemented in Kornia; therefore it can be used in combination with PyTorch's \texttt{mean} function. This results in the following code.
 
 \begin{lstlisting}
 ML = mean(laplacian(IMG, 3))
