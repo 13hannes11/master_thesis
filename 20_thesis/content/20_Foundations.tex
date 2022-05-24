@@ -362,7 +362,7 @@ Closely related to convolutional layers are \emph{pooling layers}. However, unli
 
 \emph{Global average pooling} follows the same concept of pooling layers, however, the goal with it is to generate a fixed size output that is independent of the input size. This allows to replace fully connected layers in neural networks \cite{lin2014network}. The fixed output size makes models input size agnostic and can be used to also introduce fully connected layers without sacrificing this flexibility in fully connected networks \cite{he2016deep}.
 
-\emph{Batch normalization} \cite{ioffe2015batch} is a layer only used during training (not during validation and testing) that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the standard deviation is made: $\frac{y - mean(y)}{std(y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
+\emph{Batch normalization} \cite{ioffe2015batch} is a layer only used during training (not during validation and testing) that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the \acf{std} is made: $\frac{y - mean(y)}{std (y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
 
 
 \subsubsection{\acs{resnet}}
