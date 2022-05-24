@@ -189,6 +189,7 @@ A perceptron computes its output by multiplying each input with its correspondin
     0 & if:\; \sum_{1}^{n}(w_i \cdot x_i) + b \le 0 \\
     1 & if:\; \sum_{1}^{n}(w_i \cdot x_i) + b > 0
     \end{cases}
+    \text{.}
 \end{equation}
 
 The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdots, w_n$) as vectors $\vec{x}$ and $\vec{y}$:
@@ -198,7 +199,7 @@ The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdot
     \begin{cases}\label{eq:PerceptronVector}
     0 & if:\; \vec{w} \cdot \vec{x} + b \le 0 \\
     1 & if:\; \vec{w} \cdot \vec{x} + b > 0
-    \end{cases}
+    \end{cases} \text{.}
 \end{equation}
 
 Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshold function to $\vec{w} \cdot \vec{x} + b$ the neurons apply other non-linear activation functions. This gives neural networks the capability to approximate non-linear functions \cite{cybenko1989approximation, hornik1991approximation, sharma2020activation}.
@@ -206,21 +207,21 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 \subsubsection{Activation Function}
 \label{sec:Foundations:NeuralNetworks:ActivationFunction}
 
-One such function is the sigmoid function. It has an advantage over a binary classifier as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by $$f(x) = \frac{1}{e^{-x}}.$$
+One such function is the sigmoid function. It has an advantage over a threshold function as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by \begin{equation} f(x) = \frac{1}{e^{-x}} \text{.} \end{equation} 
 
-Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by setting all negative values to zero. Otherwise, the value of the function stays the same. Therefore, \ac{relu} can be expressed as $$f(x)  = max(x,0).$$ 
+Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by projecting all negative values to zero. Otherwise, it returns the identity for positive values. Therefore, \ac{relu} can be expressed as \begin{equation} f(x)  = max(x,0) \text{.} \end{equation}
 The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
 Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
 
-$$
+\begin{equation}
 f(\vec{x}) = \frac{1}{\sum_{x' \in \vec{x}} e^{x'}} 
     \begin{pmatrix}
         e^{x_1}\\
         \vdots \\
         e^{x_{n}}
     \end{pmatrix} \text{,}
-$$
+\end{equation}
 whereby $n$ is the number of dimensions of $\vec{x}$ and $x_i$ is the value of vector $\vec{x}$ at position $i$.   
 
 \subsubsection{Layer}
@@ -299,7 +300,7 @@ To train a neural network training samples are shown to a network \cite{nielsen2
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
-The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done starting by the output layer and propagating the error back through the network, calculating the gradient along the way. The type of problem dictates the loss function that can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between prediction and target. This is described by $$ MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,}$$ with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
+The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done by starting at the output layer and propagating the error back through the network, calculating the gradient along the way. The type of problem dictates which loss function can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between predictions and targets. This is described by \begin{equation} MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,} \end{equation} with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
 
 \Ac{mse} punishes predictions which are further off from a target disproportionally strong, thereby incentivizing minimization of distance across all predictions.
 
@@ -311,16 +312,16 @@ With the computed gradient the optimizer decides how the weights of a model get 
 
 \Ac{sdg} is one such optimizer and uses the gradient $\Delta \mathcal{L}(z_{train})$ based on all observation in the training data $z_{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $w$ to $\bar{w}$ \cite{murphy2022probabilistic}. The formula that describes \ac{sdg} is as follows:
 
-$$ \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{train}).$$
+\begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{train}). \end{equation}
 
-Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train})$ takes a long time. To combat that the training data is split into mini-batches $z_{b}$ which are used to estimate $\Delta \mathcal{L}(z_{train})$. This results in a changed training formula:
-$$ \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}).$$ This allows more frequent weight updates and, therefore, results in faster training time.
+Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train})$ takes a long time. To combat that, in \ac{sgd}, the training data is split into mini-batches $z_{b}$ which are used to estimate $\Delta \mathcal{L}(z_{train})$. This results in a changed training formula:
+\begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
 
 
 Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
 The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
-$$w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.}$$
+\begin{equation}w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.} \end{equation}
 
 The small constant $\epsilon$ is used to prevent division by zero. \textcite{kingma2017adam} state that \ac{adam} is an optimizer that is fairly robust to noise.
 
