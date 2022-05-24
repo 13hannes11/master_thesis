@@ -1,12 +1,12 @@
 \chapter{Foundations}
 \label{ch:Foundations}
 
-This chapter introduces relevant background information about \acfp{ntd}, which method, namely Kato-Katz \cite{katz1972simple}, is used to detect eggs for diagnosis. Further, it elaborates on \acf{wsi}, an important topic for digital pathology. Moreover, \acfp{nn} are introduced and it is shown how they work. Further developments and architecture is presented. Lastly, related studies are introduced.
+This chapter introduces relevant background information about \acfp{ntd}, which method, namely Kato-Katz \cite{katz1972simple}, is used to detect eggs for diagnosis. Further, it elaborates on \acf{wsi}, an important topic for digital pathology. Moreover, \acfp{nn} are introduced, and it is shown how they work. Further developments and architecture is presented. Lastly, related studies are introduced.
 
 \section{Neglected Tropical Diseases}
 \label{sec:Foundations:NTDs}
 
-\Acfp{ntd} \cite{feasey2010neglected} are a biologically diverse group of diseases which mainly occur in tropical regions. The geographic location, however, is not linked to temperatures or climate but mainly as a result of a large part of the world's poorest population living in these regions. \Acp{ntd} affect approximately a sixth of the world population, yet, they have received less attention than other diseases. \textcite{feasey2010neglected} state that there are \acp{ntd} which have a high prevalence and excellent potential for successful control. Among these are Ascaris, hookworm, whipworm, and Schistosoma. These parasites are the ones present in the dataset used in this thesis. Ascaris, whipworm and hookworm are \acfp{sth} which is a subclass of \acp{ntd}\todo{Source for subclass}.
+\Acfp{ntd} \cite{feasey2010neglected} are a biologically diverse group of diseases which mainly occur in tropical regions. The geographic location, however, is not linked to temperatures or climate but mainly as a result of a large part of the world's poorest population living in these regions. \Acp{ntd} affect approximately a sixth of the world population, yet, they have received less attention than other diseases. \textcite{feasey2010neglected} state that there are \acp{ntd} which have a high prevalence and excellent potential for successful control. Among these are Ascaris, hookworm, whipworm, and Schistosoma. These parasites are the ones present in the dataset used in this thesis. Ascaris, whipworm and hookworm are \acfp{sth} which is a subclass of \acp{ntd}\todo{Source for subclass}. \todo[inline]{Why should we fight these diseases. What are the symptoms?}
 
 \subsection{Soil-Transmitted Helminth} % Soil-Transmitted Helminths
 \label{sec:Foundations:NTDs:STHs} 
@@ -66,13 +66,29 @@ Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days ou
 \subsection{Schistosoma}
 \label{sec:Foundations:NTDs:STHs:Schistosoma}
 
-Schistosoma worms have the most complex life cycle among parasite covered in this thesis. The excrement of an infected human contains schistosomes' eggs \cite{nelwan2019schistosomiasis}. When eggs come into contact with water they hatch and infect snails. Infected snails shed cercariae which enter the human body through skin and migrate throughout the body using the circulating blood. The location where adult worms settle depends on the exact species, but some examples are the intestine (large and small), and the bladder. A picture of a Schistosoma worm can be seen in \autoref{fig:Foundations:NCLs:Schistosoma:Adult}.
+Schistosoma worms have the most complex life cycle among parasite covered in this thesis. The excrement of an infected human contains schistosomes' eggs \cite{nelwan2019schistosomiasis}. When eggs come into contact with water they hatch and infect snails. Infected snails shed larvae (cercariae) which enter the human body through skin and migrate throughout the body using the blood stream. The location where adult worms settle depends on the exact species, but some examples are the (large and small) intestine, and the bladder. A picture of a Schistosoma worm can be seen in \autoref{fig:Foundations:NCLs:Schistosoma:Adult}.
 
 \subsection{Diagnosis}
 \label{sec:Foundations:NTDs:Diagnosis}
 
+
+\subsubsection{Slide Preparation with the Kato-Katz Method}
+\label{sec:Foundations:NTDs:Diagnosis:Preparation}
+
 Schistosoma and \acp{sth} are commonly diagnosed by counting eggs present in a stool sample with a microscope. The technique used is called Kato-Katz \cite{nelwan2019schistosomiasis} and was introduced by \textcite{katz1972simple} who refined the method introduced by \citeauthor{kato1954comparative} \cite{kato1954comparative,kato1960correct}. The technique involves a cardboard sheet with a hole in it, some stainless-steel mesh-cloth, a cellophane membrane and glycerol. A sample first is pressed through the stainless steel mesh-cloth and then smeared through the hole onto the slide. Then the side is covered with a cellophane membrane and treated with glycerol \cite{mbongngwese2020diagnostic}. This technique gains fairly consistent samples, is fairly reliable, easy to perform and low cost \cite{katz1972simple}. Therefore, according to \textcite{mbongngwese2020diagnostic}, it is by the \ac{who} considered to be the \say{gold standard}.
-The slides prepared using the Kato-Katz method are, after a resting period, examined under a light microscope to count the number of eggs per milligram. This allows to identify the intensity of infection of a patient \cite{feasey2010neglected}. 
+
+\subsection{Examination (Whole-Slide Imaging)}
+\label{sec:Foundations:NTDs:Diagnosis:Examination}
+
+To count the number of eggs per milligram, the slides, prepared using the Kato-Katz method, are, after a resting period, examined under a light microscope. This allows to identify the intensity of an infection of a patient \cite{feasey2010neglected}.
+
+Instead of being examined directly by personal under a microscope, \emph{\acf{wsi}} digitizes the slides beforehand and the inspection is done on a computer. \Ac{wsi} \cite{ghaznavi2013digital, hanna2019whole, el-gabry2014wholeslide} is a process in which slides are wholistically scanned to create a digital copy. This allows diagnostic processes to be more flexible as the collection of slides is independent of its analysis. Further, digitally archived slides do not suffer any degradation. 
+
+A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry2014wholeslide} which is required for slides with larger variation in topology or which have a three-dimensional structure, e.g., thick smears. A z-stack consists of multiple images taken at different focus planes. This allows a researcher to emulate the focusing behaviour of a conventional light microscope and can compensate for imperfect focusing.
+
+
+\subsubsection{Egg Identification}
+\label{sec:Foundations:NTDs:Diagnosis:Identification}
 
 Eggs found under a microscope can be assigned to the corresponding parasite worm based on size, shape, and colour. \emph{Roundworm (Ascaris)} eggs are identified by a rounded thick shell with an external mamillated layer which is often stained with brown spots and has a length of \unit{45}{\micro\meter} to \unit{75}{\micro\meter} \cite{dpdx2019ascariasis} (as shown in \autoref{fig:Foundations:NCLs:Diagnosis:Ascaris:Egg}).
 \emph{Whipworm} eggs (see \autoref{fig:Foundations:NCLs:Diagnosis:Whipworm:Egg}) can be identified by their elongated oval shape with two circular protrusions at the end of the longer sides \cite{dpdx2017trichuriasis,larsson2020development}. A length of approximately \unit{50}{\micro\meter} and a width of \unit{20}{\micro\meter} characterizes the eggs.
@@ -115,20 +131,13 @@ and have a size of approximately \unit{100}{\micro\meter} by \unit{50}{\micro\me
     \label{fig:Foundations:NCLs:Diagnosis:Overview}
 \end{figure}
 
-\subsection{Whole-Slide Imaging}
-\label{sec:Foundations:NTDs:WHoleSlideImaging}
-
-\Acf{wsi} \cite{ghaznavi2013digital, hanna2019whole, el-gabry2014wholeslide} is a process in which slides are wholistically scanned to create a digital copy. This allows diagnostic processes to be more flexible as the collection of slides is independent of its analysis. Further, digitally archived slides do not suffer any degradation. 
-
-A commonly used focus method for \ac{wsi} is \emph{z-stacking} \cite{el-gabry2014wholeslide} which is required for slides with larger variation in topology or which have a three-dimensional structure e.g., thick smears. A z-stack consists of multiple images taken at different focus planes. This allows a researcher to emulate the focusing behaviour of a conventional light microscope and can compensate for imperfect focusing.
-
 
 \section{Artificial Neural Networks}
 \label{sec:Foundations:NeuralNetworks}
 
 \Acfp{nn}, are commonly used in machine learning applications. This section introduces how they work starting with their building blocks. Further, different types of layers are introduced, and their composition is shown. Finally, two model architecture examples give an overview over networks used in practice.
 
-\todo[inline]{define what a model is.}
+\todo[inline]{Define what a model is.}
 
 
 \subsection{Feedforward Neural Networks}
@@ -212,7 +221,7 @@ One such function is the sigmoid function. It has an advantage over a threshold 
 Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by projecting all negative values to zero. Otherwise, it returns the identity for positive values. Therefore, \ac{relu} can be expressed as \begin{equation} f(x)  = max(x,0) \text{.} \end{equation}
 The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
-Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
+Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values and make them interpretable as probabilities over all classes. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
 
 \begin{equation}
 f(\vec{x}) = \frac{1}{\sum_{x' \in \vec{x}} e^{x'}} 
@@ -227,7 +236,7 @@ whereby $n$ is the number of dimensions of $\vec{x}$ and $x_i$ is the value of v
 \subsubsection{Layer}
 \label{sec:Foundations:NeuralNetworks:Layer}
 
-Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In \acp{fc} \todo{source} each neuron of each layer is connected to each neuron of the previous layer. Layers that have this property are commonly called fully connected layers \todo{source}. 
+Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In \acp{fc} each neuron of each layer is connected to each neuron of the previous layer. This means that the output of the previous layer is feed into the next layer as input. The inputs of one individual neuron of a layer is the output of all neurons of the previous layer. Layers that have this property are commonly called fully connected layers \cite{nielsen2015neural}. 
 
 Commonly, fully connected neural networks are shown as a graph (see \autoref{fig:Foundations:ANNs:Layer:FullyConnected}), however, mathematically, each layer is represented as a matrix of weights $\mat{W}$ and a vector of biasses $\vec{b}$. Each row vector $\vec{w_i}$ of the matrix corresponds to one neuron and the scalar $b_i$ constitutes the bias for neuron $i$. When processing input $\vec{x}$ the weight matrix is multiplied with the input vector, the bias vector $\vec{b}$ is then added, and, lastly, an activation function $f$ is applied (see \autoref{eq:FCNNLayer}).
 
@@ -310,7 +319,7 @@ The loss function is a function that indicates how well a neural network is perf
 
 With the computed gradient the optimizer decides how the weights of a model get updated to reduce the average error of the loss function on any observation $z$.
 
-\Ac{sdg} is one such optimizer and uses the gradient $\Delta \mathcal{L}(z_{train})$ based on all observation in the training data $z_{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $w$ to $\bar{w}$ \cite{murphy2022probabilistic}. The formula that describes \ac{sdg} is as follows:
+Gradient descent is one such optimizer and uses the gradient $\Delta \mathcal{L}(z_{train})$ based on all observation in the training data $z_{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $w$ to $\bar{w}$ \cite{murphy2022probabilistic}. The formula that describes gradient descent is as follows:
 
 \begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{train}). \end{equation}
 
@@ -318,7 +327,7 @@ Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train}
 \begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
 
 
-Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus having momentum from previous gradients. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
+Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus preserving momentum from gradients of previous batches. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
 The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
 \begin{equation}w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.} \end{equation}
@@ -342,18 +351,18 @@ The small constant $\epsilon$ is used to prevent division by zero. \textcite{kin
 \subsection{Architecture}
 \label{sec:Foundations:NeuralNetworks:Architecture}
 
-Large neural networks use similar patterns and, therefore, architectural building blocks exist. The building blocks relevant to this thesis are introduced in this section.
+Large neural networks use similar patterns, and, therefore, architectural building blocks exist. The building blocks relevant to this thesis are introduced in this section.
 Of note is also that architecture descriptions often describe activation functions as separate layers as can be seen in \autoref{fig:Foundations:ANNs:Architecture:ResNet:Block}.
 
 A layer type that can be commonly found in neural networks is the fully connected layer. In this layer each input is connected to each neuron. This is the layer-type used in fully connected \ac{nn} as introduced in \autoref{sec:Foundations:NeuralNetworks:FNN}.
 
 Also, \emph{convolutional layers}, were already introduced in \autoref{sec:Foundations:NeuralNetworks:CNN}. These layers use convolutions and, therefore, each neuron is only connected to its neighbours. What is considered to be its neighbours depends on the size of the convolution window. This size is the kernel size. The example shown in \autoref{fig:Foundations:ANNs:CNNs:Convolution} has a kernel size of 3 (sometimes also described as $3 \times 3$). The output channels of a layer define the number of different kernels which are used inside a layer. Each kernel is run on the entire input.
 
-Closely related to convolutional layers are \emph{pooling layers}. Pooling layers, however, unlike convolutions do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$) \cite{scherer2010evaluation}, therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. Pooling is used to aggregate neighbouring low-level features and to reduce the spatial size of data and therefore require fewer weights in a network.
+Closely related to convolutional layers are \emph{pooling layers}. However, unlike convolutions, pooling layers do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$) \cite{scherer2010evaluation}, therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. Pooling is used to aggregate neighbouring low-level features and to reduce the spatial size of data and therefore require fewer weights in a network.
 
 \emph{Global average pooling} follows the same concept of pooling layers, however, the goal with it is to generate a fixed size output that is independent of the input size. This allows to replace fully connected layers in neural networks \cite{lin2014network}. The fixed output size makes models input size agnostic and can be used to also introduce fully connected layers without sacrificing this flexibility in fully connected networks \cite{he2016deep}.
 
-\emph{Batch normalization} \cite{ioffe2015batch} is a layer used during training that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the standard deviation is made: $\frac{y - mean(y)}{std(y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
+\emph{Batch normalization} \cite{ioffe2015batch} is a layer only used during training (not during validation and testing) that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the standard deviation is made: $\frac{y - mean(y)}{std(y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
 
 
 \subsubsection{\acs{resnet}}
@@ -481,7 +490,7 @@ The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanc
     )^2
 \end{equation}
 
-The approach that is currently used in the microscope prototype is the mean Laplacian \todo{find actual source and usage if possible}. The Laplacian is an edge detection convolutional filter. The result can be found in \autoref{eq:MeanLaplacian}. \textcite{redondo2012autofocus} look at a similar function, however, they instead use the sum of the squared Laplacian.
+The approach that is currently used in the microscope prototype is the mean Laplacian. \todo{Find actual source and usage if possible.} The Laplacian is an edge detection convolutional filter. The result can be found in \autoref{eq:MeanLaplacian}. \textcite{redondo2012autofocus} look at a similar function, however, they instead use the sum of the squared Laplacian.
 
 \begin{equation}
     \label{eq:MeanLaplacian}
@@ -499,7 +508,7 @@ The approach that is currently used in the microscope prototype is the mean Lapl
 
 Related literature for out-of-focus detection that uses deep learning mostly uses pathology slides. Further, magnification levels of microscopes range from 20x to 40x, with the latter being most common. Moreover, commonly, the problem is phrased as a classification problem of either, \ac{oof} classes or simple binary classes.
 
-\emph{DeepFocus} is a model developed in \textcite{senaras2018deepfocus} to classify an image tile as either in- or out-of-focus. It is the first deep learning model for focus-detection for the use in digital pathology. The training data used is generated by annotating the focus plane of focus stacks. Images that are annotated as in-focus and adjacent images in the stack are considered to be in focus. The model is a \ac{cnn} with five convolutional layers, three max pooling and two fully connected layers. The resulting classification model is compared to out-of-focus detection by \textcite{moleslopez2013automated} who use a more traditional machine learning approach with decision trees.
+\emph{DeepFocus} is a model developed in \textcite{senaras2018deepfocus} to classify an image tile as either in- or out-of-focus. It is the first deep learning model for focus-detection for the use in digital pathology. The training data used is generated by annotating the focus plane of focus stacks. Images that are annotated as in-focus and adjacent images in the stack are considered to be in focus. The model is a \ac{cnn} with five convolutional layers, three max pooling and two fully connected layers. The resulting classification model is compared to out-of-focus detection by \textcite{moleslopez2013automated} who use a non-neural network machine learning approach with decision trees.
 Additionally, the authors compare the computational performance of their approach with \textcite{moleslopez2013automated}. \emph{DeepFocus} performs slightly faster than \textcite{moleslopez2013automated} and offers a higher resolution. This approach allows GPU computations which can be used to further speed-up out of focus-detections.
 The authors conclude that their approach provides good, spacial resolution and accuracy for identifying \ac{oof} regions in pathology slides. Moreover, they state that the use of GPUs allows faster processing times on ordinary hardware.
 
