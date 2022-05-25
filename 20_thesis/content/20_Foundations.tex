@@ -58,7 +58,7 @@ Unlike roundworms and whipworms, hookworms' eggs hatch after around 5-10 days ou
         \caption{Electron micrograph of a male \textbf{Schistosoma} by \textcite{davidwilliams2009schistosoma}.}
         \label{fig:Foundations:NCLs:Schistosoma:Adult}
     \end{subfigure}
-    \caption{Overview of parasitic worms. The worms shown are: Roundworm, whipworm, hookworm, and Schistosoma (left to right, top to bottom).}
+    \caption[Parasitic worm overview]{Overview of parasitic worms. The worms shown are: Roundworm, whipworm, hookworm, and Schistosoma (left to right, top to bottom).}
     \label{fig:Foundations:NCLs:Overview}
 \end{figure}
 
@@ -127,7 +127,7 @@ and have a size of approximately \unit{100}{\micro\meter} by \unit{50}{\micro\me
         \caption{\textbf{Schistosoma} mansoni egg \cite{dpdx2019schistosomiasis}.}
         \label{fig:Foundations:NCLs:Diagnosis:Schistosoma:Egg}
     \end{subfigure}
-    \caption{Overview showing the eggs of different parasites.}
+    \caption[Parasite egg overview]{Overview showing the eggs of different parasites.}
     \label{fig:Foundations:NCLs:Diagnosis:Overview}
 \end{figure}
 
@@ -186,7 +186,7 @@ A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artifi
         \node[weights,below of=left] (0) {$b$};
             \path[draw,->] (0) -- (left);
     \end{tikzpicture}
-    \caption{Visualization of a perceptron. The inputs $x_i$ are multiplied with their corresponding weights $w_i$. The results are summed up and a bias is added. This is followed by the application of a threshold function. }
+    \caption[Perceptron visulisation]{Visualization of a perceptron. The inputs $x_i$ are multiplied with their corresponding weights $w_i$. The results are summed up and a bias is added. This is followed by the application of a threshold function. }
     \label{fig:Foundations:ANNs:Perceptron}
 \end{figure}
 
@@ -296,7 +296,7 @@ Commonly, fully connected neural networks are shown as a graph (see \autoref{fig
         \path (N\lay-\N) --++ (0,1+\yshift) node[midway] {$\vdots$}; % dots
         }      
     \end{tikzpicture}
-    \caption{Visualization of simple \acl{fc} with two hidden layers with $m$, an input layer with $n$ and an output layer with $l$ neurons. The neurons of the input, hidden and output layers are denoted with $x_i$, $h_j^{(a)}$ and $y_k$, respectively. The output of each neuron is feed into every neuron of the following layer.}
+    \caption[\Acl{fc} visualization]{Visualization of simple \acl{fc} with two hidden layers with $m$, an input layer with $n$ and an output layer with $l$ neurons. The neurons of the input, hidden and output layers are denoted with $x_i$, $h_j^{(a)}$ and $y_k$, respectively. The output of each neuron is feed into every neuron of the following layer.}
     \label{fig:Foundations:ANNs:Layer:FullyConnected}
 \end{figure}
 
@@ -343,7 +343,7 @@ The small constant $\epsilon$ is used to prevent division by zero. \textcite{kin
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/20_foundations/30_neural_networks/convolution.eps}
-    \caption{Visualization of a convolutional (Laplace) filter. The filter uses represents the first order approximation of the Laplacian. The pixel values are multiplied with corresponding values in the filter and then summed up to get the final result. }
+    \caption[Convolutional filter visualization]{Visualization of a convolutional (Laplace) filter. The filter uses represents the first order approximation of the Laplacian. The pixel values are multiplied with corresponding values in the filter and then summed up to get the final result. }
     \label{fig:Foundations:ANNs:CNNs:Convolution}
 \end{figure}
 
@@ -399,7 +399,7 @@ A residual block consists of multiple convolutional layers followed by a \ac{bat
         \path[draw,->] (relu2) to (output);
         
     \end{tikzpicture}
-    \caption{Architecture of a residual block in \acs*{resnet}. The input $x$ is feed through a convolutional layer, then through a \acl{batch-norm} layer. This is followed by the application of a \ac{relu} function. Afterwards, another convolutional and \acl{batch-norm} are added. The result is added to the original input and feed to a final \ac{relu} function.}
+    \caption[Residual block architecture]{Architecture of a residual block in \acs*{resnet}. The input $x$ is feed through a convolutional layer, then through a \acl{batch-norm} layer. This is followed by the application of a \ac{relu} function. Afterwards, another convolutional and \acl{batch-norm} are added. The result is added to the original input and feed to a final \ac{relu} function.}
     \label{fig:Foundations:ANNs:Architecture:ResNet:Block}
 \end{figure}
 
@@ -450,7 +450,7 @@ The Inception v3 architecture, introduced by \textcite{szegedy2016rethinking}, w
         \path[draw,->] (concat) to (output);
         
     \end{tikzpicture}
-    \caption{The architecture of a naive inception module \cite{szegedy2015going}. The input is feed into four layers, three of which are convolutional layers of sizes $1 \times 1$, $3 \times 3$, $5 \times 5$, and one $3 \times 3$ max pooling layer, simuditltaneously. Each layers output is feed through a \ac{relu} activation function and the output of all is concatenated.}
+    \caption[Inception module architecture]{The architecture of a naive inception module \cite{szegedy2015going}. The input is feed into four layers, three of which are convolutional layers of sizes $1 \times 1$, $3 \times 3$, $5 \times 5$, and one $3 \times 3$ max pooling layer, simultaneously. Each layers output is feed through a \ac{relu} activation function and the output of all is concatenated.}
     \label{fig:Foundations:ANNs:Architecture:Inception:Naive}
 \end{figure}
 
