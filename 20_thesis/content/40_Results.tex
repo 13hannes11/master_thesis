@@ -46,24 +46,17 @@ The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below 
     \label{fig:Results:ScatterPredictedTarget}
 \end{figure}
 
-To give a clearer overview of the predictions, histograms have also been plotted. The histograms in \autoref{fig:Results:HistogramPredictedTarget} show a fairly similar distribution between ground truth and targets. The lowest and highest prediction range shows in these plots as well that there are no predictions for bins starting at lower than $-0.04$ (in \autoref{fig:Results:HistogramPredictedTarget:ResNet34}). Moreover, \autoref{fig:Results:HistogramPredictedTarget:CNN} prediction also, can be only found in buckets that start in the range $[-0.025, 0.025]$. Further, focus values for both models which are slightly below zero are not predicted as often. Focus values that \acs{poop}-\acs{resnet}-34 predicts around $-0.03$ and around $0.02$ seem to be present disproportionally often especially compared to the ground truth. This is consistent with the higher spread observed close to zero in \autoref{fig:Results:ScatterPredictedTarget:ResNet34}. For \acs{poop}-\acs{cnn} negative values seem to be predicted more commonly and the largest difference to ground truth can be found in buckets that are slightly below zero peeking at the bucket starting at approximately $0.02$.
+To give a clearer overview of the predictions, a histogram has also been plotted. The histogram in \autoref{fig:Results:HistogramPredictedTarget} shows a fairly similar range of values between ground truth and targets.
+In this plot as well, is shown that the lowest and highest prediction range is limited to bins starting at lower than $-0.04$ and higher than $0.04$. Moreover, predictions of \ac{poop}-\ac{cnn}, can only be found in an even narrower bucket start range which is in the range $[-0.029, 0.021]$. Further, focus values for both models which are zero or slightly below zero are not predicted as often as the ground truth. Focus values that \acs{poop}-\acs{resnet}-34 predicts around $-0.029$ and around $0.021$ seem to be present disproportionally often especially compared to the ground truth. This is also the case for values in buckets starting with $0.021$ and $0.029$. \ac{poop}-\ac{cnn} shows similar behaviour, however, the ranges differ slightly as there disproportionally often predictions are in the buckets $-0.021$, $-0.014$ and $0.007$. The general shape of the histogram for \ac{poop}-\ac{cnn} is more asymmetrical than for {poop}-\acs{resnet}-34  and the ground truth. Also, for \acs{poop}-\acs{cnn} negative values seem to be predicted more commonly. The for \acs{poop}-\acs{resnet}-34 observed lower number of predictions in the bucket starting at $0$ and the fairly uniform shape of the histogram is consistent with the higher spread observed close to zero in \autoref{fig:Results:ScatterPredictedTarget:ResNet34}. 
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{images/40_results/histogram_predictions_targets.pdf}
-        \caption{\acs{poop}-\acs{resnet}-34}
-        \label{fig:Results:HistogramPredictedTarget:ResNet34}
-    \end{subfigure}%
-    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{images/40_results/histogram_predictions_targets_cnn.pdf}
-        \caption{\acs{poop}-\acs{cnn}}
-        \label{fig:Results:HistogramPredictedTarget:CNN}
-    \end{subfigure}
+    \includegraphics[width=0.75\textwidth]{images/40_results/histogram_predictions_targets.pdf}
+    \caption{\acs{poop}-\acs{resnet}-34}
+    \label{fig:Results:HistogramPredictedTarget:ResNet34}
+
     \caption{A histogram showing the distribution of predicted focus compared to annotated focus for two models.}
     \label{fig:Results:HistogramPredictedTarget}
-
-    \todo[inline]{Figure axis should have same scale. If possible and there is time potentially generate one histogram with three bars.}
 \end{figure}
 
 
