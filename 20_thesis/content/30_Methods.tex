@@ -28,7 +28,7 @@ To annotate the focus plane of these focus stacks the annotation tool \emph{Focu
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{images/30_methods/10_data/focus_annotator.png}
-    \caption{A screenshot of the tool \emph{Focus Annotator} showing a tile and its neighbours that contain a schistosoma egg.}
+    \caption{Screenshot of the tool \emph{Focus Annotator} showing a tile and its neighbours that contain a schistosoma egg. A user can navigate through the focus stack using the slider on the left side. Once the image which is most in focus is found the button "Set Focus" at the bottom right is used to make an annotation. All actions can also be done using keyboard shortcuts.}
     \label{fig:Methods:Data:FocusAnnotator}
 \end{figure}
 
@@ -50,7 +50,7 @@ Related studies use 20 to 40 times the amount of data to train their models (see
 \renewcommand{\thefootnote}{\alph{footnote}} % change footnote to letters
 \begin{table}[ht]
     \centering
-    \caption{Comparison of datasets used for each model.}
+    \caption{Comparison of datasets used for each model by magnification, pixel size, input size and dataset size.}
     \begin{tabular}{crrrr} 
         \hline
         model & magnification & pixel size (\micro\meter) & input size &  dataset size\\
@@ -150,7 +150,7 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/30_methods/50_evaluation/+0.0_stack.jpg}
-        \caption{in focus}
+        \caption{in-focus}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
@@ -158,7 +158,7 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
         \caption{-1}
     \end{subfigure}
 
-    \caption{Figure showing which images are considered to be in focus for the best image selection.}
+    \caption{Patches that are considered to be in focus for the best image selection task. The image on the left shows the background most in focus while the one on the right the least. Different parts of the egg are fairly well in focus in each of the images.}
     \label{fig:Methods:Data:InFocusExampleImages}
 \end{figure}
 
