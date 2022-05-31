@@ -322,20 +322,20 @@ The loss function is a function that indicates how well a neural network is perf
 
 With the computed gradient the optimizer decides how the weights of a model get updated to reduce the average error of the loss function on any observation $z$.
 
-Gradient descent is one such optimizer and uses the gradient $\nabla \mathcal{L}(\vec{z}_\wsub{train})$ based on all observation in the training data $\vec{z}_\wsub{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $\mat{W}$ to $\mat{\bar{W}}$ \cite{murphy2022probabilistic}. The formula that describes gradient descent is as follows:
+Gradient descent is one such optimizer and uses the gradient $\nabla \mathcal{L}(\vec{z}_\wsub{train})$ based on all observation in the training data $\vec{z}_\wsub{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\const{\eta}$ is used to update the weights $\mat{W}$ to $\mat{\bar{W}}$ \cite{murphy2022probabilistic}. The formula that describes gradient descent is as follows:
 
-\begin{equation} \mat{\bar{W}} = \mat{W} - \eta \nabla \mathcal{L}(\vec{z}_\wsub{train}). \end{equation}
+\begin{equation} \mat{\bar{W}} = \mat{W} - \const{\eta} \nabla \mathcal{L}(\vec{z}_\wsub{train}). \end{equation}
 
 Often the training data is large, thus calculating $\nabla \mathcal{L}(\vec{z}_\wsub{train})$ takes a long time. To combat that, in \ac{sgd}, the training data is split into mini-batches $\vec{z}_{b}$ which are used to estimate $\nabla \mathcal{L}(\vec{z}_\wsub{train})$. This results in a changed training formula:
-\begin{equation} \mat{\bar{W}} = \mat{W} - \eta \nabla \mathcal{L}(\vec{z}_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
+\begin{equation} \mat{\bar{W}} = \mat{W} - \const{\eta} \nabla \mathcal{L}(\vec{z}_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
 
 
-Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus preserving momentum from gradients of previous batches. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla \mathcal{L}(\vec{z_b})$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla \mathcal{L}(\vec{z_b}))^2$. 
-The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
+Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $\mat{M}_t$ and squared average $\mat{V}_t$ of past gradients, thus preserving momentum from gradients of previous batches. \Ac{adam} has two decay rate parameters $\const{\beta}_1$ and $\const{\beta}_2$ for $\mat{M}_t$ and $\mat{V}_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\mat{\hat{M}}_t$ and $\mat{\hat{V}}_t$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $\mat{M_t}$ is computed by $\mat{M}_t = \const{\beta}_1 \mat{m_{t-1}} + (1 - \const{\beta}_1) \nabla \mathcal{L}(\vec{z_b})$. Similarly, the second moment estimate $\mat{V}_t$ is computed by $\mat{V}_t = \const{\beta}_2 \mat{v_{t-1}} + (1 - \const{\beta}_2) (\nabla \mathcal{L}(\vec{z_b}))^2$. 
+The bias corrected-versions of the moments are computed by $\mat{\hat{M}}_t = \frac{\mat{M}_t}{1 - \const{\const{\beta}_1}^t}$ and $\mat{\hat{V}_t} = \frac{\mat{V_t}}{1 - \const{\beta}_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
-\begin{equation}\mat{W_t} = \mat{W_{t-1}} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.} \end{equation}
+\begin{equation}\mat{W}_t = \mat{W}_{t-1} - \const{\eta} \frac{\mat{\hat{M}}_t}{\sqrt{\mat{\hat{V}}_t} + \const{\epsilon}} \text{.} \end{equation}
 
-The small constant $\epsilon$ is used to prevent division by zero. \textcite{kingma2017adam} state that \ac{adam} is an optimizer that is fairly robust to noise.
+The small constant $\const{\epsilon}$ is used to prevent division by zero. \textcite{kingma2017adam} state that \ac{adam} is an optimizer that is fairly robust to noise.
 
 
 \subsection{Convolutional Neural Networks}
