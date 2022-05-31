@@ -110,22 +110,22 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 
 The trained models are evaluated using multiple metrics that are described in this section.
 
-The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_\wsub{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model predictions are compared to the values of a focus stack.
 
 The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
 
-\begin{equation} \acs{plcc} = \frac{cov(X,Y)}{std(X) \cdot std(Y)} \texttt{,} \end{equation}
-with $cov$ being the covariance and $std$ being the \acl{std}. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
+\begin{equation} \wvar{\acs{plcc}} = \frac{\wfunc{cov}(X,Y)}{\wfunc{std}(X)  \wfunc{std}(Y)} \texttt{,} \end{equation}
+with $\wfunc{cov}$ being the covariance and $\wfunc{std}$ being the \acl{std}. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
 
 
 The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows:
 
-\begin{equation} \acs{srcc} = \frac{cov(R(X),R(Y))}{std(R(X)) \cdot std(R(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $std$ the \acl{std} and $cov$ being the covariance.
+\begin{equation} \wvar{\acs{srcc}} = \frac{\wfunc{cov}(\func{R}(X),R(Y))}{\wfunc{std}(\func{R(}X)) \cdot \wfunc{std}(\func{R}(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $\wfunc{std}$ the \acl{std} and $\wfunc{cov}$ being the covariance.
 
 Lastly, the \ac{r2} is a common statistical correlation measure in regression analysis \cite{dibucchianico2008coefficient}.
 
-\begin{equation} \acs{r2} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,} \end{equation} with $\bar{t}$ being the mean of all annotations.
+\begin{equation} \wvar{\acs{r2}} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,} \end{equation} with $\bar{t}$ being the mean of all annotations.
 
 The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchianico2008coefficient} values lower than $<0.5$ show only a weak relation between data and model, while values $v$ with $0.5 < v < 0.8$ demonstrate that a model is not adequate to perfectly represent the data.
 
@@ -133,7 +133,7 @@ The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchia
 The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
 The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case the formula for MAE looks as follows:
 
-\begin{equation} E_{MAE^*} = \frac{1}{|S|}\sum_{s \in S} |p(s) - t(s)| \text{,} \end{equation} with $S$ being the set of evaluated focus stacks, $p(s)$ denoting the index of the image predicted to be in focus and $t(s)$ denoting the index of the image that is annotated as in-focus.
+\begin{equation} E_{\wsub{MAE^*}} = \frac{1}{|S|}\sum_{s \in S} |\func{p}(s) - \func{t}(s)| \text{,} \end{equation} with $S$ being the set of evaluated focus stacks, $\func{p}(s)$ denoting the index of the image predicted to be in focus and $\func{t}(s)$ denoting the index of the image that is annotated as in-focus.
 
 To distinguish between \ac{mae} metrics used in this thesis the index based metric is denoted as \ac{mae}$^*$.
 

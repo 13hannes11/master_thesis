@@ -57,7 +57,13 @@
     \let\subsectionautorefname\sectionautorefname 	\let\subsubsectionautorefname\sectionautorefname
 }
 
+% MATH helper commands
 \newcommand*{\mat}[1]{\mathbf{#1}}
+\newcommand{\func}[1]{\operatorname{\mathit{#1}}}  % or \mathrm
+\newcommand{\const}[1]{\mathit{#1}}                % or \mathrm
+\newcommand{\wsub}[1]{\mathrm{#1}}                 % 'word' subscript
+\newcommand{\wfunc}[1]{\mathrm{#1}}  
+\newcommand{\wvar}[1]{\mathrm{#1}}  
 
 % Acknowledgements
 \makeatletter
@@ -86,3 +92,5 @@
       {\if@twocolumn\else\endquotation\fi}
 \fi
 \makeatother
+
+

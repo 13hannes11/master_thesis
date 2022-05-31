@@ -191,10 +191,10 @@ A perceptron (see \autoref{fig:Foundations:ANNs:Perceptron}) is a type of artifi
 A perceptron computes its output by multiplying each input with its corresponding weight. The results of the multiplications are then summed and compared to a threshold value. \autoref{eq:Perceptron} shows this computation.
 
 \begin{equation}
-    output = 
+    \wvar{output} = 
     \begin{cases}\label{eq:Perceptron}
-    0 & if:\; \sum_{1}^{n}(w_i \cdot x_i) + b \le 0 \\
-    1 & if:\; \sum_{1}^{n}(w_i \cdot x_i) + b > 0
+    0 & \text{if}:\; \sum_{i=1}^{n}(w_i x_i) + b \le 0 \\
+    1 & \text{if}:\; \sum_{i=1}^{n}(w_i x_i) + b > 0
     \end{cases}
     \text{.}
 \end{equation}
@@ -202,10 +202,10 @@ A perceptron computes its output by multiplying each input with its correspondin
 The equation can be simplified by denoting ($x_1, \cdots, x_n$) and ($w_1, \cdots, w_n$) as vectors $\vec{x}$ and $\vec{y}$:
 
 \begin{equation}
-    output = 
+    \wvar{output} = 
     \begin{cases}\label{eq:PerceptronVector}
-    0 & if:\; \vec{w} \cdot \vec{x} + b \le 0 \\
-    1 & if:\; \vec{w} \cdot \vec{x} + b > 0
+    0 & \text{if}:\; \vec{w} \cdot \vec{x} + b \le 0 \\
+    1 & \text{if}:\; \vec{w} \cdot \vec{x} + b > 0
     \end{cases} \text{.}
 \end{equation}
 
@@ -214,15 +214,15 @@ Today, \acp{nn} do not use classical perceptrons. Instead of applying a threshol
 \subsubsection{Activation Function}
 \label{sec:Foundations:NeuralNetworks:ActivationFunction}
 
-One such function is the sigmoid function. It has an advantage over a threshold function as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by \begin{equation} f(x) = \frac{1}{e^{-x}} \text{.} \end{equation} 
+One such function is the sigmoid function. It has an advantage over a threshold function as small changes in the input also only produce small changes in the output \cite{nielsen2015neural}. The sigmoid function is described by \begin{equation} \func{f}(x) = \frac{1}{e^{-x}} \text{.} \end{equation} 
 
-Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by projecting all negative values to zero. Otherwise, it returns the identity for positive values. Therefore, \ac{relu} can be expressed as \begin{equation} f(x)  = max(x,0) \text{.} \end{equation}
+Another widely used activation function is the \ac{relu} \cite{fukushima1969visual, goodfellow2016deep, nielsen2015neural}. It is defined by projecting all negative values to zero. Otherwise, it returns the identity for positive values. Therefore, \ac{relu} can be expressed as \begin{equation} \func{f}(x)  = \wfunc{max}(x,0) \text{.} \end{equation}
 The cut-off below zero makes this function non-linear, thereby giving a neural network more expressive power. Moreover, cutting off negative values means that the number of active neurons at the same time is reduced which makes \ac{relu} more efficient \cite{sharma2020activation}.
 
 Another function that is commonly used is softmax \cite{liu2016computer, goodfellow2016deep}. It is used in the last layers of classification to normalize output values and make them interpretable as probabilities over all classes. The exponential function is applied across the whole layer instead of each neuron of a layer individually. The resulting values are normalized by dividing them through the sum of all values. Softmax is described by:
 
 \begin{equation}
-f(\vec{x}) = \frac{1}{\sum_{x' \in \vec{x}} e^{x'}} 
+\func{f}(\vec{x}) = \frac{1}{\sum_{i = 1}^n e^{x_i}} 
     \begin{pmatrix}
         e^{x_1}\\
         \vdots \\
@@ -236,15 +236,20 @@ whereby $n$ is the number of dimensions of $\vec{x}$ and $x_i$ is the value of v
 
 Neurons and their corresponding activation functions are combined into layers. The first layer is called the input layer and the last layer the output layer \cite{nielsen2015neural}. Layers in between are referred to as hidden layers. In \acp{fc} each neuron of each layer is connected to each neuron of the previous layer. This means that the output of the previous layer is feed into the next layer as input. The inputs of one individual neuron of a layer is the output of all neurons of the previous layer. Layers that have this property are commonly called fully connected layers \cite{nielsen2015neural}. 
 
-Commonly, fully connected neural networks are shown as a graph (see \autoref{fig:Foundations:ANNs:Layer:FullyConnected}), however, mathematically, each layer is represented as a matrix of weights $\mat{W}$ and a vector of biasses $\vec{b}$. Each row vector $\vec{w_i}$ of the matrix corresponds to one neuron and the scalar $b_i$ constitutes the bias for neuron $i$. When processing input $\vec{x}$ the weight matrix is multiplied with the input vector, the bias vector $\vec{b}$ is then added, and, lastly, an activation function $f$ is applied (see \autoref{eq:FCNNLayer}).
+Commonly, fully connected neural networks are shown as a graph (see \autoref{fig:Foundations:ANNs:Layer:FullyConnected}), however, mathematically, each layer is represented as a matrix of weights $\mat{W}$ and a vector of biasses $\vec{b}$. Each row vector $\vec{w_i}$ of the matrix corresponds to one neuron and the scalar $b_i$ constitutes the bias for neuron $i$. When processing input $\vec{x}$ the weight matrix is multiplied with the input vector, the bias vector $\vec{b}$ is then added, and, lastly, an activation function $\func{f}$ is applied (see \autoref{eq:FCNNLayer}).
 
 \begin{equation}
     \label{eq:FCNNLayer}
-    output = f(\mat{W} \cdot \vec{x} + \vec{b}) = f( \begin{pmatrix}
-        \vec{w_1} \cdot \vec{x} + b_1\\
-        \vdots \\
-        \vec{w_n} \cdot \vec{x} + b_n
-      \end{pmatrix} )
+    \wfunc{output} = \func{f}(\mat{W} \cdot \vec{x} + \vec{b}) = \func{f}
+        \left( { 
+            \left[ {
+                \begin{array}{c}
+                    \vec{w_1} \cdot \vec{x} + b_1\\
+                    \vdots \\
+                    \vec{w_n} \cdot \vec{x} + b_n
+                \end{array} 
+            } \right] 
+        } \right)
 \end{equation}
 
 % Adapted from https://tex.stackexchange.com/a/618305
@@ -307,7 +312,7 @@ To train a neural network training samples are shown to a network \cite{nielsen2
 \paragraph{Loss Function}
 \label{par:Foundations:NeuralNetworks:Training:Loss}
 
-The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done by starting at the output layer and propagating the error back through the network, calculating the gradient along the way. The type of problem dictates which loss function can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between predictions and targets. This is described by \begin{equation} MSE = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,} \end{equation} with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
+The loss function is a function that indicates how well a neural network is performing. Minimizing the loss is the goal during training \cite{teuwen2020convolutional}. To minimize the loss backpropagation is used \cite{nielsen2015neural}. The gradient of the loss function is computed with respect to the weights. This is done by starting at the output layer and propagating the error back through the network, calculating the gradient along the way. The type of problem dictates which loss function can be used. Relevant for this thesis are loss functions that work for regression problems. One common metric is \ac{mse} \cite{goodfellow2016deep}. It is described as the mean of squared differences between predictions and targets. This is described by \begin{equation} \wfunc{MSE} = \frac{1}{N} \sum_{i=1}^N (p_i - t_i)^2 \text{,} \end{equation} with $N$ being the number of predictions and $p_i$ the predicted value for target $t_i$.
 
 \Ac{mse} punishes predictions which are further off from a target disproportionally strong, thereby incentivizing minimization of distance across all predictions.
 
@@ -317,18 +322,18 @@ The loss function is a function that indicates how well a neural network is perf
 
 With the computed gradient the optimizer decides how the weights of a model get updated to reduce the average error of the loss function on any observation $z$.
 
-Gradient descent is one such optimizer and uses the gradient $\Delta \mathcal{L}(z_{train})$ based on all observation in the training data $z_{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $w$ to $\bar{w}$ \cite{murphy2022probabilistic}. The formula that describes gradient descent is as follows:
+Gradient descent is one such optimizer and uses the gradient $\nabla \mathcal{L}(\vec{z}_\wsub{train})$ based on all observation in the training data $\vec{z}_\wsub{train}$ to estimate the true gradient $\mathcal{L}(z)$. This and a learning rate parameter $\eta$ is used to update the weights $\mat{W}$ to $\mat{\bar{W}}$ \cite{murphy2022probabilistic}. The formula that describes gradient descent is as follows:
 
-\begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{train}). \end{equation}
+\begin{equation} \mat{\bar{W}} = \mat{W} - \eta \nabla \mathcal{L}(\vec{z}_\wsub{train}). \end{equation}
 
-Often the training data is large, thus calculating $\Delta \mathcal{L}(z_{train})$ takes a long time. To combat that, in \ac{sgd}, the training data is split into mini-batches $z_{b}$ which are used to estimate $\Delta \mathcal{L}(z_{train})$. This results in a changed training formula:
-\begin{equation} \bar{w} = w - \eta \cdot \Delta \mathcal{L}(z_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
+Often the training data is large, thus calculating $\nabla \mathcal{L}(\vec{z}_\wsub{train})$ takes a long time. To combat that, in \ac{sgd}, the training data is split into mini-batches $\vec{z}_{b}$ which are used to estimate $\nabla \mathcal{L}(\vec{z}_\wsub{train})$. This results in a changed training formula:
+\begin{equation} \mat{\bar{W}} = \mat{W} - \eta \nabla \mathcal{L}(\vec{z}_{b}). \end{equation} This allows more frequent weight updates and, therefore, results in faster training time.
 
 
-Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus preserving momentum from gradients of previous batches. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \Delta \mathcal{L}(z_b)$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\Delta \mathcal{L}(z_b))^2$. 
+Instead of using the gradient directly, another optimizer: \ac{adam} \cite{kingma2017adam}, uses the decaying average $m_t$ and squared average $v_t$ of past gradients, thus preserving momentum from gradients of previous batches. \Ac{adam} has two decay rate parameters $\beta_1$ and $\beta_2$ for $m_t$ and $v_t$ respectively. \textcite{kingma2017adam} also introduce the bias-corrected versions $\hat{m_t}$ and $\hat{v_t}$. \Ac{adam} defines parameters in terms of the current time step $t$ and the previous time step with $t-1$. The first moment estimate $m_t$ is computed by $m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla \mathcal{L}(\vec{z_b})$. Similarly, the second moment estimate $v_t$ is computed by $v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla \mathcal{L}(\vec{z_b}))^2$. 
 The bias corrected-versions of the moments are computed by $\hat{m_t} = \frac{m_t}{1 - \beta_1^t}$ and $\hat{v_t} = \frac{v_t}{1 - \beta_2^t}$. These formulas allow the construction of the update equation which looks as follows:
 
-\begin{equation}w_t = w_{t-1} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.} \end{equation}
+\begin{equation}\mat{W_t} = \mat{W_{t-1}} - \eta \frac{\hat{m_t}}{\sqrt{\hat{v_t}} + \epsilon} \text{.} \end{equation}
 
 The small constant $\epsilon$ is used to prevent division by zero. \textcite{kingma2017adam} state that \ac{adam} is an optimizer that is fairly robust to noise.
 
@@ -356,11 +361,11 @@ A layer type that can be commonly found in neural networks is the fully connecte
 
 Also, \emph{convolutional layers}, were already introduced in \autoref{sec:Foundations:NeuralNetworks:CNN}. These layers use convolutions and, therefore, each neuron is only connected to its neighbours. What is considered to be its neighbours depends on the size of the convolution window. This size is the kernel size. The example shown in \autoref{fig:Foundations:ANNs:CNNs:Convolution} has a kernel size of 3 (sometimes also described as $3 \times 3$). The output channels of a layer define the number of different kernels which are used inside a layer. Each kernel is run on the entire input.
 
-Closely related to convolutional layers are \emph{pooling layers}. However, unlike convolutions, pooling layers do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($stride = \frac{size(kernel)}{2}$) \cite{scherer2010evaluation}, therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. Pooling is used to aggregate neighbouring low-level features and to reduce the spatial size of data and therefore require fewer weights in a network.
+Closely related to convolutional layers are \emph{pooling layers}. However, unlike convolutions, pooling layers do not perform a sum operation on the inputs. Instead, they apply a pooling function (often, maximum or mean). Also, commonly with pooling layers the sliding window does not overlap ($\wvar{stride} = \frac{\wfunc{size}(\wvar{kernel})}{2}$) \cite{scherer2010evaluation}, therefore, pooling can be understood as splitting the input into tiles and a pooling operation is done on each of those tiles. Pooling is used to aggregate neighbouring low-level features and to reduce the spatial size of data and therefore require fewer weights in a network.
 
 \emph{Global average pooling} follows the same concept of pooling layers, however, the goal with it is to generate a fixed size output that is independent of the input size. This allows to replace fully connected layers in neural networks \cite{lin2014network}. The fixed output size makes models input size agnostic and can be used to also introduce fully connected layers without sacrificing this flexibility in fully connected networks \cite{he2016deep}.
 
-\emph{Batch normalization} \cite{ioffe2015batch} is a layer only used during training (not during validation and testing) that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the \acf{std} is made: $\frac{y - mean(y)}{std (y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
+\emph{Batch normalization} \cite{ioffe2015batch} is a layer only used during training (not during validation and testing) that normalizes the output $y$ of a layer before feeding it to the activation function. The normalization is done over a whole mini-batch. The mean is subtracted from the output and then a division by the \acf{std} is made: $\frac{y - \wfunc{mean}(y)}{\wfunc{std} (y)}$. It allows a higher learning rate and less careful initialization, thereby, reducing the time it takes to train a network.
 
 
 \subsubsection{\acs{resnet}}
@@ -465,11 +470,11 @@ This section presents related work to this thesis. First, traditional focus metr
 \textcite{mateos-perez2012comparative} perform a comparative study on 13 real-time focus methods with fluorescence-labeled tuberculosis bacteria. They take into account, robustness to noise, illumination changes, accuracy and computational cost. Further, the study looks into the benefit of preprocessing with morphological operators.
 The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanced}) and \ac{vol4} \cite{vollath1988influence} due to their high accuracy, robustness to noise and low computational cost.
 
-\ac{vol4} works by taking the difference of the summed values of a multiplication with neighbouring pixels. The computation is shown in \autoref{eq:Vol4}, where $g(x, y)$ is the grey-level of the image at position $x,y$, $M$ is the width and $N$ the height of the image.
+\ac{vol4} works by taking the difference of the summed values of a multiplication with neighbouring pixels. The computation is shown in \autoref{eq:Vol4}, where $\func{g}(x, y)$ is the grey-level of the image at position $x,y$, $M$ is the width and $N$ the height of the image.
 
 \begin{equation}
     \label{eq:Vol4}
-    F_{Vol4} = \sum_{i=1}^{M-1}\sum_{j=1}^{N} g(i,j) \cdot g(i+1, j) - \sum_{i=1}^{M-2}\sum_{j=1}^{N} g(i,j) \cdot g(i+2, j)
+    \func{F}_{\wsub{Vol4}} = \sum_{i=1}^{M-1}\sum_{j=1}^{N} \func{g}(i,j) \func{g}(i+1, j) - \sum_{i=1}^{M-2}\sum_{j=1}^{N} \func{g}(i,j) \func{g}(i+2, j)
 \end{equation}
 
 
@@ -477,28 +482,35 @@ The authors recommend the usage of \ac{mdct} (studied by \textcite{lee2008enhanc
 
 \begin{equation}
     \label{eq:MDCT}
-    F_{MDCT}= \sum_{m=1}^{M}\sum_{n=1}^{N}
-    ( g(m,n) *
-    \left[ {\begin{array}{rrrr}
-        1 & 1 & -1 & -1 \\
-        1 & 1 & -1 & -1 \\
-        -1 & -1 & 1 & 1 \\
-        -1 & -1 & 1 & 1
-    \end{array} } \right]
-    )^2
+    \func{F}_{\wsub{MDCT}}= \sum_{m=1}^{M}\sum_{n=1}^{N}
+    \left( {  
+        \func{g}(m,n) *
+        \left[ {
+            \begin{array}{rrrr}
+                1 & 1 & -1 & -1 \\
+                1 & 1 & -1 & -1 \\
+                -1 & -1 & 1 & 1 \\
+                -1 & -1 & 1 & 1
+            \end{array} 
+        } \right]
+    } \right)^2
 \end{equation}
 
 The approach that is currently used in the microscope prototype is the mean Laplacian. The Laplacian is an edge detection convolutional filter \cite{vikrammutneja2015methods}. The result can be found in \autoref{eq:MeanLaplacian}. \textcite{redondo2012autofocus} look at a similar function, however, they instead use the sum of the squared Laplacian.
 
 \begin{equation}
     \label{eq:MeanLaplacian}
-    F_{ML}= \frac{1}{NM} \sum_{m=1}^{M}\sum_{n=1}^{N} (g(m,n) *
-    \left[ {\begin{array}{rrr}
-        1 & 1 & 1 \\
-        1 & -8 & 1 \\
-        1 & 1 & 1 
-    \end{array} } \right]
-    )
+    \func{F}_{\wsub{ML}}= \frac{1}{NM} \sum_{m=1}^{M}\sum_{n=1}^{N} 
+    \left( {
+        \func{g}(m,n) *
+        \left[ {
+            \begin{array}{rrr}
+                1 & 1 & 1 \\
+                1 & -8 & 1 \\
+                1 & 1 & 1 
+            \end{array} 
+        } \right]
+    } \right)
 \end{equation}
 
 \subsection{Deep Learning-Based Approaches}
