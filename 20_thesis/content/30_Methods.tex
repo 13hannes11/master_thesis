@@ -40,6 +40,7 @@ Approximately 100 focus stack tiles (i.e., 108 Schistosoma, 104 hookworms, 121 T
 
 The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating-point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180, or 270 degrees. All augmentations do not require interpolation, therefore, the sharpness of the image is not changed. This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available \cite{shorten2019survey}.
 
+\FloatBarrier
 
 \subsection{Datasets in Related Work}
 \label{sec:Methods:Data:Related}
@@ -108,20 +109,14 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 \subsection{Metrics}
 \label{sec:Methods:Evaluation:Metrics}
 
-The trained models are evaluated using multiple metrics that are described in this section.
-
-The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations, TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_\wsub{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+The trained models are evaluated using multiple metrics that are described in this section. The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations, TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_\wsub{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model predictions are compared to the values of a focus stack.
 
-The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measure if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
-
-\begin{equation} \wvar{\acs{plcc}} = \frac{\wfunc{cov}(X,Y)}{\wfunc{std}(X)  \wfunc{std}(Y)} \texttt{,} \end{equation}
-with $\wfunc{cov}$ being the covariance and $\wfunc{std}$ being the \acl{std}. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
+The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measure if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as: \begin{equation} \wvar{\acs{plcc}} = \frac{\wfunc{cov}(X,Y)}{\wfunc{std}(X)  \wfunc{std}(Y)} \texttt{,} \end{equation} with $\wfunc{cov}$ being the covariance and $\wfunc{std}$ being the \acl{std}. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfect correlation.
 
 
-The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however, uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows:
+The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however, uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows: \begin{equation} \wvar{\acs{srcc}} = \frac{\wfunc{cov}(\func{R}(X),R(Y))}{\wfunc{std}(\func{R(}X)) \wfunc{std}(\func{R}(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $\wfunc{std}$ the \acl{std}, and $\wfunc{cov}$ the covariance.
 
-\begin{equation} \wvar{\acs{srcc}} = \frac{\wfunc{cov}(\func{R}(X),R(Y))}{\wfunc{std}(\func{R(}X)) \cdot \wfunc{std}(\func{R}(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $\wfunc{std}$ the \acl{std}, and $\wfunc{cov}$ being the covariance.
 
 Lastly, the \ac{r2} is a common statistical correlation measure in regression analysis \cite{dibucchianico2008coefficient}.
 

@@ -27,6 +27,8 @@ The worst performing model is \acs{poop}-\acs{fc} with most metrics lying below 
     \label{tab:Results:Models:Accuracy}
 \end{table}
 
+\FloatBarrier
+
 \autoref{fig:Results:ScatterPredictedTarget} shows the predictions in comparison to the targeted values when using \acs{poop}-\acs{resnet}-34 and \acs{poop}-\acs{cnn}. The plot for \acs{poop}-\acs{resnet}-34 (\autoref{fig:Results:ScatterPredictedTarget:ResNet34}) shows a line that represents the ideal match between targets and predictions. The data points in the plot clearly follow this line, they, however, have an approximate spread of 0.01 across most predictions. When a target range close to zero is reached the observed vertical spread is larger. Negative predictions also mostly correspond to negative targets. Further, one outlier can be seen with a target value of smaller than $-0.08$ and one with a target value of smaller than $-0.05$. Additional outliers are seen across the whole plot which increase the spread quite substantially. The outliers seen in \autoref{fig:Results:ScatterPredictedTarget:ResNet34} can also be observed in \autoref{fig:Results:ScatterPredictedTarget:CNN}. Moreover, the plots are fairly similar. A higher spread can be observed in the data of \acs{poop}-\acs{cnn}. The model's highest and lowest prediction range seems to be smaller with the lowest value being close to $0.025$ and the largest close to $0.025$ compared to $-0.03.5$, and $0.035$ respectively.
 
 
