@@ -1,15 +1,15 @@
 \chapter{Methods}
 \label{ch:Methods}
 
-This chapter describes the steps undertaken in this thesis, beginning with the used data. Further, data preparation steps are described and the tools that were developed to help with data annotation. The data is compared to data in related work. Some of the models that were developed as part of this thesis are introduced, their hyperparameters  and how these were obtained is described. Then, evaluation metrics and other measurements are introduced. Lastly, the hardware used for this thesis is presented. 
+This chapter describes the steps undertaken in this thesis, beginning with the used data. Further, data preparation steps are described and the tools that were developed to help with data annotation. The data is compared to data in related work. Some of the models that were developed as part of this thesis are introduced, their hyperparameters  and how these were obtained are described. Then, evaluation metrics and other measurements are introduced. Lastly, the hardware used for this thesis is presented. 
 
 \section{Data}
 \label{sec:Methods:Data}
 
-At the time of writing there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides which contains annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. This study was performed in Uganda and contains a mix of slides. The majority of slides were scanned one month after preparation. A portion was scanned within 24 hours and a few were scanned directly after preparation.
-The dataset contains information about the focus settings of the lens. It has a discrete value range of $[0, 1023]$ and the range of focus is approximately \unit{1.28}{\milli\meter}. In the database, however, the stored focus value is a normalized version of this is the range of $[0,1]$. This normalized value is the value used in the thesis and thus focus values can be converted to mm by multiplying with \unit{1.28}{\milli\meter}. During the imaging process the change of focus between neighbouring images varies per focus stack but is approximately in the range of $5$ to $10$ steps. This means that the change in focus between neighbouring images in a focus stack is approximately \unit{6.25}{\micro\meter} to \unit{12.5}{\micro\meter} or a focus value of approximately $0.007$.
+At the time of writing, there is no available dataset for Kato-Katz prepared slides, especially, not of \acp{ntd}. A large dataset of annotated slides that contain annotations for bounding boxes and the type of eggs is available at Etteplan. This dataset is subdivided into different studies and study 31 was used for this thesis. This study was performed in Uganda and contains a mix of slides. The majority of slides were scanned one month after preparation. A portion was scanned within 24 hours and a few were scanned directly after preparation.
+The dataset contains information about the focus settings of the lens. It has a discrete value range of $[0, 1023]$ and the range of focus is approximately \unit{1.28}{\milli\meter}. In the database, however, the stored focus value is a normalized version of this in the range of $[0,1]$. This normalized value is the value used in the thesis and thus focus values can be converted to mm by multiplying by \unit{1.28}{\milli\meter}. During the imaging process, the change of focus between neighbouring images varies per focus stack but is approximately in the range of $5$ to $10$ steps. This means that the change in-focus between neighbouring images in a focus stack is approximately \unit{6.25}{\micro\meter} to \unit{12.5}{\micro\meter} or a focus value of approximately $0.007$.
 
-Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles which area is covered by a bounding box of at least 25 percent are kept. \autoref{fig:Methods:Data:PatchCreation} illustrates which tiles are kept for an example annotation. The tile size was chosen due to smaller tile sizes being more difficult to annotate.
+Slides with verified annotations were used and split into tiles of $150 \times 150$ pixels. Only tiles whose area is covered by a bounding box of at least 25 percent are kept. \autoref{fig:Methods:Data:PatchCreation} illustrates which tiles are kept for an example annotation. The tile size was chosen due to smaller tile sizes being more difficult to annotate.
 
 \begin{figure}
     \centering
@@ -28,17 +28,17 @@ To annotate the focus plane of these focus stacks the annotation tool \emph{Focu
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{images/30_methods/10_data/focus_annotator.png}
-    \caption[Screenshot of Focus Annotator]{Screenshot of the tool \emph{Focus Annotator} showing a tile and its neighbours that contain a schistosoma egg. A user can navigate through the focus stack using the slider on the left side. When the image most in focus is found the button "Set Focus" at the bottom right is used to make an annotation. All actions can also be done using keyboard shortcuts.}
+    \caption[Screenshot of Focus Annotator]{Screenshot of the tool \emph{Focus Annotator} showing a tile and its neighbours that contain a Schistosoma egg. A user can navigate through the focus stack using the slider on the left side. When the image most in-focus is found the button "Set Focus" at the bottom right is used to make an annotation. All actions can also be done using keyboard shortcuts.}
     \label{fig:Methods:Data:FocusAnnotator}
 \end{figure}
 
 
-Approximately 100 focus stack tiles (i.e., 108 schistosoma, 104 hookworm, 121 trichuris, 104 ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as focus value) to the most in focus patch. One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $70\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen as for egg counting it is not important to have the background in focus.
+Approximately 100 focus stack tiles (i.e., 108 Schistosoma, 104 hookworms, 121 Trichuris, 104 Ascaris) were annotated per egg type. The annotation of a focus stack is used to calculate the relative focus distance (as focus value) to the most in-focus patch. One stack consists of 10 images and therefore this resulted in 4367 annotated patches. These were split using a $70\%$, $15\%$, $15\%$ split for training validation and test data respectively. Background images were not chosen because for egg counting it is not important to have the background in focus.
 
 \subsection{Augmentation}
 \label{sec:Methods:Data:Augmentation}
 
-The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180 or 270 degrees. All augmentations do not require interpolation, therefore, the sharpness of the image is not changed. This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available \cite{shorten2019survey}.
+The images are transformed using PyTorch's transformations \cite{paszke2019pytorch, 2021pytorch}. \texttt{ToTensor} converts an image's value range to the interval $[0, 1]$ and \texttt{ConvertImageDtype} is used to ensure that an image consists of 32-bit floating-point numbers. Further, images used for training (not for validation and testing) are augmented by using vertical and horizontal flips, and rotations. Each augmentation has a 50 percent chance of being applied. Rotations are either 90, 180, or 270 degrees. All augmentations do not require interpolation, therefore, the sharpness of the image is not changed. This is done to make trained models more robust towards changes in direction. Further, it can improve model performance when only limited training data is available \cite{shorten2019survey}.
 
 
 \subsection{Datasets in Related Work}
@@ -68,15 +68,15 @@ Related studies use 20 to 40 times the amount of data to train their models (see
 \section{Models}
 \label{sec:Methods:Models}
 
-During this thesis a variety of models were trained. First training of simpler models (such as \emph{\acs{poop}-\acs{fc}} and \emph{\acs{poop}-\acs{cnn}}) was conducted to test the training pipeline. Further, this was done to understand if predicting focus distance and direction is at all possible. Other models that were later trained are \acs{resnet} variants whereby the results of the best performing \acs{resnet} models is presented.
+During this thesis, a variety of models were trained. First, training of simpler models (such as \emph{\acs{poop}-\acs{fc}} and \emph{\acs{poop}-\acs{cnn}}) was conducted to test the training pipeline. Further, this was done to understand if predicting focus distance and direction is at all possible. Other models that were later trained are \acs{resnet} variants whereby the results of the best performing \acs{resnet} models is presented.
 
 Each model uses the \ac{adam} optimizer, whereby the \emph{learning rate} was an optimizable hyperparameter. The weight decay was fixed to $0.0005$ for all models and all models use \ac{relu} activation functions. Also, all models used a batch size of $64$.
 
-The \acs{poop}-\acs{fc} models contain five layers, whereby each layer first uses batch-normalization and then applies the activation function. The sizes of hidden-layers are tunable parameters. The final \acs{poop}-\acs{fc} model used a learning rate of $0.0369$ and a hidden layer sizes of $512$, $512$ and $1024$.
+The \acs{poop}-\acs{fc} models contain five layers, whereby each layer first uses batch-normalization and then applies the activation function. The sizes of hidden layers are tunable parameters. The final \acs{poop}-\acs{fc} model used a learning rate of $0.0369$ and hidden layer sizes of $512$, $512$, and $1024$.
 
-The \acs{poop}-\acs{cnn} models contain two convolutional layers, each followed by a batch-normalization, followed by the activation function and a max-pooling layer. This is followed by three linear layers. The first linear layers size is governed by previous layers. The final \acs{poop}-\acs{cnn} model uses a max-pooling kernel size of 2. The first convolutional layer has a kernel size of $5$ and uses $6$ channels, the second has a convolution size of $7$ and uses $6$ channels. The tunable linear layers were set to the sizes of $16$ and $32$. The learning rate was set to $0.0029$. During training and hyperparameter optimization it was discovered that a model without any activation functions performs best.
+The \acs{poop}-\acs{cnn} models contain two convolutional layers, each followed by a batch-normalization, followed by the activation function and a max-pooling layer. This is followed by three linear layers. The first linear layer's size is governed by previous layers. The final \acs{poop}-\acs{cnn} model uses a max-pooling kernel size of 2. The first convolutional layer has a kernel size of $5$ and uses $6$ channels, the second has a convolution size of $7$ and uses $6$ channels. The tunable linear layers were set to the sizes of $16$ and $32$. The learning rate was set to $0.0029$. During training and hyperparameter optimization, it was discovered that a model without any activation functions performs best.
 
-The \ac{resnet} models use predefined \ac{resnet} models from PyTorch. However, the fully connected layer is changed to provide only a single regression output. Another, hyperparameter is the use of a pretrained model trained on ImageNet \cite{deng2009imagenet} to initialize the weights of a model. All presented \ac{resnet} models use transfer learning, however, their learning rate varies. The resulting hyperparameters are shown in \autoref{tab:Methods:Models:Comparison}.
+The \ac{resnet} models use predefined \ac{resnet} models from PyTorch. However, the fully connected layer is changed to provide only a single regression output. Another hyperparameter is the use of a pre-trained model trained on ImageNet \cite{deng2009imagenet} to initialize the weights of a model. All presented \ac{resnet} models use transfer learning, however, their learning rate varies. The resulting hyperparameters are shown in \autoref{tab:Methods:Models:Comparison}.
 
 \begin{table}[ht]
     \centering
@@ -92,15 +92,15 @@ The \ac{resnet} models use predefined \ac{resnet} models from PyTorch. However, 
     \label{tab:Methods:Models:Comparison}
 \end{table}
 
-Initializing model parameters for training based on a model that has been trained on a different task and dataset is known as \emph{transfer learning}. Some problems are difficult to train on and such an initialization can improve or allow training. Further, on problems with a lack of data knowledge from other task can be transferred thereby speeding up training and helping with generalization. Transfer learning not only works between similar domains, but it also provides some of these benefits when transferring from photography images to medical images \cite{mustafa2021supervised}.
+Initializing model parameters for training based on a model that has been trained on a different task and dataset is known as \emph{transfer learning}. Some problems are difficult to train on and such an initialization can improve or allow training. Further on, problems with a lack of data knowledge from other tasks can be transferred thereby speeding up training and helping with generalization. Transfer learning not only works between similar domains, but it also provides some of these benefits when transferring from photography images to medical images \cite{mustafa2021supervised}.
 
 
 \section{Training}
 \label{sec:Methods:Training}
 
-Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training \ac{mse} is used as loss function. To optimize hyperparameters the optimization framework Optuna \cite{optuna} is used.
-\Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna. In these runs the architecture and hyperparameters are optimized.
-\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna optimizer. Then, the best performing models from different \acs{resnet} sizes are chosen.
+Each model is trained for 100 epochs to ensure convergence and the best model checkpoint during training (based on validation) is used for evaluation. During training, \ac{mse} is used as the loss function. To optimize hyperparameters the optimization framework Optuna \cite{optuna} is used.
+\Acs{poop}-\acs{cnn} and \acs{poop}-\acs{fc} are trained using separate runs of Optuna. In these runs, the architecture and hyperparameters are optimized.
+\Acs{poop}-\acs{resnet} models are trained using a shared run of the Optuna optimizer. Then, the best-performing models from different \acs{resnet} sizes are chosen.
 
 \section{Evaluation}
 \label{sec:Methods:Evaluation}
@@ -110,32 +110,32 @@ Each model is trained for 100 epochs to ensure convergence and the best model ch
 
 The trained models are evaluated using multiple metrics that are described in this section.
 
-The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_\wsub{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
+The models trained in this thesis are regression models. The evaluation and comparison, therefore, relate the metrics used to regression values. For the computations, TorchMetrics \cite{2022pytorchmetrics} is used. The first metric is \ac{mae}. \Ac{mae} is computed by taking the mean of the absolute difference between target and prediction values \cite{sammut2010mean}. Its formula is \begin{equation} E_\wsub{MAE} = \frac{1}{N}\sum_{i=1}^N |p_i - t_i| \text{,} \end{equation} where $N$ is the number of predictions (and targets) and $p_i$ is the predicted value for target $t_i$.
 It is used to provide a simple link between lens values and model performance. It indicates how far off the model predictions are compared to the values of a focus stack.
 
-The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measures if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
+The \ac{plcc} \cite{pearson1909determination} is a correlation measure used as another metric to measure if the relationship between two variables is linear \cite{profillidis2019statistical}. A linear relationship is expected between the actual focus distance and the prediction of the model. It is defined as:
 
 \begin{equation} \wvar{\acs{plcc}} = \frac{\wfunc{cov}(X,Y)}{\wfunc{std}(X)  \wfunc{std}(Y)} \texttt{,} \end{equation}
 with $\wfunc{cov}$ being the covariance and $\wfunc{std}$ being the \acl{std}. The value range of \ac{plcc} ranges from $-1$ to $1$ and according to \textcite{profillidis2019statistical} $\acs{plcc} = 1$ means a perfect positive correlation, $\ac{plcc} > 0.8$ a strong correlation. A $\ac{plcc} = 0$ means no correlation at all and values below zero indicate a negative correlation with $\ac{plcc} = -1$ being a perfectly negative correlation.
 
 
-The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however it uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows:
+The \ac{srcc} \cite{spearman1904proof} is related to the \ac{plcc}, however, uses the rank of variables instead of their actual value. Therefore, it describes the relationship between two variables using a monotonic function. The formula that describes \ac{srcc} looks as follows:
 
-\begin{equation} \wvar{\acs{srcc}} = \frac{\wfunc{cov}(\func{R}(X),R(Y))}{\wfunc{std}(\func{R(}X)) \cdot \wfunc{std}(\func{R}(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $\wfunc{std}$ the \acl{std} and $\wfunc{cov}$ being the covariance.
+\begin{equation} \wvar{\acs{srcc}} = \frac{\wfunc{cov}(\func{R}(X),R(Y))}{\wfunc{std}(\func{R(}X)) \cdot \wfunc{std}(\func{R}(Y))} \texttt{,} \end{equation} with $R$ the rank of variables, $\wfunc{std}$ the \acl{std}, and $\wfunc{cov}$ being the covariance.
 
 Lastly, the \ac{r2} is a common statistical correlation measure in regression analysis \cite{dibucchianico2008coefficient}.
 
 \begin{equation} \wvar{\acs{r2}} = 1 - \frac{\sum_{i=1}^{N}{(p_i - t_i)^2}}{\sum_{i=1}^{N}{(p_i - \bar{t})^2}} \text{,} \end{equation} with $\bar{t}$ being the mean of all annotations.
 
-The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchianico2008coefficient} values lower than $<0.5$ show only a weak relation between data and model, while values $v$ with $0.5 < v < 0.8$ demonstrate that a model is not adequate to perfectly represent the data.
+The value range of \acs{r2} is between 0 and 1. According to \textcite{dibucchianico2008coefficient} values lower than $<0.5$ shows only a weak relation between data and model, while values $v$ with $0.5 < v < 0.8$ demonstrate that a model is not adequate to perfectly represent the data.
 
 
-The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned, is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
-The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case the formula for MAE looks as follows:
+The output of the models developed in this thesis is not directly comparable to other approaches. Therefore, the test data is grouped into focus stacks. Each model is run on all patches of a focus stack. The image with the highest focus score assigned is considered to be the model's prediction. The prediction is considered to be correct if the in-focus annotation matches the prediction. A prediction that is off by one is still considered to be correct (see \autoref{fig:Methods:Data:InFocusExampleImages}).
+The reasoning behind this approach is that during the annotation process it was difficult for annotators to decide on which image is most in-focus compared to its neighbours. The same approach is undertaken by \citeauthor{senaras2018deepfocus} (DeepFocus) \cite{senaras2018deepfocus} (see \autoref{sec:Foundations:RelatedWorks:DeepLearning}). To get a further understanding of the magnitude of a model's misprediction the \ac{mae} of the index is used. In this case, the formula for MAE looks as follows:
 
-\begin{equation} E_{\wsub{MAE^*}} = \frac{1}{|S|}\sum_{s \in S} |\func{p}(s) - \func{t}(s)| \text{,} \end{equation} with $S$ being the set of evaluated focus stacks, $\func{p}(s)$ denoting the index of the image predicted to be in focus and $\func{t}(s)$ denoting the index of the image that is annotated as in-focus.
+\begin{equation} E_{\wsub{MAE^*}} = \frac{1}{|S|}\sum_{s \in S} |\func{p}(s) - \func{t}(s)| \text{,} \end{equation} with $S$ being the set of evaluated focus stacks, $\func{p}(s)$ denoting the index of the image predicted to be in-focus and $\func{t}(s)$ denoting the index of the image that is annotated as in-focus.
 
-To distinguish between \ac{mae} metrics used in this thesis the index based metric is denoted as \ac{mae}$^*$.
+To distinguish between \ac{mae} metrics used in this thesis the index-based metric is denoted as \ac{mae}$^*$.
 
 
 \begin{figure}[tb]
@@ -156,7 +156,7 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
         \caption{-1}
     \end{subfigure}
 
-    \caption[In-focus patches for best image selection]{Patches that are considered to be in focus for the best image selection task. The image on the left shows the background most in focus while the one on the right the least. Different parts of the egg are fairly well in focus in each of the images.}
+    \caption[In-focus patches for best image selection]{Patches that are considered to be in-focus for the best image selection task. The image on the left shows the background most in-focus while the one on the right the least. Different parts of the egg are fairly well in-focus in each of the images.}
     \label{fig:Methods:Data:InFocusExampleImages}
 \end{figure}
 
@@ -164,9 +164,9 @@ To distinguish between \ac{mae} metrics used in this thesis the index based metr
 \subsection{Implementation of Traditional Focusing Methods}
 \label{sec:Methods:Evaluation:Traditional}
 
-Traditional focusing methods (introduced in \autoref{sec:Foundations:RelatedWorks:Traditional}) were implemented using \emph{PyTorch} \cite{paszke2019pytorch} and \emph{Kornia} \cite{riba2020kornia}. Kornia is a computer vision library that uses PyTorch as its computational backend. Therefore, computations can be easily run on the \ac{cpu} or \ac{gpu}. In this section the PyTorch functions \texttt{torch.sum}, \texttt{torch.mul}, \texttt{torch.tensor}, \texttt{torch.square}, and \texttt{torch.mean} are shortened by omitting the namespaces of the functions. The same is done for \texttt{kornia.filters.filter2d} and \texttt{kornia.filters.laplacian}. In the code shown below \texttt{IMG} is a tensor representing the greyscale version of the input image.
+Traditional focusing methods (introduced in \autoref{sec:Foundations:RelatedWorks:Traditional}) were implemented using \emph{PyTorch} \cite{paszke2019pytorch} and \emph{Kornia} \cite{riba2020kornia}. Kornia is a computer vision library that uses PyTorch as its computational backend. Therefore, computations can be easily run on the \ac{cpu} or \ac{gpu}. In this section, the PyTorch functions \texttt{torch.sum}, \texttt{torch.mul}, \texttt{torch.tensor}, \texttt{torch.square}, and \texttt{torch.mean} are shortened by omitting the namespaces of the functions. The same is done for \texttt{kornia.filters.filter2d} and \texttt{kornia.filters.laplacian}. In the code shown below, \texttt{IMG} is a tensor representing the greyscale version of the input image.
 
-\Ac{vol4} was implemented using PyTorch tensors, their index operations and the tensor operations \texttt{sum} and \texttt{mul}. The slice indexing removes the need to run the summation loop in Python and therefore allows PyTorch's efficient computation backends to be used.
+\Ac{vol4} was implemented using PyTorch tensors, their index operations, and the tensor operations \texttt{sum} and \texttt{mul}. The slice indexing removes the need to run the summation loop in Python and therefore allows PyTorch's efficient computation backends to be used.
 
 \begin{lstlisting}
 VOL4 = sum(mul(IMG[:-1,:], IMG[1:,:]))      \
@@ -194,7 +194,7 @@ ML = mean(laplacian(IMG, 3))
 \subsection{Computational Resource Usage}
 \label{sec:Methods:Evaluation:Computation}
 
-The speed (performance) of the models is analysed by running each method on 620 image patches. The measurement only includes computation time. Transfer time to the GPU and loading time of images are not considered. Also, the memory requirements of the machine learning models are analysed, however, this analysis is done by measuring the difference in memory usage of the program before and after loading a model. Therefore, during actual use the memory usage might be higher.
+The speed (performance) of the models is analysed by running each method on 620 image patches. The measurement only includes computation time. Transfer time to the GPU and loading time of images are not considered. Also, the memory requirements of the machine learning models are analysed, however, this analysis is done by measuring the difference in memory usage of the program before and after loading a model. Therefore, during actual use, the memory usage might be higher.
 
 \section{Hardware and Software}
 \label{sec:Methods:Hardware}

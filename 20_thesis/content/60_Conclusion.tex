@@ -6,15 +6,15 @@ This section briefly summarizes the whole thesis, gives a conclusion, followed b
 \section{Conclusion}
 \label{sec:Conclusion:Conclusion}
 
-In summary, the goal of this thesis is to evaluate the feasibility of detecting the focus distance of microscopy slides. The dataset used are Kato-Katz prepared image slides, which contain \aclp{sth} and Schistosoma eggs. As they were missing focus annotations, an efficient annotation tool to annotate image patches is developed. Further, \ac{poop} models are introduced which were trained on the annotated data. These models are not only evaluated on focus distance detection but also compared to traditional metrics for selecting the most in-focus image in a focus stack. Models that perform well on focus distance detection also perform well on the other task. Also, this study shows that efficient fast models are able to learn the given task as well, however, trading accuracy for computational efficiency.
+In summary, the goal of this thesis is to evaluate the feasibility of detecting the focus distance of microscopy slides. The dataset used consists of Kato-Katz prepared image slides, which contain \aclp{sth} and Schistosoma eggs. As they were missing focus annotations, an efficient annotation tool to annotate image patches is developed. Further, \ac{poop} models are introduced which were trained on the annotated data. These models are not only evaluated on focus distance detection but also compared to traditional metrics for selecting the most in-focus image in a focus stack. Models that perform well on focus distance detection also perform well on the other task. Also, this study shows that efficient fast models are able to learn the given task as well, however, trading accuracy for computational efficiency.
 Overall, the results of this thesis show the feasibility of using machine learning models to do focus distance estimation.
 
 
 \section{Limitations and Future Work}
 \label{sec:Conclusion:FutureWork}
 
-The data used in this thesis stems only from one study, this can reduce generalizability of results. Further, focus annotations were made only by the author of this thesis, therefore, errors, especially in more ambiguous cases can affect results. Only having one image marked as in focus and extrapolation from that could also have such effects, especially when comparing to explicit annotations. Another potential limitation is the use of only image patches that have eggs in them. This approach might therefore not be applicable for applications that also require focusing on the background. 
-To mitigate data related issues, future work should use multiple studies, if possible having multiple annotators to cross-check annotations and should consider allowing multiple in-focus images. Further, the effect of including background patches in the data should be investigated.
+The data used in this thesis stems only from one study, this can reduce the generalizability of results. Further, focus annotations were made only by the author of this thesis, therefore, errors, especially in more ambiguous cases can affect results. Only having one image marked as in focus and extrapolation from that could also have such effects, especially when compared to explicit annotations. Another potential limitation is the use of only image patches that have eggs in them. This approach might therefore not be applicable for applications that also require focusing on the background. 
+To mitigate data-related issues, future work should use multiple studies, if possible having multiple annotators to cross-check annotations and should consider allowing multiple in-focus images. Further, the effect of including background patches in the data should be investigated.
 
 \Ac{resnet} models were not trained in separate optimizer runs, this could especially impact the final results and the comparability between individual models. Future work, especially on extracting the best performance from models, should investigate the performance differences further. 
 Also, speed comparisons might not be accurate, as little effort in optimizing models and traditional approaches was undertaken.
@@ -22,6 +22,6 @@ Also, speed comparisons might not be accurate, as little effort in optimizing mo
 Additional future work could investigate how other and more modern models (e.g., vision transformers \cite{dosovitskiy2021image}, ResNeXt \cite{xie2017aggregated}) perform on focus distance estimation. Further optimizations in terms of speed and also investigations on improving the performance of small models could help to improve the range of applications for which focus detection models can be used.
 Moreover, training with larger amounts of data could also further improve results and should therefore be investigated.
 
-Penultimately, models that are largely size independent and predict a grid of focus points on a whole image instead of using only small patches should be investigated.
+Penultimately, models that are largely size-independent and predict a grid of focus points on a whole image instead of using only small patches should be investigated.
 
 Lastly, for the task of generating stitched focus-stack images, generative models like generative adversarial networks \cite{goodfellow2014generative} or diffusion models \cite{dhariwal2021diffusion} are a potential avenue of investigation.
