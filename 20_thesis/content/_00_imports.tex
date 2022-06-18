@@ -94,3 +94,12 @@
 \makeatother
 
 
+\newcommand\emptypage{
+  \FloatBarrier
+  \newpage 
+  \thispagestyle{empty}
+  \addtocounter{page}{1}
+  \ % The empty page
+  \newpage
+}
+
