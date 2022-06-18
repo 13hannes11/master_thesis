@@ -93,12 +93,17 @@
 \fi
 \makeatother
 
+% do not reset page numbering after acknowledgements or abstract
+\makeatletter
+  \patchcmd{\titlepage}{\setcounter{page}\@ne}{}     {}{\PackageError{titlepage}{failed to patch \string\begin{titlepage} to not reset the page counter}{}}
+  \patchcmd{\endtitlepage}{\setcounter{page}\@ne}{}  {}{\PackageError{titlepage}{failed to patch \string\end{titlepage} to not reset the page counter}{}}
+\makeatother
 
 \newcommand\emptypage{
   \FloatBarrier
   \newpage 
   \thispagestyle{empty}
-  \addtocounter{page}{1}
+  %\addtocounter{page}{1}
   \ % The empty page
   \newpage
 }

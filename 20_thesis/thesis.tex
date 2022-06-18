@@ -4,17 +4,22 @@
 
 \input{content/_10_Acronyms.tex}
 
-\pagenumbering{roman}
+\pagenumbering{alph}
 \begin{document}
 
 \input{content/_20_Cover.tex}
 \emptypage
 
+\pagenumbering{roman}
+\begin{abstract}
 \input{content/00_Abstract.tex}
+\end{abstract}
 \emptypage
 
 % Optional: Populärvetenskaplig Sammanfattning
+\begin{acknowledgements}
 \input{content/05_Acknowledgements.tex}
+\end{acknowledgements}
 \emptypage
 
 \tableofcontents
